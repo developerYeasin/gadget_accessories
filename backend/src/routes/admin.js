@@ -1,5 +1,8 @@
 import { Router } from 'express';
+import path from 'path';
+import crypto from 'crypto';
 import pool from '../config/db.js';
+import { uploadToR2 } from '../config/r2.js';
 import { protect, adminOnly } from '../middleware/auth.js';
 import upload from '../middleware/upload.js';
 import { asyncHandler, formatProduct, slugify } from '../utils.js';
@@ -25,10 +28,13 @@ router.get('/stats', asyncHandler(async (_req, res) => {
   res.json({ ...counts, recent_orders: recent, low_stock_items: lowStock });
 }));
 
-router.post('/upload', upload.single('image'), (req, res) => {
+router.post('/upload', upload.single('image'), asyncHandler(async (req, res) => {
   if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
-  res.status(201).json({ url: `/uploads/${req.file.filename}` });
-});
+  const ext = path.extname(req.file.originalname).toLowerCase();
+  const key = `uploads/${new Date().toISOString().slice(0, 7)}/${Date.now()}-${crypto.randomBytes(4).toString('hex')}${ext}`;
+  const url = await uploadToR2(key, req.file.buffer, req.file.mimetype);
+  res.status(201).json({ url });
+}));
 
 /* ---------- Products ---------- */
 router.get('/products', asyncHandler(async (req, res) => {

@@ -1,7 +1,10 @@
 const BASE = import.meta.env.VITE_API_URL || '';
 
+// Shown when a product/category has no image (inline so the frontend ships no image files)
+const PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><rect width="400" height="280" fill="#15130f"/><path d="M128 190 200 118l72 72h-30v-8h14l-56-56-56 56h14v8z" fill="#5a4718"/></svg>')}`;
+
 export const imageUrl = (path) => {
-  if (!path) return '/logo-mark.svg';
+  if (!path) return PLACEHOLDER;
   if (/^https?:\/\//.test(path)) return path;
   return path.startsWith('/uploads') ? `${BASE}${path}` : path;
 };

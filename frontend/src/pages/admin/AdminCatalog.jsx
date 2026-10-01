@@ -25,7 +25,7 @@ function ImageInput({ label, value, onChange }) {
     <label>{label}
       <div className="img-input">
         {value && <img src={imageUrl(value)} alt="" />}
-        <input className="input" value={value || ''} onChange={(e) => onChange(e.target.value)} placeholder="/images/... or upload" />
+        <input className="input" value={value || ''} onChange={(e) => onChange(e.target.value)} placeholder="Upload an image or paste a URL" />
         <span className="btn btn--ghost btn--sm upload-btn"><FiUpload /> {busy ? '...' : 'Upload'}<input type="file" accept="image/*" onChange={upload} /></span>
       </div>
     </label>

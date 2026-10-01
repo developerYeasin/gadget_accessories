@@ -1,2 +1,6 @@
 node_modules
 .env
+# Admin uploads stay out of git; bundled store images in uploads/images are kept
+uploads/*
+!uploads/.gitkeep
+!uploads/images/
