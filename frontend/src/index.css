@@ -793,3 +793,28 @@ input, select, textarea { font: inherit; color: inherit; }
 .pw-input button { position: absolute; top: 50%; right: 6px; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; font-size: 18px; color: var(--muted); }
 .pw-input button:hover { color: var(--gold); background: rgba(255,255,255,.04); }
 .pw-input input::-ms-reveal { display: none; }
+
+/* ---------- Scrollbars (dark + gold) ---------- */
+::-webkit-scrollbar { width: 10px; height: 8px; }
+::-webkit-scrollbar-track { background: #0b0c10; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #f7c948, #c98a12); border-radius: 99px; border: 2px solid #0b0c10; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #ffe07a, #e2a21a); }
+::-webkit-scrollbar-corner { background: #0b0c10; }
+/* Inner scroll areas (tables, drawers, modals, thumbnails) get a slimmer, quieter bar */
+.table-wrap::-webkit-scrollbar, .drawer::-webkit-scrollbar, .cart-drawer__list::-webkit-scrollbar,
+.admin__side::-webkit-scrollbar, .overlay::-webkit-scrollbar, .gal__thumbs::-webkit-scrollbar,
+.flash .pgrid::-webkit-scrollbar, .tabs::-webkit-scrollbar, .account__nav::-webkit-scrollbar { width: 6px; height: 6px; }
+.table-wrap::-webkit-scrollbar-thumb, .drawer::-webkit-scrollbar-thumb, .cart-drawer__list::-webkit-scrollbar-thumb,
+.admin__side::-webkit-scrollbar-thumb, .overlay::-webkit-scrollbar-thumb, .gal__thumbs::-webkit-scrollbar-thumb,
+.flash .pgrid::-webkit-scrollbar-thumb, .tabs::-webkit-scrollbar-thumb, .account__nav::-webkit-scrollbar-thumb { border: 0; background: #4a3a16; }
+.table-wrap::-webkit-scrollbar-thumb:hover, .drawer::-webkit-scrollbar-thumb:hover, .cart-drawer__list::-webkit-scrollbar-thumb:hover,
+.admin__side::-webkit-scrollbar-thumb:hover, .overlay::-webkit-scrollbar-thumb:hover, .flash .pgrid::-webkit-scrollbar-thumb:hover { background: var(--gold-2); }
+.table-wrap::-webkit-scrollbar-track, .drawer::-webkit-scrollbar-track, .cart-drawer__list::-webkit-scrollbar-track,
+.admin__side::-webkit-scrollbar-track, .overlay::-webkit-scrollbar-track, .gal__thumbs::-webkit-scrollbar-track,
+.flash .pgrid::-webkit-scrollbar-track, .tabs::-webkit-scrollbar-track, .account__nav::-webkit-scrollbar-track { background: transparent; }
+/* Firefox (no ::-webkit-scrollbar support) */
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-color: #e8a91c #0b0c10; }
+  .table-wrap, .drawer, .cart-drawer__list, .admin__side, .overlay, .flash .pgrid { scrollbar-width: thin; scrollbar-color: #4a3a16 transparent; }
+}
+::selection { background: rgba(245,197,66,.35); color: #fff; }
