@@ -1,0 +1,1587 @@
+[    1513ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[    1548ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[    1548ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[  154674ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[  154705ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[  154705ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[  162744ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[  162766ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[  162766ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[ 3784448ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:559
+[ 3784497ms] [ERROR] Failed to load resource: net::ERR_NETWORK_IO_SUSPENDED @ http://localhost:5173/:0
+[31414863ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[31414944ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31414944ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31415023ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31415025ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31415038ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31415053ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31415070ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31415111ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31415142ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31415149ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31415150ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31415150ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31415154ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31415155ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31684876ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[31684906ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31684906ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31684919ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31684920ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31684924ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31684924ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31684924ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31684927ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31684932ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31684933ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31684933ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31684933ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31684934ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31684936ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31685771ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[31685797ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31685798ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31685810ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31685815ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31685815ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31685815ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31685816ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31685818ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31685827ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31685827ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31685827ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31685827ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31685828ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31685828ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31686409ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[31686432ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31686432ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[31686442ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31686447ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31686448ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31686448ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31686448ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31686450ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[31686454ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[31686454ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[31686454ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[31686455ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[31686455ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[31686455ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[41450323ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[41450361ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[41450362ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[41450375ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[41450381ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[41450382ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[41450382ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[41450382ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[41450382ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[41450388ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[41450388ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[41450388ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[41450388ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[41450389ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[41450389ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[76498350ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[76498436ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[76498436ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[76498466ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[76498472ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[76498473ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[76498474ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[76498474ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[76498523ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[76498530ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/banners:0
+[76498531ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?flash=1&limit=10:0
+[76498531ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?featured=1&limit=8:0
+[76498532ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/products?sort=newest&limit=8:0
+[76498533ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/settings:0
+[76498533ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/api/categories:0
+[77732045ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5173/src/App.jsx?t=1790867498455:0
+[77732050ms] [ERROR] [hmr] Failed to reload /src/App.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/@vite/client:175
+[77732309ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[77732379ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[77732380ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78154523ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at TopBar (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:48:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154527ms] TypeError: Cannot destructure property 'cartCount' of 'useStore(...)' as it is null.
+    at Header (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:184:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154532ms] TypeError: Cannot destructure property 'categories' of 'useStore(...)' as it is null.
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154533ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Footer (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:466:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154533ms] TypeError: Cannot destructure property 'cartCount' of 'useStore(...)' as it is null.
+    at BottomNav (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:411:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154536ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at TopBar (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:48:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154537ms] TypeError: Cannot destructure property 'cartCount' of 'useStore(...)' as it is null.
+    at Header (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:184:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154538ms] TypeError: Cannot destructure property 'categories' of 'useStore(...)' as it is null.
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154538ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Footer (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:466:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154539ms] TypeError: Cannot destructure property 'cartCount' of 'useStore(...)' as it is null.
+    at BottomNav (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:411:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154545ms] [ERROR] The above error occurred in the <TopBar> component:
+
+    at TopBar (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:48:30)
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:682:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154545ms] [ERROR] The above error occurred in the <Header> component:
+
+    at Header (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:182:19)
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:682:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154545ms] [ERROR] The above error occurred in the <Home> component:
+
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:682:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154545ms] [ERROR] The above error occurred in the <Footer> component:
+
+    at Footer (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:466:36)
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:682:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154546ms] [ERROR] The above error occurred in the <BottomNav> component:
+
+    at BottomNav (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:411:31)
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:682:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154557ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at TopBar (http://localhost:5173/src/components/Layout.jsx?t=1790867498457:48:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19751:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19114:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18734:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18877:28)
+[78154584ms] TypeError: Cannot destructure property 'categories' of 'useStore(...)' as it is null.
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154594ms] TypeError: Cannot destructure property 'categories' of 'useStore(...)' as it is null.
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78154597ms] [ERROR] The above error occurred in the <Home> component:
+
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867921018:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790867921016:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78154598ms] TypeError: Cannot destructure property 'categories' of 'useStore(...)' as it is null.
+    at Home (http://localhost:5173/src/pages/Home.jsx:25:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19751:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19114:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18734:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18877:28)
+[78155070ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[78155178ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78155182ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78996118ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867921016:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78996123ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867921016:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78996126ms] [ERROR] The above error occurred in the <Layout> component:
+
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867921016:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868762775:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78996129ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790867921016:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19751:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19114:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18734:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18877:28)
+[78996621ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[78996678ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78996678ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78997311ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868762775:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78997318ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868762775:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[78997316ms] [ERROR] The above error occurred in the <Layout> component:
+
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868762775:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[78997319ms] TypeError: Cannot destructure property 'settings' of 'useStore(...)' as it is null.
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868762775:687:11)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14924:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15912:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19751:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19114:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18734:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18877:28)
+[78997896ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[78997984ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[78997984ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[80869456ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869462ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869462ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869462ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869462ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869466ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869469ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869469ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869469ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869469ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869470ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869470ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869471ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869471ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869471ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869471ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869472ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869472ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869472ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869475ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869476ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869477ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869480ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869481ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869482ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869482ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3672:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3697:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:3731:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19763:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869481ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869482ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869483ms] [ERROR] The above error occurred in the <ProductCard> component:
+
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:73:31)
+    at div
+    at ProductGrid (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:175:31)
+    at section
+    at Home (http://localhost:5173/src/pages/Home.jsx?t=1790868763926:25:36)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4516:26)
+    at main
+    at div
+    at Layout (http://localhost:5173/src/components/Layout.jsx?t=1790868763926:683:27)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4110:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4580:5)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx?t=1790868763926:30:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[80869490ms] ReferenceError: hoverImage is not defined
+    at ProductCard (http://localhost:5173/src/components/Shared.jsx?t=1790870635432:84:7)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:11546:26)
+    at updateFunctionComponent (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14580:28)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:15922:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19751:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19196:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19135:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19114:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18734:28)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18877:28)
+[81342458ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[81342489ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[81342489ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[82609440ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[82609456ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[82609457ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[82609579ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/login:0
+[82625606ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/login:0
+[82660047ms] [VERBOSE] [DOM] Password forms should have (optionally hidden) username fields for accessibility: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/login:0

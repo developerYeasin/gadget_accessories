@@ -1,0 +1,100 @@
+[    2692ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:21548
+[    2745ms] [ERROR] Warning: %s must not return anything besides a function, which is used for clean-up.%s%s useEffect 
+
+It looks like you wrote useEffect(async () => ...) or returned a Promise. Instead, write the async function inside your effect and call it immediately:
+
+useEffect(() => {
+  async function fetchData() {
+    // You can await here
+    const response = await MyAPI.getData(someId);
+    // ...
+  }
+  fetchData();
+}, [someId]); // Or [] if effect doesn't need props or state
+
+Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-fetching 
+    at ScrollToTop (http://localhost:5173/src/App.jsx:37:24)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx:29:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5) @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:518
+[    2746ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[    2746ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4414
+[    2748ms] TypeError: destroy is not a function
+    at safelyCallDestroy (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16746:13)
+    at commitHookEffectListUnmount (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16873:19)
+    at invokePassiveEffectUnmountInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18361:19)
+    at invokeEffectsInDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19699:19)
+    at commitDoubleInvokeEffectsInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19680:15)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19501:13)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19445:22)
+    at http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19326:17
+    at workLoop (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:195:42)
+    at flushWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:174:22)
+[    2748ms] [ERROR] Warning: %s must not return anything besides a function, which is used for clean-up.%s useEffect 
+
+It looks like you wrote useEffect(async () => ...) or returned a Promise. Instead, write the async function inside your effect and call it immediately:
+
+useEffect(() => {
+  async function fetchData() {
+    // You can await here
+    const response = await MyAPI.getData(someId);
+    // ...
+  }
+  fetchData();
+}, [someId]); // Or [] if effect doesn't need props or state
+
+Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-fetching @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:518
+[    2750ms] [ERROR] The above error occurred in the <ScrollToTop> component:
+
+    at ScrollToTop (http://localhost:5173/src/App.jsx:37:24)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx:29:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[    2751ms] TypeError: destroy is not a function
+    at safelyCallDestroy (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16746:13)
+    at commitHookEffectListUnmount (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16873:19)
+    at invokePassiveEffectUnmountInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18361:19)
+    at invokeEffectsInDev (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19699:19)
+    at commitDoubleInvokeEffectsInDEV (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19680:15)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19501:13)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19445:22)
+    at http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19326:17
+    at workLoop (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:195:42)
+    at flushWork (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:174:22)
+[    2754ms] TypeError: destroy is not a function
+    at safelyCallDestroy (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16746:13)
+    at commitHookEffectListUnmount (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16873:19)
+    at commitPassiveUnmountInsideDeletedTreeOnFiber (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18281:17)
+    at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18243:13)
+    at commitPassiveUnmountEffects_begin (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18179:19)
+    at commitPassiveUnmountEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18167:11)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19487:11)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19445:22)
+    at http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19326:17
+    at workLoop (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:195:42)
+[    2756ms] [ERROR] The above error occurred in the <ScrollToTop> component:
+
+    at ScrollToTop (http://localhost:5173/src/App.jsx:37:24)
+    at App
+    at StoreProvider (http://localhost:5173/src/context/StoreContext.jsx:29:33)
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:4523:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=c76998c8:5261:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:14029
+[    2756ms] TypeError: destroy is not a function
+    at safelyCallDestroy (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16746:13)
+    at commitHookEffectListUnmount (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:16873:19)
+    at commitPassiveUnmountInsideDeletedTreeOnFiber (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18281:17)
+    at commitPassiveUnmountEffectsInsideOfDeletedTree_begin (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18243:13)
+    at commitPassiveUnmountEffects_begin (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18179:19)
+    at commitPassiveUnmountEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:18167:11)
+    at flushPassiveEffectsImpl (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19487:11)
+    at flushPassiveEffects (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19445:22)
+    at http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:19326:17
+    at workLoop (http://localhost:5173/node_modules/.vite/deps/chunk-XPR23Y44.js?v=b7d368d5:195:42)

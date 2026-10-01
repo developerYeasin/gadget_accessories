@@ -1,0 +1,108 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e5]:
+    - generic [ref=f1e6]:
+      - generic [ref=f1e7]: Cash on Delivery Available
+      - generic [ref=f1e10]: Fast & Safe Delivery
+      - generic [ref=f1e13]: 100% Original Product
+      - generic [ref=f1e16]: Customer Support
+    - generic [ref=f1e19]:
+      - link "01650230541" [ref=f1e20] [cursor=pointer]:
+        - /url: tel:01650230541
+      - link "Facebook" [ref=f1e23] [cursor=pointer]:
+        - /url: "#"
+      - link "WhatsApp" [ref=f1e26] [cursor=pointer]:
+        - /url: "#"
+      - link "Messenger" [ref=f1e29] [cursor=pointer]:
+        - /url: "#"
+      - link "My Account" [ref=f1e33] [cursor=pointer]:
+        - /url: /login
+  - banner [ref=f1e37]:
+    - generic [ref=f1e38]:
+      - link "Gadget Accessories Home" [ref=f1e39] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f1e47]:
+        - link "Home" [ref=f1e48] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f1e49] [cursor=pointer]:
+          - /url: /shop
+        - link "Power Bank" [ref=f1e50] [cursor=pointer]:
+          - /url: /category/power-bank
+        - link "Earbuds" [ref=f1e51] [cursor=pointer]:
+          - /url: /category/earbuds
+        - link "Smart Watch" [ref=f1e52] [cursor=pointer]:
+          - /url: /category/smart-watch
+        - link "Headphone" [ref=f1e53] [cursor=pointer]:
+          - /url: /category/headphone
+        - link "Accessories" [ref=f1e54] [cursor=pointer]:
+          - /url: /category/mobile-accessories
+        - link "Offers" [ref=f1e55] [cursor=pointer]:
+          - /url: /offers
+        - link "Contact" [ref=f1e56] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f1e57]:
+        - button "Search" [ref=f1e58] [cursor=pointer]
+        - link "Wishlist" [ref=f1e62] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f1e65]: "0"
+        - link "Cart" [ref=f1e66] [cursor=pointer]:
+          - /url: /cart
+          - generic [ref=f1e71]: "0"
+  - main [ref=f1e72]:
+    - generic [ref=f1e74]:
+      - generic [ref=f1e75]: 100% OriginalProduct
+      - generic [ref=f1e80]: Cash onDelivery
+      - generic [ref=f1e85]: EasyReturn Policy
+      - generic [ref=f1e92]: CustomerSupport
+      - generic [ref=f1e97]: QualityChecked
+      - generic [ref=f1e103]: Best PriceGuaranteed
+    - generic [ref=f1e108]:
+      - generic [ref=f1e109]:
+        - heading "Shop by Category" [level=2] [ref=f1e110]
+        - link "View All" [ref=f1e111] [cursor=pointer]:
+          - /url: /categories
+      - link "All Products" [ref=f1e115] [cursor=pointer]:
+        - /url: /shop
+    - heading "Flash Sale Limited Time Offer" [level=2] [ref=f1e124]:
+      - text: Flash
+      - generic [ref=f1e127]: Sale
+      - generic [ref=f1e128]: Limited Time Offer
+    - generic [ref=f1e141]:
+      - heading "Featured Products" [level=2] [ref=f1e142]
+      - link "View All" [ref=f1e143] [cursor=pointer]:
+        - /url: /shop
+    - generic [ref=f1e156]:
+      - heading "New Arrivals" [level=2] [ref=f1e157]
+      - link "View All" [ref=f1e158] [cursor=pointer]:
+        - /url: /shop?sort=newest
+  - contentinfo [ref=f1e170]:
+    - generic [ref=f1e171]:
+      - generic [ref=f1e172]:
+        - link "Gadget Accessories Home" [ref=f1e173] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f1e181]: Your trusted shop for 100% original gadgets & accessories in Bangladesh. Cash on delivery, fast & safe delivery all over the country.
+        - generic [ref=f1e182]:
+          - link "Facebook" [ref=f1e183] [cursor=pointer]:
+            - /url: "#"
+          - link "WhatsApp" [ref=f1e186] [cursor=pointer]:
+            - /url: "#"
+          - link "Messenger" [ref=f1e189] [cursor=pointer]:
+            - /url: "#"
+      - heading "Categories" [level=4] [ref=f1e193]
+      - generic [ref=f1e194]:
+        - heading "Quick Links" [level=4] [ref=f1e195]
+        - link "Shop" [ref=f1e196] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f1e197] [cursor=pointer]:
+          - /url: /offers
+        - link "Track Order" [ref=f1e198] [cursor=pointer]:
+          - /url: /track-order
+        - link "My Account" [ref=f1e199] [cursor=pointer]:
+          - /url: /account
+        - link "Contact Us" [ref=f1e200] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f1e201]:
+        - heading "Contact" [level=4] [ref=f1e202]
+        - paragraph [ref=f1e203]: "01650230541"
+        - paragraph [ref=f1e206]: info@gadgetaccessorieshome.com
+        - paragraph [ref=f1e210]: Dhaka, Bangladesh
+    - generic [ref=f1e214]: © 2026 Gadget Accessories Home. All rights reserved.
