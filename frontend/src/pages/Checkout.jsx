@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { FaTruck } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import api, { imageUrl, money } from '../api/client';
-import { useStore } from '../context/StoreContext';
+import api, { cartWeight, deliveryCharge, imageUrl, money } from '../api/client';
+import { cartKey, useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 
@@ -27,7 +27,8 @@ export default function Checkout() {
 
   if (!cart.length) return <Navigate to="/cart" replace />;
 
-  const delivery = Number(form.area === 'outside_dhaka' ? settings.delivery_outside_dhaka ?? 120 : settings.delivery_inside_dhaka ?? 60);
+  const weight = cartWeight(cart);
+  const delivery = deliveryCharge(settings, form.area, weight);
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
   const discount = coupon?.discount || 0;
 
@@ -52,7 +53,7 @@ export default function Checkout() {
         ...form,
         payment_method: 'cod',
         coupon_code: coupon?.code,
-        items: cart.map((i) => ({ product_id: i.id, quantity: i.quantity })),
+        items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
       });
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
       clearCart();
@@ -65,7 +66,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="container page">
+    <div className="container page page--checkout">
       <Breadcrumb items={[['Cart', '/cart'], ['Checkout']]} />
       <h1 className="page-title"><span className="gold">Checkout</span></h1>
       <form className="cart-layout" onSubmit={submit}>
@@ -84,11 +85,11 @@ export default function Checkout() {
           <div className="radio-cards">
             <label className={form.area === 'inside_dhaka' ? 'is-active' : ''}>
               <input type="radio" name="area" value="inside_dhaka" checked={form.area === 'inside_dhaka'} onChange={set('area')} />
-              Inside Dhaka <b>{money(settings.delivery_inside_dhaka ?? 60)}</b>
+              Inside Dhaka <b>{money(deliveryCharge(settings, 'inside_dhaka', weight))}</b>
             </label>
             <label className={form.area === 'outside_dhaka' ? 'is-active' : ''}>
               <input type="radio" name="area" value="outside_dhaka" checked={form.area === 'outside_dhaka'} onChange={set('area')} />
-              Outside Dhaka <b>{money(settings.delivery_outside_dhaka ?? 120)}</b>
+              Outside Dhaka <b>{money(deliveryCharge(settings, 'outside_dhaka', weight))}</b>
             </label>
           </div>
           <h3>Payment Method</h3>
@@ -99,9 +100,9 @@ export default function Checkout() {
         <aside className="card summary">
           <h3>Your Order</h3>
           {cart.map((i) => (
-            <div key={i.id} className="summary__item">
+            <div key={cartKey(i)} className="summary__item">
               <img src={imageUrl(i.image)} alt="" />
-              <span>{i.name} <span className="muted">× {i.quantity}</span></span>
+              <span>{i.name}{i.variant_name && <span className="variant-tag">{i.variant_name}</span>} <span className="muted">× {i.quantity}</span></span>
               <b>{money(i.price * i.quantity)}</b>
             </div>
           ))}

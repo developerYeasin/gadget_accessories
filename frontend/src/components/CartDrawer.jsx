@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiX, FiMinus, FiPlus, FiTrash2, FiShoppingCart, FiArrowRight } from 'react-icons/fi';
 import { imageUrl, money } from '../api/client';
-import { useStore } from '../context/StoreContext';
+import { cartKey, useStore } from '../context/StoreContext';
 
 export default function CartDrawer({ onClose }) {
   const { cart, cartCount, cartTotal, updateQty, removeFromCart } = useStore();
@@ -35,18 +35,19 @@ export default function CartDrawer({ onClose }) {
           <>
             <div className="cart-drawer__list">
               {cart.map((i) => (
-                <div key={i.id} className="cart-drawer__item">
+                <div key={cartKey(i)} className="cart-drawer__item">
                   <Link to={`/product/${i.slug}`} onClick={onClose}><img src={imageUrl(i.image)} alt={i.name} /></Link>
                   <div className="cart-drawer__info">
                     <Link to={`/product/${i.slug}`} onClick={onClose}>{i.name}</Link>
+                    {i.variant_name && <span className="variant-tag">{i.variant_name}</span>}
                     <div className="cart-drawer__row">
                       <div className="qty qty--sm">
-                        <button onClick={() => updateQty(i.id, i.quantity - 1)} aria-label="Decrease"><FiMinus /></button>
+                        <button onClick={() => updateQty(cartKey(i), i.quantity - 1)} aria-label="Decrease"><FiMinus /></button>
                         <span>{i.quantity}</span>
-                        <button onClick={() => updateQty(i.id, i.quantity + 1)} aria-label="Increase"><FiPlus /></button>
+                        <button onClick={() => updateQty(cartKey(i), i.quantity + 1)} aria-label="Increase"><FiPlus /></button>
                       </div>
                       <b className="gold">{money(i.price * i.quantity)}</b>
-                      <button className="icon-btn danger" onClick={() => removeFromCart(i.id)} aria-label="Remove"><FiTrash2 /></button>
+                      <button className="icon-btn danger" onClick={() => removeFromCart(cartKey(i))} aria-label="Remove"><FiTrash2 /></button>
                     </div>
                   </div>
                 </div>

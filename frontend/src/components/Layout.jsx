@@ -7,21 +7,23 @@ import { RiCustomerService2Line, RiTruckLine } from 'react-icons/ri';
 import Logo from './Logo';
 import CartDrawer from './CartDrawer';
 import BackToTop from './BackToTop';
+import PushPrompt from './PushPrompt';
 import { initTracking, track } from '../api/tracking';
 import { useStore } from '../context/StoreContext';
+import { waLink } from '../api/client';
 
-const NAV = [
-  ['Home', '/'],
-  ['Shop', '/shop'],
-  ['Power Bank', '/category/power-bank'],
-  ['Earbuds', '/category/earbuds'],
-  ['Smart Watch', '/category/smart-watch'],
-  ['Headphone', '/category/headphone'],
-  ['Accessories', '/category/mobile-accessories'],
-  ['Offers', '/offers'],
-  ['About', '/about'],
-  ['Contact', '/contact'],
-];
+// Full header menu: fixed pages around the first categories (managed in Admin → Categories, by sort order)
+const NAV_CATEGORY_COUNT = 5;
+const useNav = () => {
+  const { categories } = useStore();
+  return [
+    ['Home', '/'],
+    ['Shop', '/shop'],
+    ...categories.slice(0, NAV_CATEGORY_COUNT).map((c) => [c.name, `/category/${c.slug}`]),
+    ['Offers', '/offers'],
+    ['Contact', '/contact'],
+  ];
+};
 
 const SHORT_NAV = [
   ['Home', '/'],
@@ -47,7 +49,7 @@ function TopBar() {
             <FaPhoneAlt className="gold" /> {settings.phone || '01650230541'}
           </a>
           <a className="social social--fb" href={settings.facebook || '#'} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-          <a className="social social--wa" href={settings.whatsapp || '#'} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
+          <a className="social social--wa" href={waLink(settings)} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
           <a className="social social--ms" href={settings.messenger || '#'} target="_blank" rel="noreferrer" aria-label="Messenger"><FaFacebookMessenger /></a>
           <span className="topbar__sep" />
           <Link to={user ? (user.role === 'admin' ? '/admin' : '/account') : '/login'} className="topbar__account">
@@ -61,6 +63,7 @@ function TopBar() {
 
 function Header({ onMenu, onSearch, onCart }) {
   const { cartCount, wishlist } = useStore();
+  const NAV = useNav();
   return (
     <header className="header">
       <div className="container header__inner">
@@ -119,7 +122,7 @@ function MobileMenu({ onClose }) {
           <button className="icon-btn" onClick={onClose} aria-label="Close"><FiX /></button>
         </div>
         <nav className="drawer__nav" onClick={onClose}>
-          {NAV.map(([label, to]) => <NavLink key={to} to={to} end>{label}</NavLink>)}
+          {SHORT_NAV.map(([label, to]) => <NavLink key={to} to={to} end>{label}</NavLink>)}
           <div className="drawer__label">Categories</div>
           {categories.map((c) => <NavLink key={c.id} to={`/category/${c.slug}`}>{c.name}</NavLink>)}
           <div className="drawer__label">Account</div>
@@ -162,7 +165,7 @@ function Footer() {
           <p className="muted footer__about">Your trusted shop for 100% original gadgets &amp; accessories in Bangladesh. Cash on delivery, fast &amp; safe delivery all over the country.</p>
           <div className="footer__social">
             <a className="social social--fb" href={settings.facebook || '#'} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-            <a className="social social--wa" href={settings.whatsapp || '#'} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
+            <a className="social social--wa" href={waLink(settings)} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
             <a className="social social--ms" href={settings.messenger || '#'} target="_blank" rel="noreferrer" aria-label="Messenger"><FaFacebookMessenger /></a>
           </div>
         </div>
@@ -220,6 +223,7 @@ export default function Layout() {
       <Footer />
       <BottomNav />
       <BackToTop />
+      <PushPrompt />
       {menu && <MobileMenu onClose={() => setMenu(false)} />}
       {cartOpen && <CartDrawer onClose={closeCart} />}
       {search && <SearchOverlay onClose={() => setSearch(false)} />}

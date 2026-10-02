@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaFire } from 'react-icons/fa';
+import { FiArrowRight } from 'react-icons/fi';
 import api from '../api/client';
 import { useStore } from '../context/StoreContext';
 import { CategoryTiles, Countdown, FeatureStrip, HeroSlider, ProductGrid, SectionTitle } from '../components/Shared';
@@ -37,7 +39,10 @@ export default function Home() {
             <FaFire className="flash__fire" /> Flash <span className="gold-grad">Sale</span>
             <span className="pill-red">Limited Time Offer</span>
           </h2>
-          {settings.flash_sale_end && <Countdown end={settings.flash_sale_end} />}
+          <div className="flash__right">
+            {settings.flash_sale_end && <Countdown end={settings.flash_sale_end} />}
+            <Link to="/shop?flash=1" className="section-title__link">View All <FiArrowRight /></Link>
+          </div>
         </div>
         <ProductGrid products={flash} loading={loading} cols={5} />
       </section>

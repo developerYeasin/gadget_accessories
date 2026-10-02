@@ -350,8 +350,8 @@ const SETTING_GROUPS = [
     ['gtm_id', 'Google Tag Manager ID — e.g. GTM-XXXXXXX'],
     ['ga4_id', 'Google Analytics 4 ID — e.g. G-XXXXXXXXXX'],
   ]],
-  ['Social Links', [['facebook', 'Facebook URL'], ['whatsapp', 'WhatsApp URL'], ['messenger', 'Messenger URL']]],
-  ['Delivery Charges', [['delivery_inside_dhaka', 'Inside Dhaka (৳)'], ['delivery_outside_dhaka', 'Outside Dhaka (৳)']]],
+  ['Social & WhatsApp', [['whatsapp', 'WhatsApp Number — e.g. 01411612350'], ['facebook', 'Facebook URL'], ['messenger', 'Messenger URL']]],
+  ['Delivery Charges', [['delivery_inside_dhaka', 'Inside Dhaka (৳)'], ['delivery_outside_dhaka', 'Outside Dhaka (৳)'], ['delivery_above_500g', 'Parcel over 500g (৳) — any area'], ['delivery_above_1000g', 'Parcel over 1kg (৳) — any area']]],
 ];
 
 const FEEDS = [

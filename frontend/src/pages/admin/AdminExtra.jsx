@@ -7,6 +7,7 @@ import { useStore } from '../../context/StoreContext';
 import { LogoMark } from '../../components/Logo';
 import { StatusBadge } from '../../components/OrderView';
 import { Modal } from './AdminPages';
+import { currentSubscription, permission, pushSupported, subscribePush } from '../../api/push';
 
 const confirmDelete = (what) => window.confirm(`Delete this ${what}? This cannot be undone.`);
 
@@ -429,6 +430,93 @@ export function Invoice() {
         </div>
         <p className="invoice__thanks">Thank you for shopping with Gadget Accessories Home!</p>
       </div>
+    </>
+  );
+}
+
+/* ---------- Push notifications ---------- */
+export function Notifications() {
+  const [stats, setStats] = useState(null);
+  const [form, setForm] = useState({ title: '', body: '', url: '/offers', image: '' });
+  const [busy, setBusy] = useState('');
+  const [deviceOn, setDeviceOn] = useState(false);
+  const load = () => api.get('/push/admin/stats').then(setStats).catch((e) => toast.error(e.message));
+  useEffect(() => {
+    load();
+    currentSubscription().then((s) => setDeviceOn(Boolean(s) && permission() === 'granted'));
+  }, []);
+
+  const run = async (key, fn) => {
+    setBusy(key);
+    try { await fn(); } catch (e) { toast.error(e.message); } finally { setBusy(''); }
+  };
+  const enableDevice = () => run('device', async () => {
+    await subscribePush({ audience: 'admin' });
+    setDeviceOn(true);
+    toast.success('This device will get new-order alerts');
+    load();
+  });
+  const sendTest = () => run('test', async () => {
+    await api.post('/push/admin/test');
+    toast.success('Test sent — check this device');
+  });
+  const send = (e) => {
+    e.preventDefault();
+    if (!window.confirm(`Send "${form.title}" to ${stats?.customers ?? 0} subscriber(s)?`)) return;
+    run('send', async () => {
+      const r = await api.post('/push/admin/send', form);
+      toast.success(`Sent to ${r.sent}${r.failed ? `, ${r.failed} failed` : ''}`);
+      setForm({ title: '', body: '', url: '/offers', image: '' });
+      load();
+    });
+  };
+  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+
+  if (!stats) return <div className="spinner" />;
+  return (
+    <>
+      <h1 className="admin__title">Push Notifications</h1>
+      {!stats.enabled && <div className="alert">Push is not configured — add VAPID keys to backend/.env.</div>}
+      {!pushSupported() && <div className="alert">This browser does not support push notifications.</div>}
+      <div className="stat-grid">
+        <div className="card stat stat--plain"><div><p className="muted small">Customer subscribers</p><h3>{stats.customers}</h3></div></div>
+        <div className="card stat stat--plain"><div><p className="muted small">Admin devices</p><h3>{stats.admins}</h3></div></div>
+        <div className="card stat stat--plain">
+          <div>
+            <p className="muted small">New-order alerts on this device</p>
+            <div className="row" style={{ marginTop: 6 }}>
+              {deviceOn
+                ? <><span className="status status--delivered">On</span><button className="btn btn--ghost btn--sm" onClick={sendTest} disabled={busy === 'test'}>Send test</button></>
+                : <button className="btn btn--gold btn--sm" onClick={enableDevice} disabled={busy === 'device' || !pushSupported()}>Enable on this device</button>}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="admin-cols">
+        <form className="card admin-card" onSubmit={send}>
+          <h3>Send to all subscribers</h3>
+          <div className="form-grid">
+            <label className="span-2">Title *<input className="input" required maxLength={80} value={form.title} onChange={set('title')} placeholder="⚡ Flash Sale is live — up to 20% off" /></label>
+            <label className="span-2">Message<textarea className="input" rows={3} maxLength={200} value={form.body} onChange={set('body')} placeholder="Power banks, earbuds & more. Limited stock!" /></label>
+            <label>Open link<input className="input" value={form.url} onChange={set('url')} placeholder="/offers" /></label>
+            <label>Image (optional)<input className="input" value={form.image} onChange={set('image')} placeholder="https://..." /></label>
+          </div>
+          <button className="btn btn--gold" disabled={busy === 'send' || !stats.customers}>{busy === 'send' ? 'Sending…' : `Send to ${stats.customers} subscriber(s)`}</button>
+          <p className="muted small">Goes to every customer who allowed notifications. Use it for real offers only — too many messages make people unsubscribe.</p>
+        </form>
+        <div className="card admin-card">
+          <h3>Sent history</h3>
+          {!stats.campaigns.length && <p className="muted">Nothing sent yet.</p>}
+          {stats.campaigns.map((c) => (
+            <div key={c.id} className="rank-row">
+              <span className="rank-row__name"><b>{c.title}</b><br /><span className="muted small">{c.body}</span></span>
+              <span className="small nowrap">{c.sent} sent{c.failed ? ` · ${c.failed} failed` : ''}<br /><span className="muted">{String(c.created_at).slice(0, 16)}</span></span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <p className="muted small">Automatic: admins get a notification for every new order; customers get one when their order is confirmed, packed, shipped, delivered or cancelled.</p>
     </>
   );
 }

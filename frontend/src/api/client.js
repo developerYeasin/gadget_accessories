@@ -9,6 +9,31 @@ export const imageUrl = (path) => {
   return path.startsWith('/uploads') ? `${BASE}${path}` : path;
 };
 
+// WhatsApp link from the admin-set number (01XXXXXXXXX or +8801...) or a full URL
+export const waLink = (settings, text) => {
+  const raw = String(settings?.whatsapp || '').trim();
+  let base;
+  if (/^https?:\/\//.test(raw)) base = raw;
+  else {
+    let digits = raw.replace(/\D/g, '');
+    if (digits.startsWith('0')) digits = `88${digits}`;
+    base = digits ? `https://wa.me/${digits}` : 'https://wa.me/';
+  }
+  return text ? `${base}${base.includes('?') ? '&' : '?'}text=${encodeURIComponent(text)}` : base;
+};
+
+export const DELIVERY_DEFAULTS = { inside: 70, outside: 130, above500: 140, above1000: 150 };
+// Charge by area; parcels over 500g / 1kg use the weight slabs. Keep in sync with backend/src/utils.js
+export const deliveryCharge = (settings, area, grams = 0) => {
+  const n = (v, d) => (v === undefined || v === null || v === '' || Number.isNaN(Number(v)) ? d : Number(v));
+  if (grams > 1000) return n(settings?.delivery_above_1000g, DELIVERY_DEFAULTS.above1000);
+  if (grams > 500) return n(settings?.delivery_above_500g, DELIVERY_DEFAULTS.above500);
+  return area === 'outside_dhaka'
+    ? n(settings?.delivery_outside_dhaka, DELIVERY_DEFAULTS.outside)
+    : n(settings?.delivery_inside_dhaka, DELIVERY_DEFAULTS.inside);
+};
+export const cartWeight = (cart) => cart.reduce((g, i) => g + (Number(i.weight) || 0) * i.quantity, 0);
+
 export const money = (n) => '৳' + Number(n || 0).toLocaleString('en-US', { maximumFractionDigits: 0 });
 
 async function request(method, url, body) {

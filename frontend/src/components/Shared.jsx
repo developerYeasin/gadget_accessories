@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiHeart, FiShoppingCart, FiArrowRight, FiChevronLeft, FiChevronRight, FiClock, FiRefreshCw, FiBox } from 'react-icons/fi';
+import { FiHeart, FiShoppingCart, FiSliders, FiArrowRight, FiChevronLeft, FiChevronRight, FiClock, FiRefreshCw, FiBox } from 'react-icons/fi';
 import { FaHeart, FaStar, FaRegStar, FaStarHalfAlt, FaTruck } from 'react-icons/fa';
 import { HiShieldCheck } from 'react-icons/hi';
 import { BsLightningChargeFill } from 'react-icons/bs';
@@ -43,11 +43,17 @@ export function ProductCard({ product }) {
         <Stars rating={product.rating} count={product.review_count} />
         <div className="pcard__price">
           {product.old_price > product.price && <del>{money(product.old_price)}</del>}
-          <strong>{money(product.price)}</strong>
+          <strong>{product.variant_count > 0 && <small className="pcard__from">From </small>}{money(product.price)}</strong>
         </div>
-        <button className="btn btn--gold btn--block" onClick={() => addToCart(product)} disabled={product.stock <= 0}>
-          <FiShoppingCart /> Add to Cart
-        </button>
+        {product.variant_count > 0 ? (
+          <Link to={`/product/${product.slug}`} className={`btn btn--gold btn--block ${product.stock <= 0 ? 'is-disabled' : ''}`}>
+            <FiSliders /> Select Options
+          </Link>
+        ) : (
+          <button className="btn btn--gold btn--block" onClick={() => addToCart(product)} disabled={product.stock <= 0}>
+            <FiShoppingCart /> Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );

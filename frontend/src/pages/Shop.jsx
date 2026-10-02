@@ -62,7 +62,7 @@ export default function Shop({ offers = false }) {
     const qs = new URLSearchParams({ sort, page, limit: 12 });
     if (slug) qs.set('category', slug);
     if (offers) qs.set('offers', '1');
-    ['q', 'min', 'max', 'brand', 'in_stock'].forEach((k) => params.get(k) && qs.set(k, params.get(k)));
+    ['q', 'min', 'max', 'brand', 'in_stock', 'flash'].forEach((k) => params.get(k) && qs.set(k, params.get(k)));
     api.get(`/products?${qs}`).then(setData).catch(() => {}).finally(() => setLoading(false));
   }, [slug, offers, params, sort, page]);
 
@@ -73,7 +73,7 @@ export default function Shop({ offers = false }) {
     setParams(next);
   };
 
-  const title = category?.name || (offers ? 'Special Offers' : q ? `Search: "${q}"` : 'All Products');
+  const title = category?.name || (offers ? 'Special Offers' : params.get('flash') === '1' ? 'Flash Sale' : q ? `Search: "${q}"` : 'All Products');
   const brands = brand ? brand.split(',') : [];
   const toggleBrand = (b) => update({ brand: (brands.includes(b) ? brands.filter((x) => x !== b) : [...brands, b]).join(',') });
 
@@ -122,7 +122,7 @@ export default function Shop({ offers = false }) {
             <h4>Availability</h4>
             <label className="check"><input type="checkbox" checked={inStock} onChange={(e) => update({ in_stock: e.target.checked ? '1' : '' })} /> In stock only</label>
           </div>
-          <button className="btn btn--ghost" onClick={() => { setMin(''); setMax(''); setParams(q ? { q } : {}); }}>Clear filters</button>
+          <button className="btn btn--ghost" onClick={() => { setMin(''); setMax(''); setParams(q ? { q } : params.get('flash') ? { flash: params.get('flash') } : {}); }}>Clear filters</button>
         </div>
       )}
 

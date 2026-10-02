@@ -8,7 +8,7 @@ import { FaHeart, FaWhatsapp, FaFacebookF, FaStar } from 'react-icons/fa';
 import { HiShieldCheck } from 'react-icons/hi';
 import { RiSecurePaymentLine } from 'react-icons/ri';
 import toast from 'react-hot-toast';
-import api, { imageUrl, money } from '../api/client';
+import api, { deliveryCharge, imageUrl, money, waLink } from '../api/client';
 import { useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
 import { Breadcrumb, ProductGrid, Spinner, Stars } from '../components/Shared';
@@ -97,6 +97,51 @@ function Gallery({ images, name, discount }) {
   );
 }
 
+/* ---------- Variants ---------- */
+// Option groups come from the product; older data without groups falls back to one "Option" group of variant names
+const optionGroups = (p) => {
+  if (p.options?.length) return p.options;
+  if (p.variants?.length) return [{ name: 'Option', values: p.variants.map((v) => v.name) }];
+  return [];
+};
+const variantOptions = (p, v) => (p.options?.length ? v.options || {} : { Option: v.name });
+const matches = (opts, sel) => Object.entries(sel).every(([k, val]) => opts[k] === val);
+
+function VariantPicker({ product, selected, onChange }) {
+  const groups = optionGroups(product);
+  return (
+    <div className="vopts">
+      {groups.map((g) => (
+        <div key={g.name}>
+          <div className="vopt__label">{g.name}: <b>{selected[g.name] || 'Choose'}</b></div>
+          <div className="vopt__values">
+            {g.values.map((val) => {
+              const next = { ...selected, [g.name]: val };
+              // Variants with this value that fit the other current choices
+              const fits = product.variants.filter((v) => matches(variantOptions(product, v), next));
+              const exists = fits.length > 0 || product.variants.some((v) => variantOptions(product, v)[g.name] === val);
+              const inStock = fits.some((v) => v.stock > 0);
+              return (
+                <button key={val} type="button" disabled={!exists}
+                  className={`vopt__btn ${selected[g.name] === val ? 'is-active' : ''} ${!inStock ? 'is-out' : ''}`}
+                  onClick={() => {
+                    // Keep compatible choices; otherwise jump to the first variant that has this value
+                    if (fits.length) return onChange(next);
+                    const v = product.variants.find((x) => variantOptions(product, x)[g.name] === val);
+                    return onChange(variantOptions(product, v));
+                  }}
+                  title={!inStock ? 'Out of stock' : undefined}>
+                  {val}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ReviewSummary({ rating, count, reviews }) {
   const dist = [5, 4, 3, 2, 1].map((s) => [s, reviews.filter((r) => r.rating === s).length]);
   const total = reviews.length || 1;
@@ -129,9 +174,17 @@ export default function ProductDetail() {
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState('description');
   const [review, setReview] = useState({ rating: 5, comment: '' });
+  const [selected, setSelected] = useState({});
 
   const load = () => api.get(`/products/${slug}`).then(setData).catch((e) => setError(e.message));
   useEffect(() => { if (data?.product) track.viewItem(data.product); }, [data?.product?.id]);
+  // Preselect the first in-stock variant
+  useEffect(() => {
+    const prod = data?.product;
+    if (!prod?.variants?.length) { setSelected({}); return; }
+    const first = prod.variants.find((v) => v.stock > 0) || prod.variants[0];
+    setSelected(variantOptions(prod, first));
+  }, [data?.product?.id]);
   useEffect(() => {
     setData(null); setError(''); setQty(1); setTab('description');
     load();
@@ -141,10 +194,19 @@ export default function ProductDetail() {
   if (error) return <div className="container page empty">{error} <button className="btn btn--ghost btn--sm" onClick={() => { setError(''); load(); }}>Retry</button></div>;
   if (!data) return <div className="container page"><Spinner /></div>;
   const { product: p, related, reviews } = data;
-  const images = p.images?.length ? p.images : [p.image];
+  const hasVariants = p.variants?.length > 0;
+  const variant = hasVariants && Object.keys(selected).length === optionGroups(p).length
+    ? p.variants.find((v) => matches(variantOptions(p, v), selected)) || null
+    : null;
+  // What the buyer sees: the chosen variant, or the product itself
+  const cur = variant
+    ? { price: variant.price, old_price: variant.old_price, stock: variant.stock, discount: variant.discount }
+    : { price: p.price, old_price: p.old_price, stock: hasVariants ? 0 : p.stock, discount: p.discount };
+  const baseImages = p.images?.length ? p.images : [p.image];
+  const images = variant?.image ? [variant.image, ...baseImages.filter((i) => i !== variant.image)] : baseImages;
   const liked = inWishlist(p.id);
   const pageUrl = window.location.href;
-  const lowStock = p.stock > 0 && p.stock <= 10;
+  const lowStock = cur.stock > 0 && cur.stock <= 10;
 
   const submitReview = async (e) => {
     e.preventDefault();
@@ -157,13 +219,19 @@ export default function ProductDetail() {
       toast.error(err.message);
     }
   };
-  const buyNow = () => { addToCart(p, qty, true); navigate('/checkout'); };
+  const add = (silent = false) => addToCart(p, qty, silent, variant);
+  const buyNow = () => {
+    if (hasVariants && !variant) { add(); return; }
+    add(true);
+    navigate('/checkout');
+  };
   const copyLink = () => navigator.clipboard.writeText(pageUrl).then(() => toast.success('Link copied'));
 
   const specs = [
     ['Brand', p.brand], ['Category', p.category_name], ['Model', p.name],
     ...p.features.map((f, i) => [`Feature ${i + 1}`, f]),
     ['Warranty', 'Official brand warranty'], ['Condition', 'Brand new, 100% original'],
+    ...optionGroups(p).map((g) => [g.name, g.values.join(', ')]),
     ['Availability', p.stock > 0 ? 'In stock' : 'Out of stock'],
   ].filter(([, v]) => v);
 
@@ -171,7 +239,7 @@ export default function ProductDetail() {
     <div className="container page">
       <Breadcrumb items={[[p.category_name || 'Shop', p.category_slug ? `/category/${p.category_slug}` : '/shop'], [p.name]]} />
       <div className="pd">
-        <Gallery images={images} name={p.name} discount={p.discount} />
+        <Gallery images={images} name={p.name} discount={cur.discount} />
 
         <div className="pd__info">
           <div className="pd__meta">
@@ -186,11 +254,11 @@ export default function ProductDetail() {
 
           <div className="pd__pricebox">
             <div className="pd__price">
-              <strong>{money(p.price)}</strong>
-              {p.old_price > p.price && <del>{money(p.old_price)}</del>}
-              {p.discount > 0 && <span className="pill-red">-{p.discount}%</span>}
+              <strong>{money(cur.price)}</strong>
+              {cur.old_price > cur.price && <del>{money(cur.old_price)}</del>}
+              {cur.discount > 0 && <span className="pill-red">-{cur.discount}%</span>}
             </div>
-            {p.discount > 0 && <p className="pd__save">You save {money(p.old_price - p.price)}</p>}
+            {cur.discount > 0 && <p className="pd__save">You save {money(cur.old_price - cur.price)}</p>}
           </div>
 
           <p className="muted">{p.short_description}</p>
@@ -198,28 +266,31 @@ export default function ProductDetail() {
             <ul className="pd__features">{p.features.map((f) => <li key={f}><FiCheckCircle /> {f}</li>)}</ul>
           )}
 
-          <div className={`pd__stock ${p.stock > 0 ? 'ok' : 'out'}`}>
-            {p.stock <= 0 ? 'Out of Stock' : lowStock ? `Hurry! Only ${p.stock} left in stock` : `In Stock (${p.stock} available)`}
-            {lowStock && <div className="pd__stockbar"><i style={{ width: `${(p.stock / 10) * 100}%` }} /></div>}
+          {hasVariants && <VariantPicker product={p} selected={selected} onChange={(sel) => { setSelected(sel); setQty(1); }} />}
+
+          <div className={`pd__stock ${cur.stock > 0 ? 'ok' : 'out'}`}>
+            {hasVariants && !variant ? <span className="vopt__hint">Please choose an option</span>
+              : cur.stock <= 0 ? 'Out of Stock' : lowStock ? `Hurry! Only ${cur.stock} left in stock` : `In Stock (${cur.stock} available)`}
+            {lowStock && <div className="pd__stockbar"><i style={{ width: `${(cur.stock / 10) * 100}%` }} /></div>}
           </div>
 
           <div className="pd__actions">
             <div className="qty">
               <button onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Decrease"><FiMinus /></button>
               <span>{qty}</span>
-              <button onClick={() => setQty((q) => Math.min(Math.max(p.stock, 1), q + 1))} aria-label="Increase"><FiPlus /></button>
+              <button onClick={() => setQty((q) => Math.min(Math.max(cur.stock, 1), q + 1))} aria-label="Increase"><FiPlus /></button>
             </div>
-            <button className="btn btn--gold pd__cart" disabled={p.stock <= 0} onClick={() => addToCart(p, qty)}><FiShoppingCart /> Add to Cart</button>
-            <button className="btn btn--outline pd__buy" disabled={p.stock <= 0} onClick={buyNow}>Buy Now</button>
+            <button className="btn btn--gold pd__cart" disabled={cur.stock <= 0} onClick={() => add()}><FiShoppingCart /> Add to Cart</button>
+            <button className="btn btn--outline pd__buy" disabled={cur.stock <= 0} onClick={buyNow}>Buy Now</button>
             <button className={`icon-btn icon-btn--box ${liked ? 'is-liked' : ''}`} onClick={() => toggleWishlist(p)} aria-label="Wishlist">{liked ? <FaHeart /> : <FiHeart />}</button>
           </div>
-          <a className="btn btn--wa" href={`${settings.whatsapp || 'https://wa.me/8801650230541'}?text=${encodeURIComponent(`I want to order: ${p.name} (${money(p.price)}) — ${pageUrl}`)}`} target="_blank" rel="noreferrer">
+          <a className="btn btn--wa" href={waLink(settings, `I want to order: ${p.name}${variant ? ` (${variant.name})` : ''} — ${money(cur.price)} — ${pageUrl}`)} target="_blank" rel="noreferrer">
             <FaWhatsapp /> Order on WhatsApp
           </a>
 
           <div className="pd__delivery">
-            <div><FiMapPin /><span><b>Inside Dhaka</b> — {money(settings.delivery_inside_dhaka ?? 60)} · 1–2 days</span></div>
-            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(settings.delivery_outside_dhaka ?? 120)} · 2–4 days</span></div>
+            <div><FiMapPin /><span><b>Inside Dhaka</b> — {money(deliveryCharge(settings, 'inside_dhaka'))} · 1–2 days</span></div>
+            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(deliveryCharge(settings, 'outside_dhaka'))} · 2–4 days</span></div>
           </div>
 
           <div className="pd__trust">
@@ -261,7 +332,7 @@ export default function ProductDetail() {
         {tab === 'delivery' && (
           <div className="pre">
             <h4 className="tab-h">Delivery</h4>
-            {`• Inside Dhaka: ${money(settings.delivery_inside_dhaka ?? 60)}, delivered in 1–2 working days.\n• Outside Dhaka: ${money(settings.delivery_outside_dhaka ?? 120)}, delivered in 2–4 working days.\n• Cash on delivery available all over Bangladesh — check the product before you pay.`}
+            {`• Inside Dhaka: ${money(deliveryCharge(settings, 'inside_dhaka'))}, delivered in 1–2 working days.\n• Outside Dhaka: ${money(deliveryCharge(settings, 'outside_dhaka'))}, delivered in 2–4 working days.\n• Cash on delivery available all over Bangladesh — check the product before you pay.`}
             <h4 className="tab-h">Return &amp; Refund</h4>
             {'• Report a damaged or wrong product within 3 days of delivery.\n• Product must be unused, in the original box with all accessories.\n• Replacement or refund within 7 working days after inspection.'}
             <p><Link to="/page/return-policy" className="gold">Read full return policy →</Link></p>
@@ -305,11 +376,11 @@ export default function ProductDetail() {
 
       <div className="pd-sticky">
         <div className="pd-sticky__price">
-          <strong>{money(p.price)}</strong>
-          {p.old_price > p.price && <del>{money(p.old_price)}</del>}
+          <strong>{money(cur.price)}</strong>
+          {cur.old_price > cur.price && <del>{money(cur.old_price)}</del>}
         </div>
-        <button className="btn btn--outline" disabled={p.stock <= 0} onClick={buyNow}>Buy Now</button>
-        <button className="btn btn--gold" disabled={p.stock <= 0} onClick={() => addToCart(p, qty)}><FiShoppingCart /> Add</button>
+        <button className="btn btn--outline" disabled={cur.stock <= 0} onClick={buyNow}>Buy Now</button>
+        <button className="btn btn--gold" disabled={cur.stock <= 0} onClick={() => add()}><FiShoppingCart /> Add</button>
       </div>
     </div>
   );

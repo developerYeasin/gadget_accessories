@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Navigate, Route, Routes } from 'react-router-dom';
-import { FiGrid, FiBox, FiTag, FiShoppingBag, FiImage, FiUsers, FiMail, FiSettings, FiLogOut, FiExternalLink, FiMenu, FiBarChart2, FiLayers, FiPercent, FiStar, FiFileText } from 'react-icons/fi';
+import { FiGrid, FiBox, FiTag, FiShoppingBag, FiImage, FiUsers, FiMail, FiSettings, FiLogOut, FiExternalLink, FiMenu, FiBarChart2, FiLayers, FiPercent, FiStar, FiFileText, FiBell } from 'react-icons/fi';
 import { useStore } from '../../context/StoreContext';
 import Logo from '../../components/Logo';
 import { Dashboard, Orders, Customers, Messages, Settings } from './AdminPages';
 import { Products, Categories, Banners } from './AdminCatalog';
-import { Reports, Inventory, Coupons, Reviews, Pages, Invoice } from './AdminExtra';
+import { Reports, Inventory, Coupons, Reviews, Pages, Invoice, Notifications } from './AdminExtra';
 
 const LINKS = [
   ['Main'],
@@ -20,6 +20,7 @@ const LINKS = [
   ['Marketing'],
   ['Coupons', 'coupons', <FiPercent key="8" />],
   ['Banners', 'banners', <FiImage key="9" />],
+  ['Notifications', 'notifications', <FiBell key="14" />],
   ['Customers'],
   ['Customers', 'customers', <FiUsers key="10" />],
   ['Messages', 'messages', <FiMail key="11" />],
@@ -68,6 +69,7 @@ export default function AdminApp() {
           <Route path="coupons" element={<Coupons />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="pages" element={<Pages />} />
+          <Route path="notifications" element={<Notifications />} />
           <Route path="invoice/:id" element={<Invoice />} />
         </Routes>
       </div>

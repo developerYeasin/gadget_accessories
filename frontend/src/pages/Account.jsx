@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { FiLogOut, FiPackage, FiUser } from 'react-icons/fi';
+import { FiBell, FiLogOut, FiPackage, FiUser } from 'react-icons/fi';
+import { currentSubscription, permission, pushSupported, subscribePush, unsubscribePush } from '../api/push';
 import toast from 'react-hot-toast';
 import api, { money } from '../api/client';
 import { useStore } from '../context/StoreContext';
@@ -11,6 +12,23 @@ export default function Account() {
   const [tab, setTab] = useState('orders');
   const [orders, setOrders] = useState([]);
   const [open, setOpen] = useState(null);
+  const [pushOn, setPushOn] = useState(false);
+  useEffect(() => { currentSubscription().then((s) => setPushOn(Boolean(s) && permission() === 'granted')); }, []);
+  const togglePush = async () => {
+    try {
+      if (pushOn) {
+        await unsubscribePush();
+        setPushOn(false);
+        toast.success('Notifications turned off');
+      } else {
+        await subscribePush();
+        setPushOn(true);
+        toast.success('Notifications turned on');
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
   const [form, setForm] = useState({ name: user?.name || '', phone: user?.phone || '', address: user?.address || '', city: user?.city || '', password: '' });
 
   useEffect(() => {
@@ -47,6 +65,7 @@ export default function Account() {
           <button className={tab === 'orders' ? 'is-active' : ''} onClick={() => setTab('orders')}><FiPackage /> My Orders</button>
           <button className={tab === 'profile' ? 'is-active' : ''} onClick={() => setTab('profile')}><FiUser /> Profile</button>
           {user.role === 'admin' && <Link to="/admin">Admin Panel</Link>}
+          {pushSupported() && <button onClick={togglePush}><FiBell /> Notifications: {pushOn ? 'On' : 'Off'}</button>}
           <button onClick={logout}><FiLogOut /> Logout</button>
         </aside>
         <div className="card form-card">

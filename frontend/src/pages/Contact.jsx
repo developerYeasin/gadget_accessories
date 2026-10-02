@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import api from '../api/client';
+import api, { waLink } from '../api/client';
 import { useStore } from '../context/StoreContext';
 import { Breadcrumb } from '../components/Shared';
 
@@ -35,7 +35,7 @@ export default function Contact() {
         <div className="card form-card contact__info">
           <h3>Get in touch</h3>
           <p><FiPhone className="gold" /> {settings.phone || '01650230541'}</p>
-          <p><FaWhatsapp className="gold" /> WhatsApp: {settings.phone || '01650230541'}</p>
+          <p><FaWhatsapp className="gold" /> WhatsApp: <a href={waLink(settings)} target="_blank" rel="noreferrer" className="gold">{settings.whatsapp || settings.phone}</a></p>
           <p><FiMail className="gold" /> {settings.email}</p>
           <p><FiMapPin className="gold" /> {settings.address}</p>
           <p className="muted small">Support hours: 10:00 AM – 10:00 PM, every day.</p>
