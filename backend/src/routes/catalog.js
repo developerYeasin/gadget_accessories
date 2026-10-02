@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import pool from '../config/db.js';
 import { protect } from '../middleware/auth.js';
-import { applyCoupon, asyncHandler, formatProduct } from '../utils.js';
+import { applyCoupon, asyncHandler, formatProduct, formatVariant, VARIANT_COUNT_SQL } from '../utils.js';
 
 const router = Router();
 
@@ -47,7 +47,7 @@ router.get('/products', asyncHandler(async (req, res) => {
 
   const [[{ total }]] = await pool.query(`SELECT COUNT(*) total ${from} WHERE ${whereSql}`, params);
   const [rows] = await pool.query(
-    `SELECT p.*, c.name AS category_name, c.slug AS category_slug ${from} WHERE ${whereSql}
+    `SELECT p.*, c.name AS category_name, c.slug AS category_slug, ${VARIANT_COUNT_SQL} ${from} WHERE ${whereSql}
      ORDER BY ${SORTS[sort] || SORTS.popularity} LIMIT ? OFFSET ?`,
     [...params, limit, (page - 1) * limit]
   );
@@ -63,14 +63,15 @@ router.get('/products/:slug', asyncHandler(async (req, res) => {
   );
   if (!p) return res.status(404).json({ message: 'Product not found' });
   const [related] = await pool.query(
-    'SELECT * FROM products WHERE category_id = ? AND id <> ? AND is_active = 1 ORDER BY sold_count DESC LIMIT 4',
+    `SELECT p.*, ${VARIANT_COUNT_SQL} FROM products p WHERE p.category_id = ? AND p.id <> ? AND p.is_active = 1 ORDER BY p.sold_count DESC LIMIT 4`,
     [p.category_id, p.id]
   );
   const [reviews] = await pool.query(
     'SELECT r.*, u.name AS user_name FROM reviews r JOIN users u ON u.id = r.user_id WHERE r.product_id = ? AND r.is_approved = 1 ORDER BY r.created_at DESC LIMIT 30',
     [p.id]
   );
-  res.json({ product: formatProduct(p), related: related.map(formatProduct), reviews });
+  const [variants] = await pool.query('SELECT * FROM product_variants WHERE product_id = ? AND is_active = 1 ORDER BY sort_order, id', [p.id]);
+  res.json({ product: { ...formatProduct(p), variant_count: variants.length, variants: variants.map(formatVariant) }, related: related.map(formatProduct), reviews });
 }));
 
 router.post('/products/:id/reviews', protect, asyncHandler(async (req, res) => {

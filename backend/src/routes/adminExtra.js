@@ -69,9 +69,10 @@ router.delete('/orders/:id', asyncHandler(async (req, res) => {
     const [[order]] = await conn.query('SELECT * FROM orders WHERE id = ? FOR UPDATE', [req.params.id]);
     if (!order) throw Object.assign(new Error('Order not found'), { status: 404 });
     if (order.status !== 'cancelled') {
-      const [items] = await conn.query('SELECT product_id, quantity FROM order_items WHERE order_id = ?', [order.id]);
+      const [items] = await conn.query('SELECT product_id, variant_id, quantity FROM order_items WHERE order_id = ?', [order.id]);
       for (const it of items) {
-        if (it.product_id) await conn.query('UPDATE products SET stock = stock + ?, sold_count = GREATEST(sold_count - ?, 0) WHERE id = ?', [it.quantity, it.quantity, it.product_id]);
+        if (it.product_id) await conn.query('UPDATE products SET stock = GREATEST(stock + ?, 0), sold_count = GREATEST(sold_count - ?, 0) WHERE id = ?', [it.quantity, it.quantity, it.product_id]);
+        if (it.variant_id) await conn.query('UPDATE product_variants SET stock = GREATEST(stock + ?, 0) WHERE id = ?', [it.quantity, it.variant_id]);
       }
     }
     await conn.query('DELETE FROM orders WHERE id = ?', [order.id]);
@@ -107,6 +108,8 @@ router.put('/users/:id', asyncHandler(async (req, res) => {
 
 /* ---------- Inventory ---------- */
 router.put('/products/:id/stock', asyncHandler(async (req, res) => {
+  const [[{ n }]] = await pool.query('SELECT COUNT(*) n FROM product_variants WHERE product_id = ? AND is_active = 1', [req.params.id]);
+  if (n > 0) return res.status(400).json({ message: "This product has variants — edit each variant's stock in the product form" });
   const stock = Math.max(0, Math.floor(Number(req.body.stock)));
   if (!Number.isFinite(stock)) return res.status(400).json({ message: 'Invalid stock' });
   await pool.query('UPDATE products SET stock = ? WHERE id = ?', [stock, req.params.id]);

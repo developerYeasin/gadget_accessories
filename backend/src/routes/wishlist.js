@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import pool from '../config/db.js';
 import { protect } from '../middleware/auth.js';
-import { asyncHandler, formatProduct } from '../utils.js';
+import { asyncHandler, formatProduct, VARIANT_COUNT_SQL } from '../utils.js';
 
 const router = Router();
 router.use(protect);
 
 router.get('/', asyncHandler(async (req, res) => {
   const [rows] = await pool.query(
-    'SELECT p.* FROM wishlists w JOIN products p ON p.id = w.product_id WHERE w.user_id = ? ORDER BY w.created_at DESC',
+    `SELECT p.*, ${VARIANT_COUNT_SQL} FROM wishlists w JOIN products p ON p.id = w.product_id WHERE w.user_id = ? ORDER BY w.created_at DESC`,
     [req.user.id]
   );
   res.json(rows.map(formatProduct));

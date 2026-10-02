@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import mysql from 'mysql2/promise';
-import { dbConfig } from '../config/db.js';
+import pool, { dbConfig } from '../config/db.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -33,11 +33,18 @@ async function migrate() {
   await ensureColumn('orders', 'admin_note', 'VARCHAR(1000) NULL');
   await ensureColumn('orders', 'updated_at', 'TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
   await ensureColumn('reviews', 'is_approved', 'TINYINT(1) NOT NULL DEFAULT 1');
+  await ensureColumn('products', 'options', 'JSON NULL');
+  await ensureColumn('products', 'weight', 'INT NOT NULL DEFAULT 0');
+  await ensureColumn('order_items', 'variant_id', 'INT NULL AFTER product_id');
+  await ensureColumn('order_items', 'variant_name', 'VARCHAR(200) NULL AFTER product_name');
   console.log('✔ Tables created / verified in', database);
   await conn.end();
 }
 
-migrate().catch((err) => {
-  console.error('Migration failed:', err.message);
-  process.exit(1);
-});
+migrate()
+  .catch((err) => {
+    console.error('Migration failed:', err.message);
+    process.exitCode = 1;
+  })
+  // db.js opens a keep-alive pool on import; close it so the script exits
+  .finally(() => pool.end());

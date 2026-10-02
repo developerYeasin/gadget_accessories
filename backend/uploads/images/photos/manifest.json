@@ -1,0 +1,96 @@
+{
+ "power-bank": [
+  "images/photos/power-bank/2CehLl3d8Ak.jpg",
+  "images/photos/power-bank/47WaiMrtWVM.jpg",
+  "images/photos/power-bank/KI7M3RQezJI.jpg",
+  "images/photos/power-bank/APdfyW0Aq-E.jpg",
+  "images/photos/power-bank/mMDcSzPUlg8.jpg",
+  "images/photos/power-bank/E-a0dTUzwi8.jpg",
+  "images/photos/power-bank/xaKEDwvfuGI.jpg"
+ ],
+ "power-bank__tile": "images/photos/tiles/power-bank.jpg",
+ "earbuds": [
+  "images/photos/earbuds/YwJGDLKOE48.jpg",
+  "images/photos/earbuds/HuTUDQqr88c.jpg",
+  "images/photos/earbuds/qt9_OfTaaeY.jpg",
+  "images/photos/earbuds/SU7Qewe8h18.jpg",
+  "images/photos/earbuds/ymfiokQznTo.jpg",
+  "images/photos/earbuds/5ba6j8d_oXY.jpg",
+  "images/photos/earbuds/AgLMrojqjAM.jpg",
+  "images/photos/earbuds/XGIulH5L8lU.jpg"
+ ],
+ "earbuds__tile": "images/photos/tiles/earbuds.jpg",
+ "smart-watch": [
+  "images/photos/smart-watch/jRM_bQIb_80.jpg",
+  "images/photos/smart-watch/OPeSKKUMva4.jpg",
+  "images/photos/smart-watch/2wFoa040m8g.jpg",
+  "images/photos/smart-watch/KiAYZZjpjkQ.jpg",
+  "images/photos/smart-watch/QhF3YGsDrYk.jpg",
+  "images/photos/smart-watch/hbTKIbuMmBI.jpg",
+  "images/photos/smart-watch/PKnn-nXCNhs.jpg",
+  "images/photos/smart-watch/O43D6CYzxqM.jpg",
+  "images/photos/smart-watch/M31VSuBSf0g.jpg",
+  "images/photos/smart-watch/WLOCr03nGr0.jpg",
+  "images/photos/smart-watch/FPEBZJLD8Rs.jpg"
+ ],
+ "smart-watch__tile": "images/photos/tiles/smart-watch.jpg",
+ "headphone": [
+  "images/photos/headphone/xR4JHzr69Og.jpg",
+  "images/photos/headphone/PDX_a_82obo.jpg",
+  "images/photos/headphone/GkCpDprF3yw.jpg",
+  "images/photos/headphone/Un65K1q_OYU.jpg",
+  "images/photos/headphone/dBwadhWa-lI.jpg",
+  "images/photos/headphone/NehdOHCXsjs.jpg",
+  "images/photos/headphone/LIoUyojwBjs.jpg",
+  "images/photos/headphone/5lJhMXg_zHk.jpg",
+  "images/photos/headphone/0QAe85hi_Mw.jpg"
+ ],
+ "headphone__tile": "images/photos/tiles/headphone.jpg",
+ "mobile-accessories": [
+  "images/photos/mobile-accessories/ZUabNmumOcA.jpg",
+  "images/photos/mobile-accessories/1A_MMH9w-Sc.jpg",
+  "images/photos/mobile-accessories/qAAVmtEurcs.jpg",
+  "images/photos/mobile-accessories/Fo1ZKpX4-f8.jpg",
+  "images/photos/mobile-accessories/WM5dFDWVrm8.jpg",
+  "images/photos/mobile-accessories/6l5z2EPrnFc.jpg",
+  "images/photos/mobile-accessories/W9Z87k4hV08.jpg"
+ ],
+ "mobile-accessories__tile": "images/photos/tiles/mobile-accessories.jpg",
+ "charging-cable": [
+  "images/photos/charging-cable/9ebgTVUbTho.jpg",
+  "images/photos/charging-cable/dYocS1QjjvI.jpg",
+  "images/photos/charging-cable/oXOZAx_MJM4.jpg",
+  "images/photos/charging-cable/RWxeE7wu1T8.jpg",
+  "images/photos/charging-cable/mwuFNpcHskI.jpg",
+  "images/photos/charging-cable/yh0UtueiZ-I.jpg",
+  "images/photos/charging-cable/QM9yzAoX-GQ.jpg",
+  "images/photos/charging-cable/TcLqCeWDIcc.jpg",
+  "images/photos/charging-cable/HNgFqfcKAWA.jpg",
+  "images/photos/charging-cable/115YGe1M28I.jpg"
+ ],
+ "charging-cable__tile": "images/photos/tiles/charging-cable.jpg",
+ "car-accessories": [
+  "images/photos/car-accessories/P85dQzlsPlc.jpg",
+  "images/photos/car-accessories/B-h3so_5UKA.jpg",
+  "images/photos/car-accessories/UZzcM8NUPLI.jpg",
+  "images/photos/car-accessories/QYQ9d8ZGELg.jpg",
+  "images/photos/car-accessories/PxkNzkSZ8LM.jpg",
+  "images/photos/car-accessories/DJ2EvFJI6Kk.jpg"
+ ],
+ "car-accessories__tile": "images/photos/tiles/car-accessories.jpg",
+ "speaker": [
+  "images/photos/speaker/g5Y5kjOwGwQ.jpg",
+  "images/photos/speaker/eMw1fBx4_Wk.jpg",
+  "images/photos/speaker/zxvnrxl5OXc.jpg",
+  "images/photos/speaker/S0B-pmGjdVA.jpg",
+  "images/photos/speaker/cSAiU8zbm5Y.jpg",
+  "images/photos/speaker/gbG65gRAGx4.jpg",
+  "images/photos/speaker/_bWH-4OjrYA.jpg",
+  "images/photos/speaker/-WB52caEpmI.jpg",
+  "images/photos/speaker/VSYq9nS-fY0.jpg",
+  "images/photos/speaker/6HDoRL0Y_-w.jpg",
+  "images/photos/speaker/UbRlWYpgrL0.jpg",
+  "images/photos/speaker/Twinih9fIog.jpg"
+ ],
+ "speaker__tile": "images/photos/tiles/speaker.jpg"
+}

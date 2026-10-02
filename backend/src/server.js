@@ -11,6 +11,7 @@ import wishlistRoutes from './routes/wishlist.js';
 import adminRoutes from './routes/admin.js';
 import adminExtraRoutes from './routes/adminExtra.js';
 import feedRoutes from './routes/feed.js';
+import pushRoutes from './routes/push.js';
 
 dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +33,7 @@ app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/admin', adminExtraRoutes);
 app.use('/api/feed', feedRoutes);
+app.use('/api/push', pushRoutes);
 app.use('/api', catalogRoutes);
 
 app.use('/api', (_req, res) => res.status(404).json({ message: 'Not found' }));

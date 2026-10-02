@@ -51,3 +51,10 @@ customer account with order history, contact form, mobile bottom nav — dark/go
 ## Production
 `cd frontend && npm run build` → serve `dist/`; set `VITE_API_URL` if the API is on another domain,
 and `CLIENT_URL` + a strong `JWT_SECRET` in `backend/.env`.
+
+## Push notifications (web push)
+- Keys: `VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` in `backend/.env` (generate with `npx web-push generate-vapid-keys`). Don't change them after launch — existing subscribers would stop receiving.
+- Automatic: admins get **new order** alerts; customers get **confirmed / packed / shipped / delivered / cancelled** updates.
+- Customers opt in from the site prompt, the order-success page ("Get order updates") or Account → Notifications.
+- Admin → **Notifications**: enable alerts on your device, send a test, broadcast offers to all subscribers, see history.
+- Works on HTTPS sites (and localhost). The service worker is `frontend/public/sw.js` — it must be served from the site root.
