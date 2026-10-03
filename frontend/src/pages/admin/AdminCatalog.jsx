@@ -4,6 +4,7 @@ import { FiEdit2, FiPlus, FiTrash2, FiUpload, FiX } from 'react-icons/fi';
 import api, { imageUrl, money } from '../../api/client';
 import { useStore } from '../../context/StoreContext';
 import { Modal } from './AdminPages';
+import { isColorGroup, swatchColor } from '../../utils/colors';
 
 function ImageInput({ label, value, onChange }) {
   const [busy, setBusy] = useState(false);
@@ -49,6 +50,18 @@ const sameOptions = (a, b) => {
   const ka = Object.keys(a || {}); const kb = Object.keys(b || {});
   return ka.length === kb.length && ka.every((k) => a[k] === b[k]);
 };
+// One variant per option combination; rows already in `variants` keep their price/stock/image
+const buildVariants = (groups, variants, base) => cartesian(groups).map((options) => (
+  variants.find((v) => sameOptions(v.options, options)) || {
+    options, name: Object.values(options).join(' / '), price: base.price || '', old_price: base.old_price || '',
+    stock: Number(base.stock) || 0, sku: '', image: '', is_active: true,
+  }
+));
+const OPTION_PRESETS = [
+  { name: 'Color', valuesText: 'Black, White, Red, Blue' },
+  { name: 'Size', valuesText: 'S, M, L, XL' },
+  { name: 'Capacity', valuesText: '10000mAh, 20000mAh' },
+];
 
 function VariantImage({ value, onChange }) {
   const [busy, setBusy] = useState(false);
@@ -74,20 +87,14 @@ function VariantImage({ value, onChange }) {
   );
 }
 
-function VariantEditor({ optionRows, setOptionRows, variants, setVariants, basePrice, baseOld }) {
+function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base }) {
   const setRow = (i, patch) => setOptionRows(optionRows.map((r, k) => (k === i ? { ...r, ...patch } : r)));
   const setVariant = (i, patch) => setVariants(variants.map((v, k) => (k === i ? { ...v, ...patch } : v)));
 
   const generate = () => {
     const groups = fromRows(optionRows);
     if (!groups.length) return toast.error('Add at least one option with values, e.g. Color: Black, White');
-    const next = cartesian(groups).map((options) => {
-      const existing = variants.find((v) => sameOptions(v.options, options));
-      return existing || {
-        options, name: Object.values(options).join(' / '), price: basePrice || '', old_price: baseOld || '',
-        stock: 0, sku: '', image: '', is_active: true,
-      };
-    });
+    const next = buildVariants(groups, variants, base);
     const dropped = variants.filter((v) => !next.includes(v)).length;
     setVariants(next);
     toast.success(`${next.length} variants${dropped ? `, ${dropped} removed` : ''}`);
@@ -104,11 +111,26 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, baseP
           <input className="input" placeholder="Option name (Color)" value={r.name} onChange={(e) => setRow(i, { name: e.target.value })} />
           <input className="input" placeholder="Values, comma separated (Black, White)" value={r.valuesText} onChange={(e) => setRow(i, { valuesText: e.target.value })} />
           <button type="button" className="icon-btn danger" onClick={() => setOptionRows(optionRows.filter((_, k) => k !== i))} aria-label="Remove option"><FiTrash2 /></button>
+          {isColorGroup(r.name) && (
+            <div className="vedit__chips">
+              {[...new Set(r.valuesText.split(',').map((x) => x.trim()).filter(Boolean))].map((val) => (
+                <span key={val} className={`vedit__chip ${swatchColor(val) ? '' : 'is-unknown'}`}
+                  title={swatchColor(val) ? undefined : 'Unknown color — use a common name or a #hex code'}>
+                  <i style={{ background: swatchColor(val) || 'transparent' }} />{val}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       ))}
       <div className="row">
         {optionRows.length < MAX_OPTION_GROUPS && (
-          <button type="button" className="btn btn--ghost btn--sm" onClick={() => setOptionRows([...optionRows, { name: '', valuesText: '' }])}><FiPlus /> Add option</button>
+          <>
+            <button type="button" className="btn btn--ghost btn--sm" onClick={() => setOptionRows([...optionRows, { name: '', valuesText: '' }])}><FiPlus /> Add option</button>
+            {OPTION_PRESETS.filter((pr) => !optionRows.some((r) => r.name.trim().toLowerCase() === pr.name.toLowerCase())).map((pr) => (
+              <button key={pr.name} type="button" className="btn btn--ghost btn--sm" onClick={() => setOptionRows([...optionRows, { ...pr }])}><FiPlus /> {pr.name}</button>
+            ))}
+          </>
         )}
         {optionRows.length > 0 && <button type="button" className="btn btn--outline btn--sm" onClick={generate}>Generate variants</button>}
         {variants.length > 0 && (
@@ -122,7 +144,13 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, baseP
             <tbody>
               {variants.map((v, i) => (
                 <tr key={v.id || v.name}>
-                  <td>{v.name}</td>
+                  <td>
+                    <span className="vedit__name">
+                      {Object.entries(v.options || {}).filter(([k, val]) => isColorGroup(k) && swatchColor(val))
+                        .map(([k, val]) => <i key={k} className="vedit__dot" style={{ background: swatchColor(val) }} />)}
+                      {v.name}
+                    </span>
+                  </td>
                   <td><input className="input" type="number" min="1" required value={v.price} onChange={(e) => setVariant(i, { price: e.target.value })} style={{ width: 90 }} /></td>
                   <td><input className="input" type="number" min="0" value={v.old_price || ''} onChange={(e) => setVariant(i, { old_price: e.target.value })} style={{ width: 90 }} /></td>
                   <td><input className="input" type="number" min="0" value={v.stock} onChange={(e) => setVariant(i, { stock: e.target.value })} style={{ width: 72 }} /></td>
@@ -136,6 +164,7 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, baseP
           </table>
         </div>
       )}
+      {optionRows.length > 0 && !variants.length && <p className="muted small">Edit the values, then click Generate variants to set price &amp; stock per option (or just save — they'll use the product's price and stock).</p>}
       {variants.length > 0 && <p className="muted small">Product price shows the lowest variant price; total stock is the sum of all variants.</p>}
     </div>
   );
@@ -171,12 +200,19 @@ function ProductForm({ initial, onClose, onSaved }) {
   const save = async (e) => {
     e.preventDefault();
     if (!loaded) return;
+    // Options filled in but never generated: create the variants from the product's price and stock
+    const groups = fromRows(optionRows);
+    let finalVariants = variants;
+    if (groups.length && !variants.length) {
+      if (!(Number(f.price) > 0)) return toast.error('Set a price (or click Generate variants and price each one)');
+      finalVariants = buildVariants(groups, [], f);
+    }
     const body = {
       ...f,
       images: [f.image, ...extra].filter(Boolean),
       features: featureText.split(',').map((s) => s.trim()).filter(Boolean),
-      options: hasVariants ? fromRows(optionRows) : [],
-      variants,
+      options: finalVariants.length ? groups : [],
+      variants: finalVariants,
     };
     try {
       initial?.id ? await api.put(`/admin/products/${initial.id}`, body) : await api.post('/admin/products', body);
@@ -219,7 +255,7 @@ function ProductForm({ initial, onClose, onSaved }) {
             <ImageInput label="" value="" onChange={(v) => v && setF({ ...f, images: [...(f.images || []), v] })} />
           </div>
           <div className="span-2">
-            <VariantEditor optionRows={optionRows} setOptionRows={setOptionRows} variants={variants} setVariants={setVariants} basePrice={f.price} baseOld={f.old_price} />
+            <VariantEditor optionRows={optionRows} setOptionRows={setOptionRows} variants={variants} setVariants={setVariants} base={f} />
           </div>
           <label className="span-2">Features (comma separated)<input className="input" value={featureText} onChange={(e) => setFeatureText(e.target.value)} placeholder="Fast Charging, High Capacity" /></label>
           <label className="span-2">Short Description<input className="input" value={f.short_description || ''} onChange={set('short_description')} /></label>

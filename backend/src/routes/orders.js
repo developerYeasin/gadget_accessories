@@ -77,6 +77,18 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
   }
 }));
 
+// Delivery charge for a cart, using product weights from the database
+router.post('/quote', asyncHandler(async (req, res) => {
+  const items = Array.isArray(req.body.items) ? req.body.items.slice(0, 100) : [];
+  const ids = [...new Set(items.map((i) => Number(i.product_id)).filter(Boolean))];
+  const [rows] = ids.length ? await pool.query('SELECT id, weight FROM products WHERE id IN (?)', [ids]) : [[]];
+  const w = Object.fromEntries(rows.map((r) => [r.id, Number(r.weight) || 0]));
+  const grams = items.reduce((g, i) => g + (w[Number(i.product_id)] || 0) * Math.max(1, Math.floor(Number(i.quantity) || 1)), 0);
+  const [settingRows] = await pool.query("SELECT `key`, `value` FROM settings WHERE `key` LIKE 'delivery%'");
+  const s = Object.fromEntries(settingRows.map((r) => [r.key, r.value]));
+  res.json({ weight: grams, inside_dhaka: deliveryCharge(s, 'inside_dhaka', grams), outside_dhaka: deliveryCharge(s, 'outside_dhaka', grams) });
+}));
+
 router.get('/my', protect, asyncHandler(async (req, res) => {
   const [orders] = await pool.query('SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC', [req.user.id]);
   res.json(orders);

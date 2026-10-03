@@ -7,6 +7,20 @@ import { BsLightningChargeFill } from 'react-icons/bs';
 import { RiCustomerService2Line, RiPriceTag3Line } from 'react-icons/ri';
 import { imageUrl, money } from '../api/client';
 import { useStore } from '../context/StoreContext';
+import { colorGroup, swatchColor } from '../utils/colors';
+
+// Up to 5 color dots under a product card's name, when the product comes in colors
+function ColorDots({ product }) {
+  const g = product.variant_count > 0 && colorGroup(product.options);
+  if (!g) return null;
+  const shown = g.values.slice(0, 5);
+  return (
+    <div className="pcard__colors" title={g.values.join(', ')}>
+      {shown.map((v) => <i key={v} style={{ background: swatchColor(v) || '#555' }} />)}
+      {g.values.length > shown.length && <small>+{g.values.length - shown.length}</small>}
+    </div>
+  );
+}
 
 export function Stars({ rating = 0, count }) {
   const full = Math.floor(rating);
@@ -41,6 +55,7 @@ export function ProductCard({ product }) {
       <div className="pcard__body">
         <Link to={`/product/${product.slug}`} className="pcard__name">{product.name}</Link>
         <Stars rating={product.rating} count={product.review_count} />
+        <ColorDots product={product} />
         <div className="pcard__price">
           {product.old_price > product.price && <del>{money(product.old_price)}</del>}
           <strong>{product.variant_count > 0 && <small className="pcard__from">From </small>}{money(product.price)}</strong>

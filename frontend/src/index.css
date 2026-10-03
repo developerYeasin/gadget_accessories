@@ -862,3 +862,24 @@ input, select, textarea { font: inherit; color: inherit; }
 .push-prompt__close { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; display: grid; place-items: center; color: var(--muted); border-radius: 8px; }
 .push-prompt__close:hover { color: #fff; background: rgba(255,255,255,.06); }
 @media (max-width: 760px) { .push-prompt { left: 12px; right: 12px; bottom: 84px; width: auto; } }
+
+/* Variant picker: modern chips and color swatches */
+.vopt__btn { position: relative; display: inline-flex; align-items: center; gap: 8px; overflow: hidden; }
+.vopt__btn.is-active { box-shadow: 0 0 0 3px rgba(245,197,66,.15); }
+.vopt__btn:active:not(:disabled) { transform: scale(.97); }
+.vopt__btn.is-out::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top right, transparent calc(50% - 1px), rgba(255,255,255,.35) 50%, transparent calc(50% + 1px)); }
+.vopt__swatch { width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 13px; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3), 0 1px 3px rgba(0,0,0,.5); }
+.vopt__swatch svg { stroke-width: 3.5; filter: drop-shadow(0 0 1.5px #000); }
+.vopt--color .vopt__btn { padding: 7px 14px 7px 8px; border-radius: 999px; }
+.vopt__extra { font-size: 11px; font-weight: 500; color: var(--muted); }
+.vopt__btn.is-active .vopt__extra { color: var(--gold); }
+.pcard__colors { display: flex; align-items: center; gap: 5px; margin: 6px 0 2px; }
+.pcard__colors i { width: 13px; height: 13px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+.pcard__colors small { font-size: 11px; color: var(--muted); }
+.vedit__opt .vedit__chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+.vedit__chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 3px 10px 3px 4px; border-radius: 999px; border: 1px solid var(--line); }
+.vedit__chip i { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+.vedit__chip.is-unknown { border-color: #ffb648; color: #ffb648; }
+.vedit__chip.is-unknown i { border: 1px dashed #ffb648; box-shadow: none; }
+.vedit__name { display: inline-flex; align-items: center; gap: 6px; }
+.vedit__dot { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }

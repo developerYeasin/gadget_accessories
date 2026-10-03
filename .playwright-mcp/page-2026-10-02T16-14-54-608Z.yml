@@ -1,0 +1,126 @@
+- generic [ref=f6e3]:
+  - generic [ref=f6e5]:
+    - generic [ref=f6e6]:
+      - generic [ref=f6e7]: Cash on Delivery Available
+      - generic [ref=f6e10]: Fast & Safe Delivery
+      - generic [ref=f6e13]: 100% Original Product
+      - generic [ref=f6e16]: Customer Support
+    - generic [ref=f6e19]:
+      - link "01650230541" [ref=f6e20] [cursor=pointer]:
+        - /url: tel:01650230541
+      - link "Facebook" [ref=f6e23] [cursor=pointer]:
+        - /url: "#"
+      - link "WhatsApp" [ref=f6e26] [cursor=pointer]:
+        - /url: https://wa.me/
+      - link "Messenger" [ref=f6e29] [cursor=pointer]:
+        - /url: "#"
+      - link "Admin" [ref=f6e33] [cursor=pointer]:
+        - /url: /admin
+  - banner [ref=f6e37]:
+    - generic [ref=f6e38]:
+      - button "Menu" [ref=f6e39] [cursor=pointer]
+      - link "Gadget Accessories Home" [ref=f6e41] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f6e49]:
+        - link "Home" [ref=f6e50] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f6e51] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f6e52] [cursor=pointer]:
+          - /url: /offers
+        - link "About" [ref=f6e53] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=f6e54] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f6e55]:
+        - button "Search" [ref=f6e56] [cursor=pointer]
+        - link "Wishlist" [ref=f6e60] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f6e63]: "0"
+        - button "Cart" [ref=f6e64] [cursor=pointer]:
+          - generic [ref=f6e69]: "4"
+  - main [ref=f6e70]:
+    - generic [ref=f6e71]:
+      - generic [ref=f6e72]:
+        - link "Home" [ref=f6e73] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f6e74]: Cart
+      - heading "Shopping Cart" [level=1] [ref=f6e77]
+      - generic [ref=f6e78]:
+        - generic [ref=f6e80]:
+          - link [ref=f6e81] [cursor=pointer]:
+            - /url: /product/vendens-20000mah-power-bank-vd-pb059
+            - img "Vendens 20000mAh Power Bank (VD-PB059)" [ref=f6e82]
+          - generic [ref=f6e83]:
+            - link "Vendens 20000mAh Power Bank (VD-PB059)" [ref=f6e84] [cursor=pointer]:
+              - /url: /product/vendens-20000mah-power-bank-vd-pb059
+            - generic [ref=f6e85]:
+              - strong [ref=f6e86]: ৳1,160
+              - deletion [ref=f6e87]: ৳1,300
+            - generic [ref=f6e88]:
+              - generic [ref=f6e89]:
+                - button "Decrease" [ref=f6e90] [cursor=pointer]
+                - generic [ref=f6e92]: "4"
+                - button "Increase" [ref=f6e93] [cursor=pointer]
+              - strong [ref=f6e95]: ৳4,640
+              - button "Remove" [ref=f6e96] [cursor=pointer]
+        - complementary [ref=f6e99]:
+          - heading "Order Summary" [level=3] [ref=f6e100]
+          - generic [ref=f6e101]:
+            - generic [ref=f6e102]: Subtotal
+            - generic [ref=f6e103]: ৳4,640
+          - generic [ref=f6e104]:
+            - generic [ref=f6e105]: Delivery
+            - generic [ref=f6e106]: Calculated at checkout
+          - generic [ref=f6e107]:
+            - generic [ref=f6e108]: Total
+            - generic [ref=f6e109]: ৳4,640
+          - link "Proceed to Checkout" [ref=f6e110] [cursor=pointer]:
+            - /url: /checkout
+          - link "Continue Shopping" [ref=f6e113] [cursor=pointer]:
+            - /url: /shop
+  - contentinfo [ref=f6e114]:
+    - generic [ref=f6e115]:
+      - generic [ref=f6e116]:
+        - link "Gadget Accessories Home" [ref=f6e117] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f6e125]: Your trusted shop for 100% original gadgets & accessories in Bangladesh. Cash on delivery, fast & safe delivery all over the country.
+        - generic [ref=f6e126]:
+          - link "Facebook" [ref=f6e127] [cursor=pointer]:
+            - /url: "#"
+          - link "WhatsApp" [ref=f6e130] [cursor=pointer]:
+            - /url: https://wa.me/
+          - link "Messenger" [ref=f6e133] [cursor=pointer]:
+            - /url: "#"
+      - heading "Categories" [level=4] [ref=f6e137]
+      - generic [ref=f6e138]:
+        - heading "Quick Links" [level=4] [ref=f6e139]
+        - link "Shop" [ref=f6e140] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f6e141] [cursor=pointer]:
+          - /url: /offers
+        - link "Track Order" [ref=f6e142] [cursor=pointer]:
+          - /url: /track-order
+        - link "My Account" [ref=f6e143] [cursor=pointer]:
+          - /url: /account
+        - link "About Us" [ref=f6e144] [cursor=pointer]:
+          - /url: /about
+        - link "Contact Us" [ref=f6e145] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f6e146]:
+        - heading "Policies" [level=4] [ref=f6e147]
+        - link "Privacy Policy" [ref=f6e148] [cursor=pointer]:
+          - /url: /page/privacy-policy
+        - link "Terms & Conditions" [ref=f6e149] [cursor=pointer]:
+          - /url: /page/terms-conditions
+        - link "Return & Refund" [ref=f6e150] [cursor=pointer]:
+          - /url: /page/return-policy
+        - link "Shipping Policy" [ref=f6e151] [cursor=pointer]:
+          - /url: /page/shipping-policy
+      - generic [ref=f6e152]:
+        - heading "Contact" [level=4] [ref=f6e153]
+        - paragraph [ref=f6e154]: "01650230541"
+        - paragraph [ref=f6e157]: info@gadgetaccessorieshome.com
+        - paragraph [ref=f6e161]: Dhaka, Bangladesh
+    - generic [ref=f6e165]: © 2026 Gadget Accessories Home. All rights reserved.
+  - button "Back to top"

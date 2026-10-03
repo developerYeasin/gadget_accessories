@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   FiHeart, FiShoppingCart, FiMinus, FiPlus, FiCheckCircle, FiChevronLeft, FiChevronRight, FiX,
-  FiMaximize2, FiTruck, FiRefreshCw, FiLink, FiMapPin,
+  FiMaximize2, FiTruck, FiRefreshCw, FiLink, FiMapPin, FiCheck,
 } from 'react-icons/fi';
 import { FaHeart, FaWhatsapp, FaFacebookF, FaStar } from 'react-icons/fa';
 import { HiShieldCheck } from 'react-icons/hi';
@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import api, { deliveryCharge, imageUrl, money, waLink } from '../api/client';
 import { useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
+import { isColorGroup, swatchColor } from '../utils/colors';
 import { Breadcrumb, ProductGrid, Spinner, Stars } from '../components/Shared';
 
 /* ---------- Gallery with hover zoom, arrows, swipe and fullscreen lightbox ---------- */
@@ -111,8 +112,13 @@ function VariantPicker({ product, selected, onChange }) {
   const groups = optionGroups(product);
   return (
     <div className="vopts">
-      {groups.map((g) => (
-        <div key={g.name}>
+      {groups.map((g) => {
+        const isColor = isColorGroup(g.name);
+        const { [g.name]: _, ...others } = selected;
+        const peers = product.variants.filter((v) => matches(variantOptions(product, v), others));
+        const groupMin = peers.length ? Math.min(...peers.map((v) => Number(v.price))) : 0;
+        return (
+        <div key={g.name} className={isColor ? 'vopt--color' : ''}>
           <div className="vopt__label">{g.name}: <b>{selected[g.name] || 'Choose'}</b></div>
           <div className="vopt__values">
             {g.values.map((val) => {
@@ -121,9 +127,13 @@ function VariantPicker({ product, selected, onChange }) {
               const fits = product.variants.filter((v) => matches(variantOptions(product, v), next));
               const exists = fits.length > 0 || product.variants.some((v) => variantOptions(product, v)[g.name] === val);
               const inStock = fits.some((v) => v.stock > 0);
+              // How much more this value costs than the cheapest alternative for the other current choices
+              const extra = fits.length ? Math.min(...fits.map((v) => Number(v.price))) - groupMin : 0;
+              const sw = isColor && swatchColor(val);
+              const active = selected[g.name] === val;
               return (
-                <button key={val} type="button" disabled={!exists}
-                  className={`vopt__btn ${selected[g.name] === val ? 'is-active' : ''} ${!inStock ? 'is-out' : ''}`}
+                <button key={val} type="button" disabled={!exists} aria-pressed={active}
+                  className={`vopt__btn ${active ? 'is-active' : ''} ${!inStock ? 'is-out' : ''}`}
                   onClick={() => {
                     // Keep compatible choices; otherwise jump to the first variant that has this value
                     if (fits.length) return onChange(next);
@@ -131,13 +141,16 @@ function VariantPicker({ product, selected, onChange }) {
                     return onChange(variantOptions(product, v));
                   }}
                   title={!inStock ? 'Out of stock' : undefined}>
-                  {val}
+                  {sw && <i className="vopt__swatch" style={{ background: sw }}>{active && <FiCheck />}</i>}
+                  <span>{val}</span>
+                  {extra > 0 && <small className="vopt__extra">+{money(extra)}</small>}
                 </button>
               );
             })}
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -168,7 +181,7 @@ function ReviewSummary({ rating, count, reviews }) {
 export default function ProductDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { addToCart, toggleWishlist, inWishlist, user, settings } = useStore();
+  const { addToCart, makeLine, toggleWishlist, inWishlist, user, settings } = useStore();
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [qty, setQty] = useState(1);
@@ -220,10 +233,10 @@ export default function ProductDetail() {
     }
   };
   const add = (silent = false) => addToCart(p, qty, silent, variant);
+  // Buy only this product — the cart is left as it is
   const buyNow = () => {
-    if (hasVariants && !variant) { add(); return; }
-    add(true);
-    navigate('/checkout');
+    const line = makeLine(p, variant);
+    if (line) navigate('/checkout', { state: { buyNow: { ...line, quantity: Math.min(qty, line.stock) } } });
   };
   const copyLink = () => navigator.clipboard.writeText(pageUrl).then(() => toast.success('Link copied'));
 

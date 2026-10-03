@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FaTruck } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import api, { cartWeight, deliveryCharge, imageUrl, money } from '../api/client';
@@ -8,8 +8,13 @@ import { track } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 
 export default function Checkout() {
-  const { cart, cartTotal, clearCart, user, settings } = useStore();
+  const { cart: storeCart, clearCart, user, settings } = useStore();
   const navigate = useNavigate();
+  // "Buy Now" checks out just that one product and leaves the cart untouched
+  const buyNow = useLocation().state?.buyNow;
+  const cart = buyNow ? [buyNow] : storeCart;
+  const cartTotal = cart.reduce((s, i) => s + i.quantity * i.price, 0);
+  const [quote, setQuote] = useState(null);
   const [form, setForm] = useState({
     customer_name: user?.name || '',
     phone: user?.phone || '',
@@ -25,10 +30,23 @@ export default function Checkout() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { if (cart.length) track.beginCheckout(cart, cartTotal); }, []);
 
+  // Weights live on the server (older cart lines may not carry them), so ask it for the charge
+  const quoteKey = cart.map((i) => `${i.id}x${i.quantity}`).join(',');
+  useEffect(() => {
+    if (!cart.length) return;
+    let alive = true;
+    api.post('/orders/quote', { items: cart.map((i) => ({ product_id: i.id, quantity: i.quantity })) })
+      .then((q) => alive && setQuote(q))
+      .catch(() => alive && setQuote(null));
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quoteKey]);
+
   if (!cart.length) return <Navigate to="/cart" replace />;
 
   const weight = cartWeight(cart);
-  const delivery = deliveryCharge(settings, form.area, weight);
+  const chargeFor = (area) => (quote ? quote[area] : deliveryCharge(settings, area, weight));
+  const delivery = chargeFor(form.area);
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
   const discount = coupon?.discount || 0;
 
@@ -56,7 +74,7 @@ export default function Checkout() {
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
       });
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
-      clearCart();
+      if (!buyNow) clearCart();
       navigate(`/order-success/${res.order_number}?phone=${encodeURIComponent(form.phone)}`);
     } catch (err) {
       toast.error(err.message);
@@ -85,11 +103,11 @@ export default function Checkout() {
           <div className="radio-cards">
             <label className={form.area === 'inside_dhaka' ? 'is-active' : ''}>
               <input type="radio" name="area" value="inside_dhaka" checked={form.area === 'inside_dhaka'} onChange={set('area')} />
-              Inside Dhaka <b>{money(deliveryCharge(settings, 'inside_dhaka', weight))}</b>
+              Inside Dhaka <b>{money(chargeFor('inside_dhaka'))}</b>
             </label>
             <label className={form.area === 'outside_dhaka' ? 'is-active' : ''}>
               <input type="radio" name="area" value="outside_dhaka" checked={form.area === 'outside_dhaka'} onChange={set('area')} />
-              Outside Dhaka <b>{money(deliveryCharge(settings, 'outside_dhaka', weight))}</b>
+              Outside Dhaka <b>{money(chargeFor('outside_dhaka'))}</b>
             </label>
           </div>
           <h3>Payment Method</h3>

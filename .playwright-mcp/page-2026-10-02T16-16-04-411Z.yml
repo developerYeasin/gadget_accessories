@@ -1,0 +1,87 @@
+- generic [ref=f11e3]:
+  - generic [ref=f11e5]:
+    - generic [ref=f11e6]:
+      - generic [ref=f11e7]: Cash on Delivery Available
+      - generic [ref=f11e10]: Fast & Safe Delivery
+      - generic [ref=f11e13]: 100% Original Product
+      - generic [ref=f11e16]: Customer Support
+    - generic [ref=f11e19]:
+      - link "01650230541" [ref=f11e20] [cursor=pointer]:
+        - /url: tel:01650230541
+      - link "Facebook" [ref=f11e23] [cursor=pointer]:
+        - /url: "#"
+      - link "WhatsApp" [ref=f11e26] [cursor=pointer]:
+        - /url: https://wa.me/
+      - link "Messenger" [ref=f11e29] [cursor=pointer]:
+        - /url: "#"
+      - link "Admin" [ref=f11e33] [cursor=pointer]:
+        - /url: /admin
+  - banner [ref=f11e37]:
+    - generic [ref=f11e38]:
+      - button "Menu" [ref=f11e39] [cursor=pointer]
+      - link "Gadget Accessories Home" [ref=f11e41] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f11e49]:
+        - link "Home" [ref=f11e50] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f11e51] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f11e52] [cursor=pointer]:
+          - /url: /offers
+        - link "About" [ref=f11e53] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=f11e54] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f11e55]:
+        - button "Search" [ref=f11e56] [cursor=pointer]
+        - link "Wishlist" [ref=f11e60] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f11e63]: "0"
+        - button "Cart" [ref=f11e64] [cursor=pointer]:
+          - generic [ref=f11e69]: "3"
+  - main [ref=f11e70]
+  - contentinfo [ref=f11e73]:
+    - generic [ref=f11e74]:
+      - generic [ref=f11e75]:
+        - link "Gadget Accessories Home" [ref=f11e76] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f11e84]: Your trusted shop for 100% original gadgets & accessories in Bangladesh. Cash on delivery, fast & safe delivery all over the country.
+        - generic [ref=f11e85]:
+          - link "Facebook" [ref=f11e86] [cursor=pointer]:
+            - /url: "#"
+          - link "WhatsApp" [ref=f11e89] [cursor=pointer]:
+            - /url: https://wa.me/
+          - link "Messenger" [ref=f11e92] [cursor=pointer]:
+            - /url: "#"
+      - heading "Categories" [level=4] [ref=f11e96]
+      - generic [ref=f11e97]:
+        - heading "Quick Links" [level=4] [ref=f11e98]
+        - link "Shop" [ref=f11e99] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f11e100] [cursor=pointer]:
+          - /url: /offers
+        - link "Track Order" [ref=f11e101] [cursor=pointer]:
+          - /url: /track-order
+        - link "My Account" [ref=f11e102] [cursor=pointer]:
+          - /url: /account
+        - link "About Us" [ref=f11e103] [cursor=pointer]:
+          - /url: /about
+        - link "Contact Us" [ref=f11e104] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f11e105]:
+        - heading "Policies" [level=4] [ref=f11e106]
+        - link "Privacy Policy" [ref=f11e107] [cursor=pointer]:
+          - /url: /page/privacy-policy
+        - link "Terms & Conditions" [ref=f11e108] [cursor=pointer]:
+          - /url: /page/terms-conditions
+        - link "Return & Refund" [ref=f11e109] [cursor=pointer]:
+          - /url: /page/return-policy
+        - link "Shipping Policy" [ref=f11e110] [cursor=pointer]:
+          - /url: /page/shipping-policy
+      - generic [ref=f11e111]:
+        - heading "Contact" [level=4] [ref=f11e112]
+        - paragraph [ref=f11e113]: "01650230541"
+        - paragraph [ref=f11e116]: info@gadgetaccessorieshome.com
+        - paragraph [ref=f11e120]: Dhaka, Bangladesh
+    - generic [ref=f11e124]: © 2026 Gadget Accessories Home. All rights reserved.
+  - button "Back to top"

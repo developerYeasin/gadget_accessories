@@ -58,10 +58,11 @@ export function StoreProvider({ children }) {
     setWishlist([]);
   }, []);
 
-  const addToCart = (product, quantity = 1, silent = false, variant = null) => {
-    if (product.variant_count > 0 && !variant) return toast.error('Please choose an option first');
+  // Builds a cart line, or returns null (with a toast) when it can't be bought
+  const makeLine = (product, variant = null) => {
+    if (product.variant_count > 0 && !variant) { toast.error('Please choose an option first'); return null; }
     const stock = variant ? variant.stock : product.stock;
-    if (stock <= 0) return toast.error('Out of stock');
+    if (stock <= 0) { toast.error('Out of stock'); return null; }
     const line = {
       id: product.id,
       variant_id: variant?.id || null,
@@ -75,6 +76,12 @@ export function StoreProvider({ children }) {
       weight: Number(product.weight) || 0,
     };
     line.key = cartKey(line);
+    return line;
+  };
+  const addToCart = (product, quantity = 1, silent = false, variant = null) => {
+    const line = makeLine(product, variant);
+    if (!line) return;
+    const { stock } = line;
     setCart((c) => {
       const found = c.find((i) => cartKey(i) === line.key);
       if (found) return c.map((i) => (cartKey(i) === line.key ? { ...i, ...line, quantity: Math.min(i.quantity + quantity, stock) } : i));
@@ -106,7 +113,7 @@ export function StoreProvider({ children }) {
 
   const value = useMemo(() => ({
     user, setUser, saveAuth, logout,
-    cart, cartCount, cartTotal, addToCart, updateQty, removeFromCart, clearCart,
+    cart, cartCount, cartTotal, makeLine, addToCart, updateQty, removeFromCart, clearCart,
     wishlist, inWishlist, toggleWishlist,
     settings, setSettings, categories, setCategories,
     // eslint-disable-next-line react-hooks/exhaustive-deps
