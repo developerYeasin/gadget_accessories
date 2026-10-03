@@ -99,7 +99,7 @@ const settings = {
   gtm_id: '',
   ga4_id: '',
   tiktok_pixel_id: '',
-  phone: '01650230541',
+  phone: '01411612350',
   email: 'info@gadgetaccessorieshome.com',
   address: 'Dhaka, Bangladesh',
   facebook: 'https://facebook.com',

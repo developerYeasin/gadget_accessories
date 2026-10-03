@@ -34,7 +34,7 @@ export default function Contact() {
       <div className="contact">
         <div className="card form-card contact__info">
           <h3>Get in touch</h3>
-          <p><FiPhone className="gold" /> {settings.phone || '01650230541'}</p>
+          <p><FiPhone className="gold" /> {settings.phone || '01411612350'}</p>
           <p><FaWhatsapp className="gold" /> WhatsApp: <a href={waLink(settings)} target="_blank" rel="noreferrer" className="gold">{settings.whatsapp || settings.phone}</a></p>
           <p><FiMail className="gold" /> {settings.email}</p>
           <p><FiMapPin className="gold" /> {settings.address}</p>

@@ -45,8 +45,8 @@ function TopBar() {
           <span><RiCustomerService2Line className="gold" /> Customer Support</span>
         </div>
         <div className="topbar__right">
-          <a href={`tel:${settings.phone || '01650230541'}`} className="topbar__phone">
-            <FaPhoneAlt className="gold" /> {settings.phone || '01650230541'}
+          <a href={`tel:${settings.phone || '01411612350'}`} className="topbar__phone">
+            <FaPhoneAlt className="gold" /> {settings.phone || '01411612350'}
           </a>
           <a className="social social--fb" href={settings.facebook || '#'} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
           <a className="social social--wa" href={waLink(settings)} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
@@ -191,7 +191,7 @@ function Footer() {
         </div>
         <div>
           <h4>Contact</h4>
-          <p><FiPhone className="gold" /> {settings.phone || '01650230541'}</p>
+          <p><FiPhone className="gold" /> {settings.phone || '01411612350'}</p>
           <p><FiMail className="gold" /> {settings.email || 'info@gadgetaccessorieshome.com'}</p>
           <p><FiMapPin className="gold" /> {settings.address || 'Dhaka, Bangladesh'}</p>
         </div>
