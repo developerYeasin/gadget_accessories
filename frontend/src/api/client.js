@@ -9,17 +9,17 @@ export const imageUrl = (path) => {
   return path.startsWith('/uploads') ? `${BASE}${path}` : path;
 };
 
-// WhatsApp link from the admin-set number (01XXXXXXXXX or +8801...) or a full URL
+// WhatsApp link from the admin-set number (01XXXXXXXXX or +8801...) or a full URL.
+// Phones open the app via wa.me; desktops go straight to the WhatsApp Web chat (wa.me only shows a landing page there).
+const isMobile = () => typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 export const waLink = (settings, text) => {
-  const raw = String(settings?.whatsapp || '').trim();
-  let base;
-  if (/^https?:\/\//.test(raw)) base = raw;
-  else {
-    let digits = raw.replace(/\D/g, '');
-    if (digits.startsWith('0')) digits = `88${digits}`;
-    base = digits ? `https://wa.me/${digits}` : 'https://wa.me/';
-  }
-  return text ? `${base}${base.includes('?') ? '&' : '?'}text=${encodeURIComponent(text)}` : base;
+  const raw = String(settings?.whatsapp || settings?.phone || '').trim();
+  if (/^https?:\/\//.test(raw)) return text ? `${raw}${raw.includes('?') ? '&' : '?'}text=${encodeURIComponent(text)}` : raw;
+  let digits = raw.replace(/\D/g, '');
+  if (digits.startsWith('0')) digits = `88${digits}`;
+  const msg = text ? encodeURIComponent(text) : '';
+  if (!isMobile()) return `https://web.whatsapp.com/send?phone=${digits}${msg ? `&text=${msg}` : ''}`;
+  return `https://wa.me/${digits}${msg ? `?text=${msg}` : ''}`;
 };
 
 export const DELIVERY_DEFAULTS = { inside: 70, outside: 130, baseWeight: 1000, perKgInside: 15, perKgOutside: 25 };
