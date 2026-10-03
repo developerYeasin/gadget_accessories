@@ -8,7 +8,7 @@ import { FaHeart, FaWhatsapp, FaFacebookF, FaStar } from 'react-icons/fa';
 import { HiShieldCheck } from 'react-icons/hi';
 import { RiSecurePaymentLine } from 'react-icons/ri';
 import toast from 'react-hot-toast';
-import api, { deliveryCharge, imageUrl, money, waLink } from '../api/client';
+import api, { deliveryCharge, formatWeight, imageUrl, itemWeight, money, waLink } from '../api/client';
 import { useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
 import { isColorGroup, swatchColor } from '../utils/colors';
@@ -220,6 +220,8 @@ export default function ProductDetail() {
   const liked = inWishlist(p.id);
   const pageUrl = window.location.href;
   const lowStock = cur.stock > 0 && cur.stock <= 10;
+  const unitWeight = itemWeight(settings, p.weight);
+  const grams = unitWeight * qty;
 
   const submitReview = async (e) => {
     e.preventDefault();
@@ -243,6 +245,7 @@ export default function ProductDetail() {
   const specs = [
     ['Brand', p.brand], ['Category', p.category_name], ['Model', p.name],
     ...p.features.map((f, i) => [`Feature ${i + 1}`, f]),
+    ['Weight', Number(p.weight) > 0 ? formatWeight(Number(p.weight)) : null],
     ['Warranty', 'Official brand warranty'], ['Condition', 'Brand new, 100% original'],
     ...optionGroups(p).map((g) => [g.name, g.values.join(', ')]),
     ['Availability', p.stock > 0 ? 'In stock' : 'Out of stock'],
@@ -302,8 +305,9 @@ export default function ProductDetail() {
           </a>
 
           <div className="pd__delivery">
-            <div><FiMapPin /><span><b>Inside Dhaka</b> — {money(deliveryCharge(settings, 'inside_dhaka'))} · 1–2 days</span></div>
-            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(deliveryCharge(settings, 'outside_dhaka'))} · 2–4 days</span></div>
+            <div><FiMapPin /><span><b>Inside Dhaka</b> — {money(deliveryCharge(settings, 'inside_dhaka', grams))} · 1–2 days</span></div>
+            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(deliveryCharge(settings, 'outside_dhaka', grams))} · 2–4 days</span></div>
+            {grams > 0 && <div className="muted small pd__weight">Parcel weight {formatWeight(grams)}{qty > 1 ? ` (${qty} × ${formatWeight(unitWeight)})` : ''} · charge increases with weight</div>}
           </div>
 
           <div className="pd__trust">

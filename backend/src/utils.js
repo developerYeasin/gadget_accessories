@@ -52,10 +52,15 @@ export const formatProduct = (p) => ({
   discount: p.old_price && p.old_price > p.price ? Math.round(((p.old_price - p.price) / p.old_price) * 100) : 0,
 });
 
-// Delivery charge by area, bumped up by total parcel weight (grams). Keep in sync with frontend/src/api/client.js
+// Delivery: the area's charge covers the first `delivery_base_weight` grams, then each extra kg (or part) adds
+// that area's per-kg charge. Products without a weight count as `delivery_default_weight`.
+// Keep in sync with frontend/src/api/client.js
+const num = (v, d) => (v === undefined || v === null || v === '' || Number.isNaN(Number(v)) ? d : Number(v));
+export const itemWeight = (s, weight) => (Number(weight) > 0 ? Number(weight) : num(s?.delivery_default_weight, 0));
 export const deliveryCharge = (s, area, grams = 0) => {
-  const n = (v, d) => (v === undefined || v === null || v === '' || Number.isNaN(Number(v)) ? d : Number(v));
-  if (grams > 1000) return n(s?.delivery_above_1000g, 150);
-  if (grams > 500) return n(s?.delivery_above_500g, 140);
-  return area === 'outside_dhaka' ? n(s?.delivery_outside_dhaka, 130) : n(s?.delivery_inside_dhaka, 70);
+  const outside = area === 'outside_dhaka';
+  const base = outside ? num(s?.delivery_outside_dhaka, 130) : num(s?.delivery_inside_dhaka, 70);
+  const perKg = outside ? num(s?.delivery_extra_kg_outside, 25) : num(s?.delivery_extra_kg_inside, 15);
+  const over = grams - num(s?.delivery_base_weight, 1000);
+  return base + (over > 0 ? Math.ceil(over / 1000) * perKg : 0);
 };

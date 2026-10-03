@@ -351,7 +351,14 @@ const SETTING_GROUPS = [
     ['ga4_id', 'Google Analytics 4 ID — e.g. G-XXXXXXXXXX'],
   ]],
   ['Social & WhatsApp', [['whatsapp', 'WhatsApp Number — e.g. 01411612350'], ['facebook', 'Facebook URL'], ['messenger', 'Messenger URL']]],
-  ['Delivery Charges', [['delivery_inside_dhaka', 'Inside Dhaka (৳)'], ['delivery_outside_dhaka', 'Outside Dhaka (৳)'], ['delivery_above_500g', 'Parcel over 500g (৳) — any area'], ['delivery_above_1000g', 'Parcel over 1kg (৳) — any area']]],
+  ['Delivery Charges (by weight)', [
+    ['delivery_inside_dhaka', 'Inside Dhaka — base charge (৳), default 70'],
+    ['delivery_outside_dhaka', 'Outside Dhaka — base charge (৳), default 130'],
+    ['delivery_base_weight', 'Base charge covers up to (grams), default 1000'],
+    ['delivery_extra_kg_inside', 'Inside Dhaka — each extra kg (৳), default 15'],
+    ['delivery_extra_kg_outside', 'Outside Dhaka — each extra kg (৳), default 25'],
+    ['delivery_default_weight', 'Weight for products with no weight set (grams), default 0'],
+  ]],
 ];
 
 const FEEDS = [

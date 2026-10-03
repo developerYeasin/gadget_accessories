@@ -5,7 +5,8 @@ import { imageUrl, money } from '../api/client';
 import { cartKey, useStore } from '../context/StoreContext';
 
 export default function CartDrawer({ onClose }) {
-  const { cart, cartCount, cartTotal, updateQty, removeFromCart } = useStore();
+  const { cart, cartCount, updateQty, removeFromCart, isSelected, toggleSelected, selectAll, selectedItems, selectedTotal } = useStore();
+  const allOn = selectedItems.length === cart.length;
 
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onClose();
@@ -33,9 +34,16 @@ export default function CartDrawer({ onClose }) {
           </div>
         ) : (
           <>
+            <label className="tick cart-drawer__all">
+              <input type="checkbox" checked={allOn} onChange={() => selectAll(!allOn)} />
+              <span>Select all ({cart.length})</span>
+            </label>
             <div className="cart-drawer__list">
               {cart.map((i) => (
-                <div key={cartKey(i)} className="cart-drawer__item">
+                <div key={cartKey(i)} className={`cart-drawer__item ${isSelected(i) ? '' : 'is-off'}`}>
+                  <label className="tick" aria-label={`Select ${i.name}`}>
+                    <input type="checkbox" checked={isSelected(i)} onChange={() => toggleSelected(cartKey(i))} />
+                  </label>
                   <Link to={`/product/${i.slug}`} onClick={onClose}><img src={imageUrl(i.image)} alt={i.name} /></Link>
                   <div className="cart-drawer__info">
                     <Link to={`/product/${i.slug}`} onClick={onClose}>{i.name}</Link>
@@ -54,8 +62,10 @@ export default function CartDrawer({ onClose }) {
               ))}
             </div>
             <div className="cart-drawer__foot">
-              <div className="summary__row summary__total"><span>Subtotal</span><span className="gold">{money(cartTotal)}</span></div>
-              <Link to="/checkout" className="btn btn--gold btn--block" onClick={onClose}>Checkout <FiArrowRight /></Link>
+              <div className="summary__row summary__total"><span>Subtotal ({selectedItems.length} selected)</span><span className="gold">{money(selectedTotal)}</span></div>
+              {selectedItems.length
+                ? <Link to="/checkout" className="btn btn--gold btn--block" onClick={onClose}>Checkout ({selectedItems.length}) <FiArrowRight /></Link>
+                : <button className="btn btn--gold btn--block" disabled>Select a product to checkout</button>}
               <Link to="/cart" className="btn btn--ghost btn--block" onClick={onClose}>View Cart</Link>
             </div>
           </>

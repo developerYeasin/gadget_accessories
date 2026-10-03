@@ -84,7 +84,7 @@ export function StoreProvider({ children }) {
     const { stock } = line;
     setCart((c) => {
       const found = c.find((i) => cartKey(i) === line.key);
-      if (found) return c.map((i) => (cartKey(i) === line.key ? { ...i, ...line, quantity: Math.min(i.quantity + quantity, stock) } : i));
+      if (found) return c.map((i) => (cartKey(i) === line.key ? { ...i, ...line, selected: true, quantity: Math.min(i.quantity + quantity, stock) } : i));
       return [...c, { ...line, quantity: Math.min(quantity, stock) }];
     });
     track.addToCart({ ...product, price: line.price }, quantity);
@@ -94,6 +94,12 @@ export function StoreProvider({ children }) {
     setCart((c) => c.map((i) => (cartKey(i) === key ? { ...i, quantity: Math.max(1, Math.min(quantity, i.stock || 99)) } : i)));
   const removeFromCart = (key) => setCart((c) => c.filter((i) => cartKey(i) !== key));
   const clearCart = () => setCart([]);
+  // Cart lines are ticked by default; only ticked lines go to checkout
+  const isSelected = (item) => item.selected !== false;
+  const toggleSelected = (key) => setCart((c) => c.map((i) => (cartKey(i) === key ? { ...i, selected: !isSelected(i) } : i)));
+  const selectAll = (on) => setCart((c) => c.map((i) => ({ ...i, selected: on })));
+  // After an order: drop the ordered lines and tick what's left, ready for the next checkout
+  const removeKeys = (keys) => setCart((c) => c.filter((i) => !keys.includes(cartKey(i))).map((i) => ({ ...i, selected: true })));
 
   const inWishlist = (id) => wishlist.some((p) => p.id === id);
   const toggleWishlist = async (product) => {
@@ -110,10 +116,13 @@ export function StoreProvider({ children }) {
 
   const cartCount = cart.reduce((s, i) => s + i.quantity, 0);
   const cartTotal = cart.reduce((s, i) => s + i.quantity * i.price, 0);
+  const selectedItems = cart.filter(isSelected);
+  const selectedTotal = selectedItems.reduce((s, i) => s + i.quantity * i.price, 0);
 
   const value = useMemo(() => ({
     user, setUser, saveAuth, logout,
     cart, cartCount, cartTotal, makeLine, addToCart, updateQty, removeFromCart, clearCart,
+    isSelected, toggleSelected, selectAll, removeKeys, selectedItems, selectedTotal,
     wishlist, inWishlist, toggleWishlist,
     settings, setSettings, categories, setCategories,
     // eslint-disable-next-line react-hooks/exhaustive-deps

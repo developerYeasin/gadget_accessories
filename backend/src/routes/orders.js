@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import pool from '../config/db.js';
 import { optionalAuth, protect } from '../middleware/auth.js';
-import { applyCoupon, asyncHandler, deliveryCharge } from '../utils.js';
+import { applyCoupon, asyncHandler, deliveryCharge, itemWeight } from '../utils.js';
 import { background, notifyAdmins } from '../services/push.js';
 
 const router = Router();
@@ -36,7 +36,7 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
     }
     const [settingRows] = await conn.query("SELECT `key`, `value` FROM settings WHERE `key` LIKE 'delivery%'");
     const s = Object.fromEntries(settingRows.map((r) => [r.key, r.value]));
-    const delivery = deliveryCharge(s, area, lines.reduce((g, l) => g + (Number(l.weight) || 0) * l.qty, 0));
+    const delivery = deliveryCharge(s, area, lines.reduce((g, l) => g + itemWeight(s, l.weight) * l.qty, 0));
     const subtotal = lines.reduce((sum, l) => sum + l.price * l.qty, 0);
     let discount = 0;
     let couponCode = null;
@@ -82,10 +82,11 @@ router.post('/quote', asyncHandler(async (req, res) => {
   const items = Array.isArray(req.body.items) ? req.body.items.slice(0, 100) : [];
   const ids = [...new Set(items.map((i) => Number(i.product_id)).filter(Boolean))];
   const [rows] = ids.length ? await pool.query('SELECT id, weight FROM products WHERE id IN (?)', [ids]) : [[]];
-  const w = Object.fromEntries(rows.map((r) => [r.id, Number(r.weight) || 0]));
-  const grams = items.reduce((g, i) => g + (w[Number(i.product_id)] || 0) * Math.max(1, Math.floor(Number(i.quantity) || 1)), 0);
   const [settingRows] = await pool.query("SELECT `key`, `value` FROM settings WHERE `key` LIKE 'delivery%'");
   const s = Object.fromEntries(settingRows.map((r) => [r.key, r.value]));
+  const w = Object.fromEntries(rows.map((r) => [r.id, r.weight]));
+  const grams = items.reduce((g, i) => (w[Number(i.product_id)] === undefined ? g
+    : g + itemWeight(s, w[Number(i.product_id)]) * Math.max(1, Math.floor(Number(i.quantity) || 1))), 0);
   res.json({ weight: grams, inside_dhaka: deliveryCharge(s, 'inside_dhaka', grams), outside_dhaka: deliveryCharge(s, 'outside_dhaka', grams) });
 }));
 

@@ -22,17 +22,26 @@ export const waLink = (settings, text) => {
   return text ? `${base}${base.includes('?') ? '&' : '?'}text=${encodeURIComponent(text)}` : base;
 };
 
-export const DELIVERY_DEFAULTS = { inside: 70, outside: 130, above500: 140, above1000: 150 };
-// Charge by area; parcels over 500g / 1kg use the weight slabs. Keep in sync with backend/src/utils.js
-export const deliveryCharge = (settings, area, grams = 0) => {
-  const n = (v, d) => (v === undefined || v === null || v === '' || Number.isNaN(Number(v)) ? d : Number(v));
-  if (grams > 1000) return n(settings?.delivery_above_1000g, DELIVERY_DEFAULTS.above1000);
-  if (grams > 500) return n(settings?.delivery_above_500g, DELIVERY_DEFAULTS.above500);
-  return area === 'outside_dhaka'
-    ? n(settings?.delivery_outside_dhaka, DELIVERY_DEFAULTS.outside)
-    : n(settings?.delivery_inside_dhaka, DELIVERY_DEFAULTS.inside);
+export const DELIVERY_DEFAULTS = { inside: 70, outside: 130, baseWeight: 1000, perKgInside: 15, perKgOutside: 25 };
+// The area's charge covers the first base weight; each extra kg (or part) adds that area's per-kg charge.
+// Products without a weight count as the default weight. Keep in sync with backend/src/utils.js
+const num = (v, d) => (v === undefined || v === null || v === '' || Number.isNaN(Number(v)) ? d : Number(v));
+export const deliveryRules = (settings, area) => {
+  const outside = area === 'outside_dhaka';
+  return {
+    base: outside ? num(settings?.delivery_outside_dhaka, DELIVERY_DEFAULTS.outside) : num(settings?.delivery_inside_dhaka, DELIVERY_DEFAULTS.inside),
+    perKg: outside ? num(settings?.delivery_extra_kg_outside, DELIVERY_DEFAULTS.perKgOutside) : num(settings?.delivery_extra_kg_inside, DELIVERY_DEFAULTS.perKgInside),
+    baseWeight: num(settings?.delivery_base_weight, DELIVERY_DEFAULTS.baseWeight),
+  };
 };
-export const cartWeight = (cart) => cart.reduce((g, i) => g + (Number(i.weight) || 0) * i.quantity, 0);
+export const deliveryCharge = (settings, area, grams = 0) => {
+  const { base, perKg, baseWeight } = deliveryRules(settings, area);
+  const over = grams - baseWeight;
+  return base + (over > 0 ? Math.ceil(over / 1000) * perKg : 0);
+};
+export const itemWeight = (settings, weight) => (Number(weight) > 0 ? Number(weight) : num(settings?.delivery_default_weight, 0));
+export const cartWeight = (cart, settings) => cart.reduce((g, i) => g + itemWeight(settings, i.weight) * i.quantity, 0);
+export const formatWeight = (g) => (g >= 1000 ? `${+(g / 1000).toFixed(2)} kg` : `${Math.round(g)} g`);
 
 export const money = (n) => '৳' + Number(n || 0).toLocaleString('en-US', { maximumFractionDigits: 0 });
 

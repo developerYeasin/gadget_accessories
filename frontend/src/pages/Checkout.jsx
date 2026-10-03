@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { FaTruck } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import api, { cartWeight, deliveryCharge, imageUrl, money } from '../api/client';
+import api, { cartWeight, deliveryCharge, deliveryRules, formatWeight, imageUrl, money } from '../api/client';
 import { cartKey, useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 
 export default function Checkout() {
-  const { cart: storeCart, clearCart, user, settings } = useStore();
+  const { selectedItems, removeKeys, user, settings } = useStore();
   const navigate = useNavigate();
-  // "Buy Now" checks out just that one product and leaves the cart untouched
+  // "Buy Now" checks out just that one product; otherwise only the products ticked in the cart
   const buyNow = useLocation().state?.buyNow;
-  const cart = buyNow ? [buyNow] : storeCart;
+  const cart = buyNow ? [buyNow] : selectedItems;
   const cartTotal = cart.reduce((s, i) => s + i.quantity * i.price, 0);
   const [quote, setQuote] = useState(null);
   const [form, setForm] = useState({
@@ -44,7 +44,9 @@ export default function Checkout() {
 
   if (!cart.length) return <Navigate to="/cart" replace />;
 
-  const weight = cartWeight(cart);
+  const weight = quote ? quote.weight : cartWeight(cart, settings);
+  const rules = deliveryRules(settings, form.area);
+  const extraKg = weight > rules.baseWeight ? Math.ceil((weight - rules.baseWeight) / 1000) : 0;
   const chargeFor = (area) => (quote ? quote[area] : deliveryCharge(settings, area, weight));
   const delivery = chargeFor(form.area);
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
@@ -74,7 +76,8 @@ export default function Checkout() {
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
       });
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
-      if (!buyNow) clearCart();
+      // Ordered lines leave the cart; anything not ticked stays for later
+      if (!buyNow) removeKeys(cart.map(cartKey));
       navigate(`/order-success/${res.order_number}?phone=${encodeURIComponent(form.phone)}`);
     } catch (err) {
       toast.error(err.message);
@@ -125,7 +128,13 @@ export default function Checkout() {
             </div>
           ))}
           <div className="summary__row"><span>Subtotal</span><span>{money(cartTotal)}</span></div>
+          {weight > 0 && <div className="summary__row muted"><span>Parcel weight</span><span>{formatWeight(weight)}</span></div>}
           <div className="summary__row"><span>Delivery Charge</span><span>{money(delivery)}</span></div>
+          {extraKg > 0 && (
+            <p className="summary__note muted small">
+              {money(rules.base)} up to {formatWeight(rules.baseWeight)} + {extraKg} extra kg × {money(rules.perKg)}
+            </p>
+          )}
           <div className="coupon-box">
             <input className="input" placeholder="Coupon code" value={couponInput} onChange={(e) => setCouponInput(e.target.value.toUpperCase())} />
             {coupon
