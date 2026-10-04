@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHeart, FiShoppingCart, FiSliders, FiArrowRight, FiChevronLeft, FiChevronRight, FiClock, FiRefreshCw, FiBox } from 'react-icons/fi';
 import { FaHeart, FaStar, FaRegStar, FaStarHalfAlt, FaTruck } from 'react-icons/fa';
@@ -93,16 +93,28 @@ export function SectionTitle({ white, gold, link, linkText = 'View All', childre
 
 export function HeroSlider({ banners }) {
   const [i, setI] = useState(0);
+  const touchX = useRef(null);
   const n = banners.length;
+  // Depends on i so a manual slide/swipe restarts the 6s countdown
   useEffect(() => {
     if (n < 2) return;
     const t = setInterval(() => setI((x) => (x + 1) % n), 6000);
     return () => clearInterval(t);
-  }, [n]);
+  }, [n, i]);
   if (!n) return <div className="hero hero--empty" />;
-  const b = banners[i];
+  const b = banners[i % n];
+  // Phones hide the arrows, so swiping left/right changes the slide
+  const swipe = {
+    onTouchStart: (e) => { touchX.current = e.touches[0].clientX; },
+    onTouchEnd: (e) => {
+      if (touchX.current == null || n < 2) return;
+      const dx = e.changedTouches[0].clientX - touchX.current;
+      touchX.current = null;
+      if (Math.abs(dx) > 40) setI((x) => (dx < 0 ? x + 1 : x - 1 + n) % n);
+    },
+  };
   return (
-    <section className="hero">
+    <section className="hero" {...swipe}>
       <div className="hero__stripes" />
       <img key={b.id} className="hero__img" src={imageUrl(b.image)} alt="" />
       <div className="hero__content container" key={`c${b.id}`}>

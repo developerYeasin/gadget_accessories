@@ -10,7 +10,7 @@ import BackToTop from './BackToTop';
 import PushPrompt from './PushPrompt';
 import { initTracking, track } from '../api/tracking';
 import { useStore } from '../context/StoreContext';
-import { waLink } from '../api/client';
+import { extLinkProps, fbLink, msLink, waLink } from '../api/client';
 
 // Full header menu: fixed pages around the first categories (managed in Admin → Categories, by sort order)
 const NAV_CATEGORY_COUNT = 5;
@@ -48,9 +48,7 @@ function TopBar() {
           <a href={`tel:${settings.phone || '01411612350'}`} className="topbar__phone">
             <FaPhoneAlt className="gold" /> {settings.phone || '01411612350'}
           </a>
-          <a className="social social--fb" href={settings.facebook || '#'} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-          <a className="social social--wa" href={waLink(settings)} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
-          <a className="social social--ms" href={settings.messenger || '#'} target="_blank" rel="noreferrer" aria-label="Messenger"><FaFacebookMessenger /></a>
+          <SocialLinks settings={settings} />
           <span className="topbar__sep" />
           <Link to={user ? (user.role === 'admin' ? '/admin' : '/account') : '/login'} className="topbar__account">
             <FiUser className="gold" /> {user ? user.name.split(' ')[0] : 'My Account'}
@@ -164,9 +162,7 @@ function Footer() {
           <Logo />
           <p className="muted footer__about">Your trusted shop for 100% original gadgets &amp; accessories in Bangladesh. Cash on delivery, fast &amp; safe delivery all over the country.</p>
           <div className="footer__social">
-            <a className="social social--fb" href={settings.facebook || '#'} target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-            <a className="social social--wa" href={waLink(settings)} target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
-            <a className="social social--ms" href={settings.messenger || '#'} target="_blank" rel="noreferrer" aria-label="Messenger"><FaFacebookMessenger /></a>
+            <SocialLinks settings={settings} />
           </div>
         </div>
         <div>
@@ -198,6 +194,19 @@ function Footer() {
       </div>
       <div className="footer__bottom">© {new Date().getFullYear()} Gadget Accessories Home. All rights reserved.</div>
     </footer>
+  );
+}
+
+function SocialLinks({ settings }) {
+  const ext = extLinkProps();
+  const fb = fbLink(settings);
+  const ms = msLink(settings);
+  return (
+    <>
+      {fb && <a className="social social--fb" href={fb} {...ext} aria-label="Facebook"><FaFacebookF /></a>}
+      <a className="social social--wa" href={waLink(settings)} {...ext} aria-label="WhatsApp"><FaWhatsapp /></a>
+      {ms && <a className="social social--ms" href={ms} {...ext} aria-label="Messenger"><FaFacebookMessenger /></a>}
+    </>
   );
 }
 

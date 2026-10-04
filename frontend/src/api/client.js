@@ -22,6 +22,21 @@ export const waLink = (settings, text) => {
   return `https://wa.me/${digits}${msg ? `?text=${msg}` : ''}`;
 };
 
+// Facebook page / Messenger links from a full URL or just the page username (e.g. "gadgetshopbd")
+const pageName = (v) => String(v || '').trim().replace(/^https?:\/\/(www\.|m\.)?(facebook\.com|fb\.com|m\.me|messenger\.com\/t)\/?/i, '').replace(/[/?#].*$/, '');
+export const fbLink = (settings) => {
+  const raw = String(settings?.facebook || '').trim();
+  if (/^https?:\/\//.test(raw) && pageName(raw)) return raw;
+  const name = pageName(raw) || pageName(settings?.messenger);
+  return name ? `https://www.facebook.com/${name}` : null;
+};
+export const msLink = (settings) => {
+  const name = pageName(settings?.messenger) || pageName(settings?.facebook);
+  return name && !/^profile\.php$/i.test(name) ? `https://m.me/${name}` : null;
+};
+// Phones open these in the app; a new tab there often gets blocked or shows a blank page
+export const extLinkProps = () => (isMobile() ? { rel: 'noreferrer' } : { target: '_blank', rel: 'noreferrer' });
+
 export const DELIVERY_DEFAULTS = { inside: 70, outside: 130, baseWeight: 1000, perKgInside: 15, perKgOutside: 25 };
 // The area's charge covers the first base weight; each extra kg (or part) adds that area's per-kg charge.
 // Products without a weight count as the default weight. Keep in sync with backend/src/utils.js
