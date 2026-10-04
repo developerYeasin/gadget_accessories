@@ -102,7 +102,7 @@ const settings = {
   phone: '01411612350',
   email: 'info@gadgetaccessorieshome.com',
   address: 'Dhaka, Bangladesh',
-  facebook: 'https://facebook.com',
+  facebook: 'https://www.facebook.com/profile.php?id=61554352545779',
   whatsapp: '01411612350',
   messenger: 'https://m.me',
   delivery_inside_dhaka: '70',

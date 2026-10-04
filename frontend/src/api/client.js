@@ -31,8 +31,11 @@ export const fbLink = (settings) => {
   return name ? `https://www.facebook.com/${name}` : null;
 };
 export const msLink = (settings) => {
-  const name = pageName(settings?.messenger) || pageName(settings?.facebook);
-  return name && !/^profile\.php$/i.test(name) ? `https://m.me/${name}` : null;
+  const src = settings?.messenger || settings?.facebook;
+  let name = pageName(src);
+  // profile.php?id=123 pages have no username — m.me accepts the numeric id instead
+  if (/^profile\.php$/i.test(name)) name = (String(src).match(/[?&]id=(\d+)/) || [])[1];
+  return name ? `https://m.me/${name}` : null;
 };
 // Phones open these in the app; a new tab there often gets blocked or shows a blank page
 export const extLinkProps = () => (isMobile() ? { rel: 'noreferrer' } : { target: '_blank', rel: 'noreferrer' });
