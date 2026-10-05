@@ -305,9 +305,10 @@ export default function ProductDetail() {
           </a>
 
           <div className="pd__delivery">
-            <div><FiMapPin /><span><b>Inside Dhaka</b> — {money(deliveryCharge(settings, 'inside_dhaka', grams))} · 1–2 days</span></div>
-            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(deliveryCharge(settings, 'outside_dhaka', grams))} · 2–4 days</span></div>
-            {grams > 0 && <div className="muted small pd__weight">Parcel weight {formatWeight(grams)}{qty > 1 ? ` (${qty} × ${formatWeight(unitWeight)})` : ''} · charge increases with weight</div>}
+            {!!p.free_delivery && <div className="gold"><FiTruck /><span><b>Free Delivery</b> — all over Bangladesh</span></div>}
+            {!p.free_delivery && <><div><FiMapPin /><span><b>Inside Dhaka</b> — {money(deliveryCharge(settings, 'inside_dhaka', grams))} · 1–2 days</span></div>
+            <div><FiTruck /><span><b>Outside Dhaka</b> — {money(deliveryCharge(settings, 'outside_dhaka', grams))} · 2–4 days</span></div></>}
+            {grams > 0 && !p.free_delivery && <div className="muted small pd__weight">Parcel weight {formatWeight(grams)}{qty > 1 ? ` (${qty} × ${formatWeight(unitWeight)})` : ''} · charge increases with weight</div>}
           </div>
 
           <div className="pd__trust">

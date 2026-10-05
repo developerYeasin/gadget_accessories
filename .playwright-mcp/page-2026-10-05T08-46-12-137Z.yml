@@ -1,0 +1,102 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - link "Gadget Accessories Home" [ref=f1e5] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f1e13]:
+      - generic [ref=f1e14]: Main
+      - link "Dashboard" [ref=f1e15] [cursor=pointer]:
+        - /url: /admin
+      - link "Orders" [ref=f1e21] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "Reports" [ref=f1e25] [cursor=pointer]:
+        - /url: /admin/reports
+      - generic [ref=f1e27]: Catalog
+      - link "Products" [ref=f1e28] [cursor=pointer]:
+        - /url: /admin/products
+      - link "Inventory" [ref=f1e32] [cursor=pointer]:
+        - /url: /admin/inventory
+      - link "Categories" [ref=f1e37] [cursor=pointer]:
+        - /url: /admin/categories
+      - link "Reviews" [ref=f1e40] [cursor=pointer]:
+        - /url: /admin/reviews
+      - generic [ref=f1e43]: Marketing
+      - link "Coupons" [ref=f1e44] [cursor=pointer]:
+        - /url: /admin/coupons
+      - link "Banners" [ref=f1e49] [cursor=pointer]:
+        - /url: /admin/banners
+      - link "Notifications" [ref=f1e54] [cursor=pointer]:
+        - /url: /admin/notifications
+      - generic [ref=f1e58]: Customers
+      - link "Customers" [ref=f1e59] [cursor=pointer]:
+        - /url: /admin/customers
+      - link "Messages" [ref=f1e65] [cursor=pointer]:
+        - /url: /admin/messages
+      - generic [ref=f1e69]: Store
+      - link "Pages" [ref=f1e70] [cursor=pointer]:
+        - /url: /admin/pages
+      - link "Settings" [ref=f1e74] [cursor=pointer]:
+        - /url: /admin/settings
+    - link "View Store" [ref=f1e78] [cursor=pointer]:
+      - /url: /
+    - button "Logout" [ref=f1e83] [cursor=pointer]
+  - generic [ref=f1e87]:
+    - generic [ref=f1e88]: Logged in as Admin
+    - generic [ref=f1e90]:
+      - heading "Orders" [level=1] [ref=f1e91]
+      - textbox "Order no, phone, name..." [ref=f1e96]
+      - combobox [ref=f1e97]:
+        - option "All payments" [selected]
+        - option "Unpaid"
+        - option "Paid"
+        - option "Refunded"
+    - generic [ref=f1e98]:
+      - button "All" [ref=f1e99] [cursor=pointer]
+      - button "pending (1)" [ref=f1e156] [cursor=pointer]
+      - button "confirmed" [ref=f1e101] [cursor=pointer]
+      - button "processing (1)" [ref=f1e157] [cursor=pointer]
+      - button "shipped" [ref=f1e103] [cursor=pointer]
+      - button "delivered" [ref=f1e104] [cursor=pointer]
+      - button "cancelled" [ref=f1e105] [cursor=pointer]
+    - table [ref=f1e107]:
+      - rowgroup [ref=f1e108]:
+        - row [ref=f1e109]:
+          - columnheader [ref=f1e110]:
+            - checkbox "Select all" [ref=f1e111]
+          - columnheader "Order" [ref=f1e112]
+          - columnheader "Customer" [ref=f1e113]
+          - columnheader "Phone" [ref=f1e114]
+          - columnheader "Total" [ref=f1e115]
+          - columnheader "Status" [ref=f1e116]
+          - columnheader "Payment" [ref=f1e117]
+          - columnheader "Fraud Check" [ref=f1e118]
+          - columnheader "Courier" [ref=f1e119]
+          - columnheader "Date" [ref=f1e120]
+      - rowgroup [ref=f1e121]:
+        - row [ref=f1e158] [cursor=pointer]:
+          - cell [ref=f1e125]:
+            - checkbox "Select order GAH3976815250" [ref=f1e126]
+          - cell "#GAH3976815250" [ref=f1e127]
+          - cell "Naim Siddiki" [ref=f1e129]
+          - cell "01701042437" [ref=f1e130]
+          - cell "৳780" [ref=f1e131]
+          - cell "pending" [ref=f1e132]
+          - cell "unpaid" [ref=f1e134]
+          - cell "100% 4/4" [ref=f1e159]:
+            - generic "4 delivered · 0 cancelled of 4" [ref=f1e160]:
+              - generic [ref=f1e161]: 100%
+              - generic [ref=f1e162]: 4/4
+          - cell "—" [ref=f1e138]
+          - cell "2026-10-03 15:02" [ref=f1e139]
+        - row [ref=f1e140] [cursor=pointer]:
+          - cell [ref=f1e141]:
+            - checkbox "Select order GAH7842790591" [ref=f1e142]
+          - cell "#GAH7842790591" [ref=f1e143]
+          - cell "Admin" [ref=f1e145]
+          - cell "01411612350" [ref=f1e146]
+          - cell "৳2,100" [ref=f1e147]
+          - cell "processing" [ref=f1e148]
+          - cell "unpaid" [ref=f1e150]
+          - cell [ref=f1e152]:
+            - button "Check" [ref=f1e153]
+          - cell "—" [ref=f1e154]
+          - cell "2026-10-01 18:13" [ref=f1e155]

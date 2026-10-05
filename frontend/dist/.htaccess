@@ -1,0 +1,16 @@
+# Single-page app: serve index.html for every path that isn't a real file (e.g. /shop, /product/x)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Always fetch the latest index.html and service worker so new deploys show up immediately
+<FilesMatch "^(index\.html|sw\.js)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+  </IfModule>
+</FilesMatch>

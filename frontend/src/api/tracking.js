@@ -1,6 +1,7 @@
 // Marketing pixels: Facebook (Meta) Pixel, TikTok Pixel, Google Analytics 4 and Google Tag Manager.
 // IDs come from admin Settings. Every store event is sent to each enabled platform and pushed
-// to the GTM dataLayer in GA4 ecommerce format.
+// to the GTM dataLayer in GA4 ecommerce format. Meta/TikTok events are also posted to our server
+// (/api/track), which forwards them through the Conversions API / Events API with the same event id.
 
 const VALID = {
   fb: /^\d{5,20}$/,
@@ -11,6 +12,48 @@ const VALID = {
 
 const enabled = { fb: false, tiktok: false, ga4: false, gtm: false };
 let initialized = false;
+
+const BASE = import.meta.env.VITE_API_URL || '';
+const newEventId = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+const cookie = (name) => (document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`)) || [])[1];
+
+// Click ids from the landing URL, kept for the session so the server events can be attributed
+const clickIds = () => {
+  try {
+    const q = new URLSearchParams(window.location.search);
+    for (const k of ['fbclid', 'ttclid']) if (q.get(k)) sessionStorage.setItem(`gah_${k}`, q.get(k));
+    return { fbclid: sessionStorage.getItem('gah_fbclid'), ttclid: sessionStorage.getItem('gah_ttclid') };
+  } catch {
+    return {};
+  }
+};
+
+// Browser identifiers the server-side events need for matching (sent with orders too)
+export function trackingContext() {
+  if (typeof window === 'undefined') return {};
+  const { fbclid, ttclid } = clickIds();
+  return {
+    url: window.location.href,
+    fbp: cookie('_fbp'),
+    fbc: cookie('_fbc') || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined),
+    ttp: cookie('_ttp'),
+    ttclid: ttclid || undefined,
+  };
+}
+
+function sendServer(event, eventId, { items = [], value = 0, search } = {}) {
+  if (!enabled.fb && !enabled.tiktok) return;
+  const token = localStorage.getItem('gah_token');
+  fetch(`${BASE}/api/track`, {
+    method: 'POST',
+    keepalive: true,
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify({
+      event, event_id: eventId, value, search, ...trackingContext(),
+      items: items.map((i) => ({ id: i.item_id, name: i.item_name, price: i.price, quantity: i.quantity })),
+    }),
+  }).catch(() => {});
+}
 
 const addScript = (src) => {
   const s = document.createElement('script');
@@ -28,6 +71,7 @@ export function initTracking(settings) {
   const gtm = String(settings.gtm_id || '').trim();
 
   window.dataLayer = window.dataLayer || [];
+  clickIds();
 
   if (VALID.gtm.test(gtm)) {
     window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
@@ -87,7 +131,7 @@ const toItem = (p, quantity = 1) => ({
   quantity,
 });
 
-function send({ ga, fb, tt, items = [], value = 0, extra = {}, eventId }) {
+function send({ ga, fb, tt, items = [], value = 0, extra = {}, eventId = newEventId() }) {
   const ids = items.map((i) => i.item_id);
   const contents = items.map((i) => ({ id: i.item_id, quantity: i.quantity, item_price: i.price }));
 
@@ -105,14 +149,18 @@ function send({ ga, fb, tt, items = [], value = 0, extra = {}, eventId }) {
       content_type: 'product', currency: CURRENCY, value, ...(extra.search_term ? { query: extra.search_term } : {}),
     }, eventId ? { event_id: eventId } : undefined);
   }
+  // Purchase is sent server-side by the order itself
+  if (fb && fb !== 'Purchase') sendServer(fb, eventId, { items, value, search: extra.search_term });
 }
 
 export const track = {
   pageView(path) {
     if (enabled.gtm) window.dataLayer.push({ event: 'page_view', page_path: path });
     if (enabled.ga4 && window.gtag) window.gtag('event', 'page_view', { page_path: path, page_location: window.location.href, page_title: document.title });
-    if (enabled.fb && window.fbq) window.fbq('track', 'PageView');
+    const eventId = newEventId();
+    if (enabled.fb && window.fbq) window.fbq('track', 'PageView', {}, { eventID: eventId });
     if (enabled.tiktok && window.ttq) window.ttq.page();
+    sendServer('PageView', eventId);
   },
   viewItem(p) {
     const item = toItem(p);
@@ -141,7 +189,9 @@ export const track = {
   },
   signUp() {
     if (enabled.gtm || enabled.ga4) window.dataLayer.push({ event: 'sign_up' });
-    if (enabled.fb && window.fbq) window.fbq('track', 'CompleteRegistration');
-    if (enabled.tiktok && window.ttq) window.ttq.track('CompleteRegistration');
+    const eventId = newEventId();
+    if (enabled.fb && window.fbq) window.fbq('track', 'CompleteRegistration', {}, { eventID: eventId });
+    if (enabled.tiktok && window.ttq) window.ttq.track('CompleteRegistration', {}, { event_id: eventId });
+    sendServer('CompleteRegistration', eventId);
   },
 };

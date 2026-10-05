@@ -1,7 +1,10 @@
 import { Router } from 'express';
+import bcrypt from 'bcryptjs';
 import pool from '../config/db.js';
+import { emailError, passwordError } from './auth.js';
 import { protect, adminOnly } from '../middleware/auth.js';
 import { asyncHandler, slugify } from '../utils.js';
+import { bookSteadfast, cachedHistories, courierHistory, refreshSteadfast, steadfastBalance } from '../services/courier.js';
 
 const router = Router();
 router.use(protect, adminOnly);
@@ -86,9 +89,71 @@ router.delete('/orders/:id', asyncHandler(async (req, res) => {
   }
 }));
 
+/* ---------- Courier ---------- */
+router.post('/orders/:id/courier', asyncHandler(async (req, res) => {
+  res.json(await bookSteadfast(req.params.id));
+}));
+
+// Send several orders at once; each one succeeds or fails on its own
+router.post('/courier/bulk', asyncHandler(async (req, res) => {
+  const ids = (Array.isArray(req.body.ids) ? req.body.ids : []).map(Number).filter(Boolean).slice(0, 100);
+  const results = [];
+  for (const id of ids) {
+    try {
+      results.push({ id, ok: true, ...(await bookSteadfast(id)) });
+    } catch (err) {
+      results.push({ id, ok: false, message: err.message });
+    }
+  }
+  res.json({ results });
+}));
+
+router.post('/orders/:id/courier/refresh', asyncHandler(async (req, res) => {
+  const o = await refreshSteadfast(req.params.id);
+  res.json({ status: o.status, courier_status: o.courier_status });
+}));
+
+router.get('/courier/check', asyncHandler(async (req, res) => {
+  res.json(await courierHistory(req.query.phone, { force: req.query.force === '1' }));
+}));
+
+router.post('/courier/check-cached', asyncHandler(async (req, res) => {
+  res.json(await cachedHistories(Array.isArray(req.body.phones) ? req.body.phones : []));
+}));
+
+router.get('/courier/balance', asyncHandler(async (_req, res) => {
+  res.json({ balance: await steadfastBalance() });
+}));
+
 /* ---------- Customers / staff ---------- */
+const USER_COLS = 'id, name, email, avatar, phone, address, city, role, is_blocked, last_login_at, password_changed_at, created_at';
+const isSelf = (req) => Number(req.params.id) === req.user.id;
+
+// The shop must always keep at least one active admin
+async function wouldRemoveLastAdmin(id) {
+  const [[u]] = await pool.query('SELECT role, is_blocked FROM users WHERE id = ?', [id]);
+  if (!u || u.role !== 'admin' || u.is_blocked) return false;
+  const [[{ n }]] = await pool.query("SELECT COUNT(*) n FROM users WHERE role = 'admin' AND is_blocked = 0");
+  return n <= 1;
+}
+
+router.post('/users', asyncHandler(async (req, res) => {
+  const { name, email, phone, address, city, role = 'customer', password } = req.body;
+  if (!name || !String(name).trim()) return res.status(400).json({ message: 'Name is required' });
+  const bad = emailError(email) || passwordError(password);
+  if (bad) return res.status(400).json({ message: bad });
+  if (!['customer', 'admin'].includes(role)) return res.status(400).json({ message: 'Invalid role' });
+  const [taken] = await pool.query('SELECT id FROM users WHERE email = ?', [email.toLowerCase().trim()]);
+  if (taken.length) return res.status(409).json({ message: 'Email already registered' });
+  const [r] = await pool.query(
+    'INSERT INTO users (name, email, phone, address, city, role, password_hash) VALUES (?,?,?,?,?,?,?)',
+    [String(name).trim(), email.toLowerCase().trim(), phone || null, address || null, city || null, role, await bcrypt.hash(password, 10)]
+  );
+  res.status(201).json({ id: r.insertId });
+}));
+
 router.get('/users/:id', asyncHandler(async (req, res) => {
-  const [[u]] = await pool.query('SELECT id, name, email, phone, address, city, role, is_blocked, created_at FROM users WHERE id = ?', [req.params.id]);
+  const [[u]] = await pool.query(`SELECT ${USER_COLS} FROM users WHERE id = ?`, [req.params.id]);
   if (!u) return res.status(404).json({ message: 'User not found' });
   const [orders] = await pool.query('SELECT id, order_number, total, status, payment_status, created_at FROM orders WHERE user_id = ? ORDER BY created_at DESC', [u.id]);
   const spent = orders.filter((o) => o.status !== 'cancelled').reduce((s, o) => s + Number(o.total), 0);
@@ -96,13 +161,64 @@ router.get('/users/:id', asyncHandler(async (req, res) => {
 }));
 
 router.put('/users/:id', asyncHandler(async (req, res) => {
-  if (Number(req.params.id) === req.user.id) return res.status(400).json({ message: "You can't change your own account here" });
-  const { role, is_blocked } = req.body;
-  if (role !== undefined) {
-    if (!['customer', 'admin'].includes(role)) return res.status(400).json({ message: 'Invalid role' });
-    await pool.query('UPDATE users SET role = ? WHERE id = ?', [role, req.params.id]);
+  const { name, email, phone, address, city, role, is_blocked } = req.body;
+  const [[u]] = await pool.query('SELECT id FROM users WHERE id = ?', [req.params.id]);
+  if (!u) return res.status(404).json({ message: 'User not found' });
+  if (isSelf(req) && (role !== undefined || is_blocked !== undefined)) {
+    return res.status(400).json({ message: "You can't change your own role or block yourself" });
   }
-  if (is_blocked !== undefined) await pool.query('UPDATE users SET is_blocked = ? WHERE id = ?', [is_blocked ? 1 : 0, req.params.id]);
+  if ((role === 'customer' || is_blocked) && (await wouldRemoveLastAdmin(req.params.id))) {
+    return res.status(400).json({ message: 'This is the only active admin — add another admin first' });
+  }
+  if (role !== undefined && !['customer', 'admin'].includes(role)) return res.status(400).json({ message: 'Invalid role' });
+  if (name !== undefined && !String(name).trim()) return res.status(400).json({ message: 'Name is required' });
+  if (email !== undefined) {
+    const bad = emailError(email);
+    if (bad) return res.status(400).json({ message: bad });
+    const [taken] = await pool.query('SELECT id FROM users WHERE email = ? AND id <> ?', [email.toLowerCase().trim(), req.params.id]);
+    if (taken.length) return res.status(409).json({ message: 'That email is already used by another account' });
+  }
+  const fields = {
+    name: name === undefined ? undefined : String(name).trim(),
+    email: email === undefined ? undefined : email.toLowerCase().trim(),
+    phone: phone === undefined ? undefined : phone || null,
+    address: address === undefined ? undefined : address || null,
+    city: city === undefined ? undefined : city || null,
+    role,
+    is_blocked: is_blocked === undefined ? undefined : is_blocked ? 1 : 0,
+  };
+  const set = Object.entries(fields).filter(([, v]) => v !== undefined);
+  if (set.length) {
+    await pool.query(`UPDATE users SET ${set.map(([k]) => `${k} = ?`).join(', ')} WHERE id = ?`, [...set.map(([, v]) => v), req.params.id]);
+  }
+  // Blocking or a role change ends the user's current sessions
+  if (role !== undefined || is_blocked) await pool.query('UPDATE users SET token_version = token_version + 1 WHERE id = ?', [req.params.id]);
+  res.json({ ok: true });
+}));
+
+// Admin sets a new password (e.g. customer forgot theirs) — signs the user out everywhere
+router.put('/users/:id/password', asyncHandler(async (req, res) => {
+  const bad = passwordError(req.body.password);
+  if (bad) return res.status(400).json({ message: bad });
+  const [r] = await pool.query(
+    'UPDATE users SET password_hash = ?, token_version = token_version + 1, password_changed_at = NOW() WHERE id = ?',
+    [await bcrypt.hash(req.body.password, 10), req.params.id]
+  );
+  if (!r.affectedRows) return res.status(404).json({ message: 'User not found' });
+  res.json({ ok: true });
+}));
+
+router.post('/users/:id/logout', asyncHandler(async (req, res) => {
+  await pool.query('UPDATE users SET token_version = token_version + 1 WHERE id = ?', [req.params.id]);
+  res.json({ ok: true });
+}));
+
+// Orders keep their customer details (user_id is set to NULL by the foreign key)
+router.delete('/users/:id', asyncHandler(async (req, res) => {
+  if (isSelf(req)) return res.status(400).json({ message: "You can't delete your own account" });
+  if (await wouldRemoveLastAdmin(req.params.id)) return res.status(400).json({ message: 'This is the only active admin — add another admin first' });
+  const [r] = await pool.query('DELETE FROM users WHERE id = ?', [req.params.id]);
+  if (!r.affectedRows) return res.status(404).json({ message: 'User not found' });
   res.json({ ok: true });
 }));
 

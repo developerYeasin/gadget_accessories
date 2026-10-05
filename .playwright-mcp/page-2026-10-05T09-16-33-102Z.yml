@@ -1,0 +1,51 @@
+- generic [ref=f11e3]:
+  - complementary [ref=f11e4]:
+    - link "Gadget Accessories Home" [ref=f11e5] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f11e13]:
+      - generic [ref=f11e14]: Main
+      - link "Dashboard" [ref=f11e15] [cursor=pointer]:
+        - /url: /admin
+      - link "Orders" [ref=f11e21] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "Fraud Check" [ref=f11e25] [cursor=pointer]:
+        - /url: /admin/fraud-check
+      - link "Reports" [ref=f11e28] [cursor=pointer]:
+        - /url: /admin/reports
+      - generic [ref=f11e30]: Catalog
+      - link "Products" [ref=f11e31] [cursor=pointer]:
+        - /url: /admin/products
+      - link "Inventory" [ref=f11e35] [cursor=pointer]:
+        - /url: /admin/inventory
+      - link "Categories" [ref=f11e40] [cursor=pointer]:
+        - /url: /admin/categories
+      - link "Reviews" [ref=f11e43] [cursor=pointer]:
+        - /url: /admin/reviews
+      - generic [ref=f11e46]: Marketing
+      - link "Coupons" [ref=f11e47] [cursor=pointer]:
+        - /url: /admin/coupons
+      - link "Banners" [ref=f11e52] [cursor=pointer]:
+        - /url: /admin/banners
+      - link "Notifications" [ref=f11e57] [cursor=pointer]:
+        - /url: /admin/notifications
+      - generic [ref=f11e61]: Customers
+      - link "Customers" [ref=f11e62] [cursor=pointer]:
+        - /url: /admin/customers
+      - link "Messages" [ref=f11e68] [cursor=pointer]:
+        - /url: /admin/messages
+      - generic [ref=f11e72]: Store
+      - link "Pages" [ref=f11e73] [cursor=pointer]:
+        - /url: /admin/pages
+      - link "Settings" [ref=f11e77] [cursor=pointer]:
+        - /url: /admin/settings
+    - link "View Store" [ref=f11e81] [cursor=pointer]:
+      - /url: /
+    - button "Logout" [ref=f11e86] [cursor=pointer]
+  - generic [ref=f11e90]:
+    - generic [ref=f11e91]: Logged in as Admin
+    - heading "Fraud Check" [level=1] [ref=f11e93]
+    - generic [ref=f11e94]:
+      - paragraph [ref=f11e95]: Check any customer's delivery record across all Bangladeshi couriers before confirming a cash-on-delivery order.
+      - generic [ref=f11e96]:
+        - textbox "01XXXXXXXXX" [active] [ref=f11e97]
+        - button "Check" [ref=f11e98] [cursor=pointer]

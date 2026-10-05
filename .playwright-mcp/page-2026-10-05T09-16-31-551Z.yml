@@ -1,0 +1,107 @@
+- generic [ref=f10e3]:
+  - generic [ref=f10e5]:
+    - generic [ref=f10e6]:
+      - generic [ref=f10e7]: Cash on Delivery Available
+      - generic [ref=f10e10]: Fast & Safe Delivery
+      - generic [ref=f10e13]: 100% Original Product
+      - generic [ref=f10e16]: Customer Support
+    - generic [ref=f10e19]:
+      - link "01411612350" [ref=f10e20] [cursor=pointer]:
+        - /url: tel:01411612350
+      - link "WhatsApp" [ref=f10e23] [cursor=pointer]:
+        - /url: https://web.whatsapp.com/send?phone=
+      - link "Admin" [ref=f10e27] [cursor=pointer]:
+        - /url: /admin
+  - banner [ref=f10e31]:
+    - generic [ref=f10e32]:
+      - button "Menu" [ref=f10e33] [cursor=pointer]
+      - link "Gadget Accessories Home" [ref=f10e35] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f10e43]:
+        - link "Home" [ref=f10e44] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f10e45] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f10e46] [cursor=pointer]:
+          - /url: /offers
+        - link "About" [ref=f10e47] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=f10e48] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f10e49]:
+        - button "Search" [ref=f10e50] [cursor=pointer]
+        - link "Wishlist" [ref=f10e54] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f10e57]: "0"
+        - button "Cart" [ref=f10e58] [cursor=pointer]:
+          - generic [ref=f10e63]: "3"
+  - main [ref=f10e64]:
+    - generic [ref=f10e66]:
+      - generic [ref=f10e67]: 100% OriginalProduct
+      - generic [ref=f10e72]: Cash onDelivery
+      - generic [ref=f10e77]: EasyReturn Policy
+      - generic [ref=f10e84]: CustomerSupport
+      - generic [ref=f10e89]: QualityChecked
+      - generic [ref=f10e95]: Best PriceGuaranteed
+    - generic [ref=f10e100]:
+      - generic [ref=f10e101]:
+        - heading "Shop by Category" [level=2] [ref=f10e102]
+        - link "View All" [ref=f10e103] [cursor=pointer]:
+          - /url: /categories
+      - link "All Products" [ref=f10e107] [cursor=pointer]:
+        - /url: /shop
+    - generic [ref=f10e115]:
+      - heading "Flash Sale Limited Time Offer" [level=2] [ref=f10e116]:
+        - text: Flash
+        - generic [ref=f10e119]: Sale
+        - generic [ref=f10e120]: Limited Time Offer
+      - link "View All" [ref=f10e122] [cursor=pointer]:
+        - /url: /shop?flash=1
+    - generic [ref=f10e137]:
+      - heading "Featured Products" [level=2] [ref=f10e138]
+      - link "View All" [ref=f10e139] [cursor=pointer]:
+        - /url: /shop
+    - generic [ref=f10e152]:
+      - heading "New Arrivals" [level=2] [ref=f10e153]
+      - link "View All" [ref=f10e154] [cursor=pointer]:
+        - /url: /shop?sort=newest
+  - contentinfo [ref=f10e166]:
+    - generic [ref=f10e167]:
+      - generic [ref=f10e168]:
+        - link "Gadget Accessories Home" [ref=f10e169] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f10e177]: Your trusted shop for 100% original gadgets & accessories in Bangladesh. Cash on delivery, fast & safe delivery all over the country.
+        - link "WhatsApp" [ref=f10e179] [cursor=pointer]:
+          - /url: https://web.whatsapp.com/send?phone=
+      - heading "Categories" [level=4] [ref=f10e183]
+      - generic [ref=f10e184]:
+        - heading "Quick Links" [level=4] [ref=f10e185]
+        - link "Shop" [ref=f10e186] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f10e187] [cursor=pointer]:
+          - /url: /offers
+        - link "Track Order" [ref=f10e188] [cursor=pointer]:
+          - /url: /track-order
+        - link "My Account" [ref=f10e189] [cursor=pointer]:
+          - /url: /account
+        - link "About Us" [ref=f10e190] [cursor=pointer]:
+          - /url: /about
+        - link "Contact Us" [ref=f10e191] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f10e192]:
+        - heading "Policies" [level=4] [ref=f10e193]
+        - link "Privacy Policy" [ref=f10e194] [cursor=pointer]:
+          - /url: /page/privacy-policy
+        - link "Terms & Conditions" [ref=f10e195] [cursor=pointer]:
+          - /url: /page/terms-conditions
+        - link "Return & Refund" [ref=f10e196] [cursor=pointer]:
+          - /url: /page/return-policy
+        - link "Shipping Policy" [ref=f10e197] [cursor=pointer]:
+          - /url: /page/shipping-policy
+      - generic [ref=f10e198]:
+        - heading "Contact" [level=4] [ref=f10e199]
+        - paragraph [ref=f10e200]: "01411612350"
+        - paragraph [ref=f10e203]: info@gadgetaccessorieshome.com
+        - paragraph [ref=f10e207]: Dhaka, Bangladesh
+    - generic [ref=f10e211]: © 2026 Gadget Accessories Home. All rights reserved.
+  - button "Back to top"

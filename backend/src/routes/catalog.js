@@ -2,6 +2,7 @@ import { Router } from 'express';
 import pool from '../config/db.js';
 import { protect } from '../middleware/auth.js';
 import { applyCoupon, asyncHandler, formatProduct, formatVariant, VARIANT_COUNT_SQL } from '../utils.js';
+import { publicSettings } from '../services/settings.js';
 
 const router = Router();
 
@@ -93,7 +94,7 @@ router.get('/banners', asyncHandler(async (_req, res) => {
 
 router.get('/settings', asyncHandler(async (_req, res) => {
   const [rows] = await pool.query('SELECT `key`, `value` FROM settings');
-  res.json(Object.fromEntries(rows.map((r) => [r.key, r.value])));
+  res.json(publicSettings(rows));
 }));
 
 router.post('/coupons/validate', asyncHandler(async (req, res) => {

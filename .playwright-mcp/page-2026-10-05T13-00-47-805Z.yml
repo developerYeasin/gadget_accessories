@@ -1,0 +1,114 @@
+- generic [ref=f5e3]:
+  - complementary [ref=f5e4]:
+    - link "Gadget Accessories Home" [ref=f5e5] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f5e13]:
+      - generic [ref=f5e14]: Main
+      - link "Dashboard" [ref=f5e15] [cursor=pointer]:
+        - /url: /admin
+      - link "Orders" [ref=f5e21] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "Fraud Check" [ref=f5e25] [cursor=pointer]:
+        - /url: /admin/fraud-check
+      - link "Reports" [ref=f5e28] [cursor=pointer]:
+        - /url: /admin/reports
+      - generic [ref=f5e30]: Catalog
+      - link "Products" [ref=f5e31] [cursor=pointer]:
+        - /url: /admin/products
+      - link "Inventory" [ref=f5e35] [cursor=pointer]:
+        - /url: /admin/inventory
+      - link "Categories" [ref=f5e40] [cursor=pointer]:
+        - /url: /admin/categories
+      - link "Reviews" [ref=f5e43] [cursor=pointer]:
+        - /url: /admin/reviews
+      - generic [ref=f5e46]: Marketing
+      - link "Coupons" [ref=f5e47] [cursor=pointer]:
+        - /url: /admin/coupons
+      - link "Banners" [ref=f5e52] [cursor=pointer]:
+        - /url: /admin/banners
+      - link "Notifications" [ref=f5e57] [cursor=pointer]:
+        - /url: /admin/notifications
+      - generic [ref=f5e61]: Customers
+      - link "Users" [ref=f5e62] [cursor=pointer]:
+        - /url: /admin/customers
+      - link "Messages" [ref=f5e68] [cursor=pointer]:
+        - /url: /admin/messages
+      - generic [ref=f5e72]: Store
+      - link "Pages" [ref=f5e73] [cursor=pointer]:
+        - /url: /admin/pages
+      - link "Settings" [ref=f5e77] [cursor=pointer]:
+        - /url: /admin/settings
+    - link "View Store" [ref=f5e81] [cursor=pointer]:
+      - /url: /
+    - button "Logout" [ref=f5e86] [cursor=pointer]
+  - generic [ref=f5e90]:
+    - generic [ref=f5e91]: Logged in as Admin
+    - generic [ref=f5e93]:
+      - heading "Users" [level=1] [ref=f5e94]
+      - textbox "Name, email, phone..." [ref=f5e99]
+      - generic [ref=f5e100]:
+        - button "Customers" [ref=f5e101] [cursor=pointer]
+        - button "Admins" [ref=f5e102] [cursor=pointer]
+      - button "Add User" [ref=f5e103] [cursor=pointer]
+    - table [ref=f5e106]:
+      - rowgroup [ref=f5e107]:
+        - row [ref=f5e108]:
+          - columnheader "Name" [ref=f5e109]
+          - columnheader "Email" [ref=f5e110]
+          - columnheader "Phone" [ref=f5e111]
+          - columnheader "Orders" [ref=f5e112]
+          - columnheader "Spent" [ref=f5e113]
+          - columnheader "Status" [ref=f5e114]
+          - columnheader "Last Login" [ref=f5e115]
+          - columnheader "Joined" [ref=f5e116]
+      - rowgroup [ref=f5e117]:
+        - row [ref=f5e120] [cursor=pointer]:
+          - cell "Test Staff" [ref=f5e121]
+          - cell "staff.test@example.com" [ref=f5e122]
+          - cell [ref=f5e123]
+          - cell "0" [ref=f5e124]
+          - cell "৳0" [ref=f5e125]
+          - cell "active" [ref=f5e126]
+          - cell "—" [ref=f5e128]
+          - cell "2026-10-05" [ref=f5e129]
+        - row [ref=f5e130] [cursor=pointer]:
+          - cell "Yea Sin" [ref=f5e131]
+          - cell "yea13sin@gmail.com" [ref=f5e132]
+          - cell "01834886669" [ref=f5e133]
+          - cell "0" [ref=f5e134]
+          - cell "৳0" [ref=f5e135]
+          - cell "active" [ref=f5e136]
+          - cell "—" [ref=f5e138]
+          - cell "2026-10-01" [ref=f5e139]
+        - row [ref=f5e140] [cursor=pointer]:
+          - cell "Mahbubur Rahman" [ref=f5e141]
+          - cell "mdjahid2020go@gmail.com" [ref=f5e142]
+          - cell "01762649011" [ref=f5e143]
+          - cell "0" [ref=f5e144]
+          - cell "৳0" [ref=f5e145]
+          - cell "active" [ref=f5e146]
+          - cell "—" [ref=f5e148]
+          - cell "2026-10-01" [ref=f5e149]
+    - generic [ref=f5e151]:
+      - generic [ref=f5e152]:
+        - heading "User Details" [level=3] [ref=f5e153]
+        - button "Close" [ref=f5e154] [cursor=pointer]
+      - generic [ref=f5e158]:
+        - generic [ref=f5e159]: T
+        - generic [ref=f5e160]:
+          - heading "Test Staff" [level=3] [ref=f5e161]
+          - paragraph [ref=f5e162]: staff.test@example.com · No phone · Joined 2026-10-05
+          - paragraph [ref=f5e163]: "Last login: Never · Password changed: Never"
+      - generic [ref=f5e164]:
+        - button "Overview" [ref=f5e165] [cursor=pointer]
+        - button "Edit Details" [ref=f5e166] [cursor=pointer]
+        - button "Reset Password" [active] [ref=f5e167] [cursor=pointer]
+      - generic [ref=f5e194]:
+        - paragraph [ref=f5e195]: Set a new password when the user forgets theirs. All their devices will be signed out.
+        - generic [ref=f5e197]:
+          - text: Password
+          - generic [ref=f5e198]:
+            - textbox "Password Show password Generate" [ref=f5e199]
+            - button "Show password" [ref=f5e200] [cursor=pointer]
+          - button "Generate" [ref=f5e205] [cursor=pointer]
+        - button "Set New Password" [ref=f5e206] [cursor=pointer]

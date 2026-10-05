@@ -3,7 +3,8 @@ import path from 'path';
 import crypto from 'crypto';
 import pool from '../config/db.js';
 import { uploadToR2 } from '../config/r2.js';
-import { background, notifyOrder } from '../services/push.js';
+import { changeOrderStatus } from '../services/orders.js';
+import { clearSettingsCache } from '../services/settings.js';
 import { protect, adminOnly } from '../middleware/auth.js';
 import upload from '../middleware/upload.js';
 import { asyncHandler, formatProduct, formatVariant, slugify, VARIANT_COUNT_SQL } from '../utils.js';
@@ -69,9 +70,10 @@ const productFields = (b) => {
     Number(b.rating) || 0, Number(b.review_count) || 0,
     b.is_featured ? 1 : 0, b.is_flash_sale ? 1 : 0, b.is_active === false ? 0 : 1,
     Math.max(0, Math.floor(Number(b.weight) || 0)),
+    b.free_delivery ? 1 : 0,
   ];
 };
-const PRODUCT_COLS = 'category_id, name, slug, brand, short_description, description, price, old_price, stock, image, images, features, options, rating, review_count, is_featured, is_flash_sale, is_active, weight';
+const PRODUCT_COLS = 'category_id, name, slug, brand, short_description, description, price, old_price, stock, image, images, features, options, rating, review_count, is_featured, is_flash_sale, is_active, weight, free_delivery';
 
 // Replace a product's variants with the submitted list (update by id, insert new, delete missing),
 // then keep the product's price/stock in sync: lowest active variant price, total active stock.
@@ -128,6 +130,26 @@ router.post('/products', asyncHandler(async (req, res) => {
     const fields = productFields({ ...req.body, price: req.body.price || req.body.variants?.[0]?.price });
     const [r] = await conn.query(`INSERT INTO products (${PRODUCT_COLS}) VALUES (${PRODUCT_COLS.split(',').map(() => '?').join(',')})`, fields);
     await saveVariants(conn, r.insertId, req.body.variants);
+    return r.insertId;
+  });
+  res.status(201).json({ id });
+}));
+
+// Copy a product (with its variants) as a hidden draft, so it can be edited before going live
+router.post('/products/:id/duplicate', asyncHandler(async (req, res) => {
+  const id = await withTransaction(async (conn) => {
+    const [[p]] = await conn.query('SELECT * FROM products WHERE id = ?', [req.params.id]);
+    if (!p) throw Object.assign(new Error('Product not found'), { status: 404 });
+    let slug = `${p.slug}-copy`;
+    for (let n = 2; (await conn.query('SELECT 1 FROM products WHERE slug = ?', [slug]))[0].length; n++) slug = `${p.slug}-copy-${n}`;
+    const cols = PRODUCT_COLS.split(',').map((c) => c.trim());
+    const copy = { ...p, name: `${p.name} (Copy)`, slug, is_active: 0, sold_count: undefined };
+    const [r] = await conn.query(`INSERT INTO products (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(',')})`,
+      cols.map((c) => (copy[c] !== null && typeof copy[c] === 'object' ? JSON.stringify(copy[c]) : copy[c])));
+    await conn.query(
+      `INSERT INTO product_variants (product_id, name, options, sku, price, old_price, stock, image, sort_order, is_active)
+       SELECT ?, name, options, sku, price, old_price, stock, image, sort_order, is_active FROM product_variants WHERE product_id = ?`,
+      [r.insertId, p.id]);
     return r.insertId;
   });
   res.status(201).json({ id });
@@ -218,48 +240,9 @@ router.get('/orders/:id', asyncHandler(async (req, res) => {
   res.json({ ...order, items });
 }));
 
-const STATUSES = ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
-const STATUS_MESSAGES = {
-  confirmed: '✅ Your order is confirmed. We are preparing it now.',
-  processing: '📦 Your order is being packed.',
-  shipped: '🚚 Your order is on the way!',
-  delivered: '🎉 Your order has been delivered. Thank you for shopping with us!',
-  cancelled: 'Your order has been cancelled. Contact us if this is unexpected.',
-};
 router.put('/orders/:id/status', asyncHandler(async (req, res) => {
-  const { status } = req.body;
-  if (!STATUSES.includes(status)) return res.status(400).json({ message: 'Invalid status' });
-  const conn = await pool.getConnection();
-  try {
-    await conn.beginTransaction();
-    const [[order]] = await conn.query('SELECT * FROM orders WHERE id = ? FOR UPDATE', [req.params.id]);
-    if (!order) throw Object.assign(new Error('Order not found'), { status: 404 });
-    // Return stock when an order is cancelled (and take it again if un-cancelled)
-    if (status !== order.status && (status === 'cancelled' || order.status === 'cancelled')) {
-      const sign = status === 'cancelled' ? 1 : -1;
-      const [items] = await conn.query('SELECT product_id, variant_id, quantity FROM order_items WHERE order_id = ?', [order.id]);
-      for (const it of items) {
-        if (it.product_id) await conn.query('UPDATE products SET stock = GREATEST(stock + ?, 0), sold_count = GREATEST(sold_count - ?, 0) WHERE id = ?', [sign * it.quantity, sign * it.quantity, it.product_id]);
-        if (it.variant_id) await conn.query('UPDATE product_variants SET stock = GREATEST(stock + ?, 0) WHERE id = ?', [sign * it.quantity, it.variant_id]);
-      }
-    }
-    await conn.query('UPDATE orders SET status = ? WHERE id = ?', [status, order.id]);
-    await conn.commit();
-    res.json({ ok: true });
-    if (status !== order.status && STATUS_MESSAGES[status]) {
-      background(notifyOrder(order.id, {
-        title: `Order #${order.order_number} ${status}`,
-        body: STATUS_MESSAGES[status],
-        url: `/track-order?order=${order.order_number}&phone=${encodeURIComponent(order.phone)}`,
-        tag: `order-${order.order_number}`,
-      }));
-    }
-  } catch (err) {
-    await conn.rollback();
-    throw err;
-  } finally {
-    conn.release();
-  }
+  await changeOrderStatus(req.params.id, req.body.status);
+  res.json({ ok: true });
 }));
 
 /* ---------- Customers, messages, settings ---------- */
@@ -267,7 +250,7 @@ router.get('/customers', asyncHandler(async (req, res) => {
   const role = req.query.role === 'admin' ? 'admin' : 'customer';
   const q = req.query.q ? `%${req.query.q}%` : '%';
   const [rows] = await pool.query(
-    `SELECT u.id, u.name, u.email, u.phone, u.city, u.role, u.is_blocked, u.created_at,
+    `SELECT u.id, u.name, u.email, u.avatar, u.phone, u.city, u.role, u.is_blocked, u.last_login_at, u.created_at,
       (SELECT COUNT(*) FROM orders o WHERE o.user_id = u.id) AS order_count,
       (SELECT COALESCE(SUM(total),0) FROM orders o WHERE o.user_id = u.id AND o.status <> 'cancelled') AS total_spent
      FROM users u WHERE u.role = ? AND (u.name LIKE ? OR u.email LIKE ? OR COALESCE(u.phone,'') LIKE ?) ORDER BY u.created_at DESC`, [role, q, q, q]);
@@ -284,10 +267,16 @@ router.put('/messages/:id/read', asyncHandler(async (req, res) => {
   res.json({ ok: true });
 }));
 
+router.get('/settings', asyncHandler(async (_req, res) => {
+  const [rows] = await pool.query('SELECT `key`, `value` FROM settings');
+  res.json(Object.fromEntries(rows.map((r) => [r.key, r.value])));
+}));
+
 router.put('/settings', asyncHandler(async (req, res) => {
   for (const [k, v] of Object.entries(req.body)) {
     await pool.query('INSERT INTO settings (`key`, `value`) VALUES (?,?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`)', [k, v]);
   }
+  clearSettingsCache();
   res.json({ ok: true });
 }));
 

@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import pool from '../config/db.js';
 
 function readUser(req) {
   const header = req.headers.authorization || '';
@@ -16,10 +17,21 @@ export function optionalAuth(req, _res, next) {
   next();
 }
 
-export function protect(req, res, next) {
-  req.user = readUser(req);
-  if (!req.user) return res.status(401).json({ message: 'Please login first' });
-  next();
+// Also checks the account still exists, isn't blocked and the token wasn't revoked by a password change.
+// Role is read from the database so a demoted admin loses access immediately.
+export async function protect(req, res, next) {
+  const payload = readUser(req);
+  if (!payload) return res.status(401).json({ message: 'Please login first' });
+  try {
+    const [[u]] = await pool.query('SELECT id, name, role, is_blocked, token_version FROM users WHERE id = ?', [payload.id]);
+    if (!u || u.is_blocked || (payload.tv ?? 0) !== u.token_version) {
+      return res.status(401).json({ message: 'Session expired. Please login again.' });
+    }
+    req.user = { id: u.id, role: u.role, name: u.name };
+    next();
+  } catch (err) {
+    next(err);
+  }
 }
 
 export function adminOnly(req, res, next) {
@@ -28,6 +40,6 @@ export function adminOnly(req, res, next) {
 }
 
 export const signToken = (user) =>
-  jwt.sign({ id: user.id, role: user.role, name: user.name }, process.env.JWT_SECRET, {
+  jwt.sign({ id: user.id, role: user.role, name: user.name, tv: user.token_version || 0 }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   });

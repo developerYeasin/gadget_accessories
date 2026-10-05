@@ -14,6 +14,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import InfoPage from './pages/InfoPage';
 import TrackOrder from './pages/TrackOrder';
+import PaymentVerify from './pages/PaymentVerify';
 import Categories from './pages/Categories';
 import AdminApp from './pages/admin/AdminApp';
 import NotFound from './pages/NotFound';
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="order-success/:orderNumber" element={<OrderSuccess />} />
           <Route path="track-order" element={<TrackOrder />} />
+          <Route path="payment/verify" element={<PaymentVerify />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="account" element={<Account />} />

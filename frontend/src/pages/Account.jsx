@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { FiBell, FiLogOut, FiPackage, FiUser } from 'react-icons/fi';
+import { FiBell, FiLock, FiLogOut, FiPackage, FiUser } from 'react-icons/fi';
 import { currentSubscription, permission, pushSupported, subscribePush, unsubscribePush } from '../api/push';
 import toast from 'react-hot-toast';
 import api, { money } from '../api/client';
 import { useStore } from '../context/StoreContext';
 import OrderView, { StatusBadge } from '../components/OrderView';
+import { PasswordForm, ProfileForm } from '../components/AccountForms';
 
 export default function Account() {
-  const { user, setUser, logout } = useStore();
+  const { user, logout } = useStore();
   const [tab, setTab] = useState('orders');
   const [orders, setOrders] = useState([]);
   const [open, setOpen] = useState(null);
@@ -29,7 +30,6 @@ export default function Account() {
       toast.error(err.message);
     }
   };
-  const [form, setForm] = useState({ name: user?.name || '', phone: user?.phone || '', address: user?.address || '', city: user?.city || '', password: '' });
 
   useEffect(() => {
     if (user) api.get('/orders/my').then(setOrders).catch(() => {});
@@ -42,21 +42,6 @@ export default function Account() {
     setOpen(await api.get(`/orders/${o.order_number}`));
   };
 
-  const save = async (e) => {
-    e.preventDefault();
-    try {
-      const u = await api.put('/auth/me', form);
-      setUser(u);
-      localStorage.setItem('gah_user', JSON.stringify(u));
-      setForm({ ...form, password: '' });
-      toast.success('Profile updated');
-    } catch (err) {
-      toast.error(err.message);
-    }
-  };
-
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
-
   return (
     <div className="container page">
       <h1 className="page-title">Hello, <span className="gold">{user.name}</span></h1>
@@ -64,6 +49,7 @@ export default function Account() {
         <aside className="card account__nav">
           <button className={tab === 'orders' ? 'is-active' : ''} onClick={() => setTab('orders')}><FiPackage /> My Orders</button>
           <button className={tab === 'profile' ? 'is-active' : ''} onClick={() => setTab('profile')}><FiUser /> Profile</button>
+          <button className={tab === 'security' ? 'is-active' : ''} onClick={() => setTab('security')}><FiLock /> Password &amp; Security</button>
           {user.role === 'admin' && <Link to="/admin">Admin Panel</Link>}
           {pushSupported() && <button onClick={togglePush}><FiBell /> Notifications: {pushOn ? 'On' : 'Off'}</button>}
           <button onClick={logout}><FiLogOut /> Logout</button>
@@ -85,20 +71,7 @@ export default function Account() {
                 </div>
               ))}
             </>
-          ) : (
-            <form onSubmit={save}>
-              <h3>Profile</h3>
-              <div className="form-grid">
-                <label>Name<input className="input" value={form.name} onChange={set('name')} /></label>
-                <label>Phone<input className="input" value={form.phone} onChange={set('phone')} /></label>
-                <label>City<input className="input" value={form.city} onChange={set('city')} /></label>
-                <label>Email<input className="input" value={user.email} disabled /></label>
-                <label className="span-2">Address<textarea className="input" rows={2} value={form.address} onChange={set('address')} /></label>
-                <label className="span-2">New Password (optional)<input className="input" type="password" value={form.password} onChange={set('password')} /></label>
-              </div>
-              <button className="btn btn--gold">Save Changes</button>
-            </form>
-          )}
+          ) : tab === 'profile' ? <ProfileForm /> : <PasswordForm />}
         </div>
       </div>
     </div>

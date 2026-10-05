@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { FaTruck } from 'react-icons/fa';
+import { FaCreditCard, FaTruck } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import api, { cartWeight, deliveryCharge, deliveryRules, formatWeight, imageUrl, money } from '../api/client';
 import { cartKey, useStore } from '../context/StoreContext';
-import { track } from '../api/tracking';
+import { track, trackingContext } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 
 export default function Checkout() {
@@ -25,6 +25,8 @@ export default function Checkout() {
     note: '',
   });
   const [busy, setBusy] = useState(false);
+  const onlinePay = settings.bizscalpay_enabled === '1';
+  const [payment, setPayment] = useState('cod');
   const [couponInput, setCouponInput] = useState('');
   const [coupon, setCoupon] = useState(null);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,7 +49,8 @@ export default function Checkout() {
   const weight = quote ? quote.weight : cartWeight(cart, settings);
   const rules = deliveryRules(settings, form.area);
   const extraKg = weight > rules.baseWeight ? Math.ceil((weight - rules.baseWeight) / 1000) : 0;
-  const chargeFor = (area) => (quote ? quote[area] : deliveryCharge(settings, area, weight));
+  const freeDelivery = quote ? !!quote.free_delivery : cart.some((i) => i.free_delivery);
+  const chargeFor = (area) => (freeDelivery ? 0 : quote ? quote[area] : deliveryCharge(settings, area, weight));
   const delivery = chargeFor(form.area);
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
   const discount = coupon?.discount || 0;
@@ -71,13 +74,24 @@ export default function Checkout() {
     try {
       const res = await api.post('/orders', {
         ...form,
-        payment_method: 'cod',
+        payment_method: onlinePay && payment === 'online' ? 'online' : 'cod',
         coupon_code: coupon?.code,
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
+        tracking: trackingContext(),
       });
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
       // Ordered lines leave the cart; anything not ticked stays for later
       if (!buyNow) removeKeys(cart.map(cartKey));
+      if (onlinePay && payment === 'online') {
+        try {
+          const pay = await api.post('/payment/bizscalpay/create', { order_number: res.order_number, phone: form.phone });
+          window.location.assign(pay.paymentUrl);
+          return;
+        } catch (err) {
+          // The order exists either way; the customer can retry paying from the success page
+          toast.error(`Order placed, but online payment could not start: ${err.message}`);
+        }
+      }
       navigate(`/order-success/${res.order_number}?phone=${encodeURIComponent(form.phone)}`);
     } catch (err) {
       toast.error(err.message);
@@ -115,8 +129,16 @@ export default function Checkout() {
           </div>
           <h3>Payment Method</h3>
           <div className="radio-cards">
-            <label className="is-active"><input type="radio" checked readOnly /> <FaTruck className="gold" /> Cash on Delivery</label>
+            <label className={payment === 'cod' || !onlinePay ? 'is-active' : ''}>
+              <input type="radio" name="payment" checked={payment === 'cod' || !onlinePay} onChange={() => setPayment('cod')} /> <FaTruck className="gold" /> Cash on Delivery
+            </label>
+            {onlinePay && (
+              <label className={payment === 'online' ? 'is-active' : ''}>
+                <input type="radio" name="payment" checked={payment === 'online'} onChange={() => setPayment('online')} /> <FaCreditCard className="gold" /> Pay Online
+              </label>
+            )}
           </div>
+          {onlinePay && payment === 'online' && <p className="muted small">Pay with bKash, Nagad, Rocket or card on the next page.</p>}
         </div>
         <aside className="card summary">
           <h3>Your Order</h3>
@@ -129,8 +151,8 @@ export default function Checkout() {
           ))}
           <div className="summary__row"><span>Subtotal</span><span>{money(cartTotal)}</span></div>
           {weight > 0 && <div className="summary__row muted"><span>Parcel weight</span><span>{formatWeight(weight)}</span></div>}
-          <div className="summary__row"><span>Delivery Charge</span><span>{money(delivery)}</span></div>
-          {extraKg > 0 && (
+          <div className="summary__row"><span>Delivery Charge</span><span>{freeDelivery ? <b className="gold">Free</b> : money(delivery)}</span></div>
+          {extraKg > 0 && !freeDelivery && (
             <p className="summary__note muted small">
               {money(rules.base)} up to {formatWeight(rules.baseWeight)} + {extraKg} extra kg × {money(rules.perKg)}
             </p>
@@ -143,7 +165,7 @@ export default function Checkout() {
           </div>
           {discount > 0 && <div className="summary__row discount-row"><span>Discount ({coupon.code})</span><span>−{money(discount)}</span></div>}
           <div className="summary__row summary__total"><span>Total</span><span className="gold">{money(cartTotal + delivery - discount)}</span></div>
-          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : 'Confirm Order'}</button>
+          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : onlinePay && payment === 'online' ? 'Place Order & Pay' : 'Confirm Order'}</button>
         </aside>
       </form>
     </div>

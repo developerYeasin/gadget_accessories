@@ -1,0 +1,105 @@
+- generic [ref=f8e2]:
+  - generic [ref=f8e3]:
+    - complementary [ref=f8e4]:
+      - link "Gadget Accessories Home" [ref=f8e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f8e13]:
+        - generic [ref=f8e14]: Main
+        - link "Dashboard" [ref=f8e15] [cursor=pointer]:
+          - /url: /admin
+        - link "Orders" [ref=f8e21] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "Fraud Check" [ref=f8e25] [cursor=pointer]:
+          - /url: /admin/fraud-check
+        - link "Reports" [ref=f8e28] [cursor=pointer]:
+          - /url: /admin/reports
+        - generic [ref=f8e30]: Catalog
+        - link "Products" [ref=f8e31] [cursor=pointer]:
+          - /url: /admin/products
+        - link "Inventory" [ref=f8e35] [cursor=pointer]:
+          - /url: /admin/inventory
+        - link "Categories" [ref=f8e40] [cursor=pointer]:
+          - /url: /admin/categories
+        - link "Reviews" [ref=f8e43] [cursor=pointer]:
+          - /url: /admin/reviews
+        - generic [ref=f8e46]: Marketing
+        - link "Coupons" [ref=f8e47] [cursor=pointer]:
+          - /url: /admin/coupons
+        - link "Banners" [ref=f8e52] [cursor=pointer]:
+          - /url: /admin/banners
+        - link "Notifications" [ref=f8e57] [cursor=pointer]:
+          - /url: /admin/notifications
+        - generic [ref=f8e61]: Customers
+        - link "Users" [ref=f8e62] [cursor=pointer]:
+          - /url: /admin/customers
+        - link "Messages" [ref=f8e68] [cursor=pointer]:
+          - /url: /admin/messages
+        - generic [ref=f8e72]: Store
+        - link "Pages" [ref=f8e73] [cursor=pointer]:
+          - /url: /admin/pages
+        - link "Settings" [ref=f8e77] [cursor=pointer]:
+          - /url: /admin/settings
+        - link "My Account" [ref=f8e81] [cursor=pointer]:
+          - /url: /admin/account
+      - link "View Store" [ref=f8e85] [cursor=pointer]:
+        - /url: /
+      - button "Logout" [ref=f8e90] [cursor=pointer]
+    - generic [ref=f8e94]:
+      - link "A Logged in as Admin" [ref=f8e96] [cursor=pointer]:
+        - /url: /admin/account
+        - generic [ref=f8e97]: A
+        - generic [ref=f8e98]: Logged in as Admin
+      - heading "My Account" [level=1] [ref=f8e99]
+      - generic [ref=f8e100]:
+        - generic [ref=f8e102]:
+          - heading "Profile" [level=3] [ref=f8e103]
+          - generic [ref=f8e104]:
+            - button "Change profile photo" [ref=f8e105] [cursor=pointer]:
+              - generic [ref=f8e106]: A
+            - generic [ref=f8e111]:
+              - text: Profile Photo
+              - paragraph [ref=f8e112]: JPG, PNG or WEBP, up to 2 MB.
+              - button "Upload" [ref=f8e114] [cursor=pointer]
+          - generic [ref=f8e115]:
+            - generic [ref=f8e116]:
+              - text: Name
+              - textbox "Name" [ref=f8e117]: Admin
+            - generic [ref=f8e118]:
+              - text: Email
+              - textbox "Email" [ref=f8e119]: admin@gadgetaccessorieshome.com
+            - generic [ref=f8e120]:
+              - text: Phone
+              - textbox "Phone" [ref=f8e121]
+            - generic [ref=f8e122]:
+              - text: City
+              - textbox "City" [ref=f8e123]
+            - generic [ref=f8e124]:
+              - text: Address
+              - textbox "Address" [ref=f8e125]
+          - button "Save Changes" [ref=f8e126] [cursor=pointer]
+        - generic [ref=f8e127]:
+          - generic [ref=f8e128]:
+            - heading "Change Password" [level=3] [ref=f8e129]
+            - paragraph [ref=f8e130]: Last changed 2026-10-05
+            - generic [ref=f8e131]:
+              - generic [ref=f8e132]:
+                - text: Current Password
+                - generic [ref=f8e133]:
+                  - textbox "Current Password Show password" [ref=f8e134]
+                  - button "Show password" [ref=f8e135] [cursor=pointer]
+              - generic [ref=f8e139]:
+                - text: New Password
+                - generic [ref=f8e140]:
+                  - textbox "New Password Show password" [ref=f8e141]
+                  - button "Show password" [ref=f8e142] [cursor=pointer]
+              - generic [ref=f8e146]:
+                - text: Confirm New Password
+                - generic [ref=f8e147]:
+                  - textbox "Confirm New Password Show password" [ref=f8e148]
+                  - button "Show password" [ref=f8e149] [cursor=pointer]
+            - button "Update Password" [ref=f8e153] [cursor=pointer]
+          - generic [ref=f8e154]:
+            - heading "Sessions" [level=3] [ref=f8e155]
+            - paragraph [ref=f8e156]: Logged in on a shared or lost device? Sign out everywhere.
+            - button "Sign out of all devices" [ref=f8e157] [cursor=pointer]
+  - status [ref=f8e166]: Profile photo removed

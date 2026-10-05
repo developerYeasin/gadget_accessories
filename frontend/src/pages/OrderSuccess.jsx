@@ -33,6 +33,7 @@ export default function OrderSuccess() {
       <FiCheckCircle className="empty-state__icon" />
       <h2>Thank you! Your order has been placed.</h2>
       <p className="muted">Order Number: <b className="gold">{orderNumber}</b></p>
+      {params.get('paid') === '1' && <p className="gold">✔ Payment received — thank you!</p>}
       <p className="muted">Our team will call you shortly to confirm your order.</p>
       {pushSupported() && (subscribed
         ? <p className="gold"><FiBell /> You'll get a notification when your order status changes.</p>

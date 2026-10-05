@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Navigate, Route, Routes } from 'react-router-dom';
-import { FiGrid, FiBox, FiTag, FiShoppingBag, FiImage, FiUsers, FiMail, FiSettings, FiLogOut, FiExternalLink, FiMenu, FiBarChart2, FiLayers, FiPercent, FiStar, FiFileText, FiBell } from 'react-icons/fi';
+import { FiGrid, FiBox, FiTag, FiShoppingBag, FiImage, FiUsers, FiMail, FiSettings, FiLogOut, FiExternalLink, FiMenu, FiBarChart2, FiLayers, FiPercent, FiStar, FiFileText, FiBell, FiShield, FiUser } from 'react-icons/fi';
 import { useStore } from '../../context/StoreContext';
 import Logo from '../../components/Logo';
-import { Dashboard, Orders, Customers, Messages, Settings } from './AdminPages';
+import { Avatar } from '../../components/AccountForms';
+import { Dashboard, Orders, Customers, Messages, Settings, FraudCheck, MyAccount } from './AdminPages';
 import { Products, Categories, Banners } from './AdminCatalog';
 import { Reports, Inventory, Coupons, Reviews, Pages, Invoice, Notifications } from './AdminExtra';
 
@@ -11,6 +12,7 @@ const LINKS = [
   ['Main'],
   ['Dashboard', '', <FiGrid key="1" />],
   ['Orders', 'orders', <FiShoppingBag key="2" />],
+  ['Fraud Check', 'fraud-check', <FiShield key="15" />],
   ['Reports', 'reports', <FiBarChart2 key="3" />],
   ['Catalog'],
   ['Products', 'products', <FiBox key="4" />],
@@ -22,11 +24,12 @@ const LINKS = [
   ['Banners', 'banners', <FiImage key="9" />],
   ['Notifications', 'notifications', <FiBell key="14" />],
   ['Customers'],
-  ['Customers', 'customers', <FiUsers key="10" />],
+  ['Users', 'customers', <FiUsers key="10" />],
   ['Messages', 'messages', <FiMail key="11" />],
   ['Store'],
   ['Pages', 'pages', <FiFileText key="12" />],
   ['Settings', 'settings', <FiSettings key="13" />],
+  ['My Account', 'account', <FiUser key="16" />],
 ];
 
 export default function AdminApp() {
@@ -53,17 +56,19 @@ export default function AdminApp() {
       <div className="admin__main">
         <div className="admin__top no-print">
           <button className="icon-btn admin__burger" onClick={() => setOpen(true)} aria-label="Menu"><FiMenu /></button>
-          <span className="muted">Logged in as <b className="gold">{user.name}</b></span>
+          <Link to="/admin/account" className="admin__me"><Avatar user={user} size={32} /><span className="muted">Logged in as <b className="gold">{user.name}</b></span></Link>
         </div>
         <Routes>
           <Route index element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="fraud-check" element={<FraudCheck />} />
           <Route path="products" element={<Products />} />
           <Route path="categories" element={<Categories />} />
           <Route path="banners" element={<Banners />} />
           <Route path="customers" element={<Customers />} />
           <Route path="messages" element={<Messages />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="account" element={<MyAccount />} />
           <Route path="reports" element={<Reports />} />
           <Route path="inventory" element={<Inventory />} />
           <Route path="coupons" element={<Coupons />} />

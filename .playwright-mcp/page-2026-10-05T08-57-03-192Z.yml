@@ -1,0 +1,102 @@
+- generic [ref=f9e3]:
+  - complementary [ref=f9e4]:
+    - link "Gadget Accessories Home" [ref=f9e5] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f9e13]:
+      - generic [ref=f9e14]: Main
+      - link "Dashboard" [ref=f9e15] [cursor=pointer]:
+        - /url: /admin
+      - link "Orders" [ref=f9e21] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "Fraud Check" [ref=f9e25] [cursor=pointer]:
+        - /url: /admin/fraud-check
+      - link "Reports" [ref=f9e28] [cursor=pointer]:
+        - /url: /admin/reports
+      - generic [ref=f9e30]: Catalog
+      - link "Products" [ref=f9e31] [cursor=pointer]:
+        - /url: /admin/products
+      - link "Inventory" [ref=f9e35] [cursor=pointer]:
+        - /url: /admin/inventory
+      - link "Categories" [ref=f9e40] [cursor=pointer]:
+        - /url: /admin/categories
+      - link "Reviews" [ref=f9e43] [cursor=pointer]:
+        - /url: /admin/reviews
+      - generic [ref=f9e46]: Marketing
+      - link "Coupons" [ref=f9e47] [cursor=pointer]:
+        - /url: /admin/coupons
+      - link "Banners" [ref=f9e52] [cursor=pointer]:
+        - /url: /admin/banners
+      - link "Notifications" [ref=f9e57] [cursor=pointer]:
+        - /url: /admin/notifications
+      - generic [ref=f9e61]: Customers
+      - link "Customers" [ref=f9e62] [cursor=pointer]:
+        - /url: /admin/customers
+      - link "Messages" [ref=f9e68] [cursor=pointer]:
+        - /url: /admin/messages
+      - generic [ref=f9e72]: Store
+      - link "Pages" [ref=f9e73] [cursor=pointer]:
+        - /url: /admin/pages
+      - link "Settings" [ref=f9e77] [cursor=pointer]:
+        - /url: /admin/settings
+    - link "View Store" [ref=f9e81] [cursor=pointer]:
+      - /url: /
+    - button "Logout" [ref=f9e86] [cursor=pointer]
+  - generic [ref=f9e90]:
+    - generic [ref=f9e91]: Logged in as Admin
+    - heading "Fraud Check" [level=1] [ref=f9e93]
+    - generic [ref=f9e94]:
+      - paragraph [ref=f9e95]: Check any customer's delivery record across all Bangladeshi couriers before confirming a cash-on-delivery order.
+      - generic [ref=f9e96]:
+        - textbox "01XXXXXXXXX" [active] [ref=f9e97]: "01701042437"
+        - button "Check" [ref=f9e98] [cursor=pointer]
+      - heading "Delivery history — 01701042437" [level=4] [ref=f9e102]
+      - generic [ref=f9e103]:
+        - generic [ref=f9e104]:
+          - generic [ref=f9e105]:
+            - generic [ref=f9e106]: Total parcels
+            - generic [ref=f9e107]: "4"
+          - generic [ref=f9e108]:
+            - generic [ref=f9e109]: Delivered
+            - generic [ref=f9e110]: "4"
+          - generic [ref=f9e111]:
+            - generic [ref=f9e112]: Cancelled
+            - generic [ref=f9e113]: "0"
+          - generic [ref=f9e114]:
+            - generic [ref=f9e115]: Success rate
+            - generic [ref=f9e116]: 100%
+        - img "100% delivered" [ref=f9e117]
+        - generic [ref=f9e119]:
+          - generic [ref=f9e120]: Pathao
+          - generic [ref=f9e121]: 4 total
+          - generic [ref=f9e122]: 4 delivered
+          - generic [ref=f9e123]: 0 cancelled
+        - generic [ref=f9e124]:
+          - button "Check again" [ref=f9e125] [cursor=pointer]
+          - generic [ref=f9e130]: Checked 10/5/2026, 2:57:02 PM
+      - heading "Orders in this store (1)" [level=4] [ref=f9e131]
+      - table [ref=f9e133]:
+        - rowgroup [ref=f9e134]:
+          - row [ref=f9e135]:
+            - columnheader "Order" [ref=f9e136]
+            - columnheader "Customer" [ref=f9e137]
+            - columnheader "Phone" [ref=f9e138]
+            - columnheader "Total" [ref=f9e139]
+            - columnheader "Status" [ref=f9e140]
+            - columnheader "Payment" [ref=f9e141]
+            - columnheader "Courier Rate" [ref=f9e142]
+            - columnheader "Courier" [ref=f9e143]
+            - columnheader "Date" [ref=f9e144]
+        - rowgroup [ref=f9e145]:
+          - row [ref=f9e146] [cursor=pointer]:
+            - cell "#GAH3976815250" [ref=f9e147]
+            - cell "Naim Siddiki" [ref=f9e149]
+            - cell "01701042437" [ref=f9e150]
+            - cell "৳780" [ref=f9e151]
+            - cell "pending" [ref=f9e152]
+            - cell "unpaid" [ref=f9e154]
+            - cell "100% 4/4" [ref=f9e156]:
+              - generic "4 delivered · 0 cancelled of 4" [ref=f9e157]:
+                - generic [ref=f9e158]: 100%
+                - generic [ref=f9e159]: 4/4
+            - cell "—" [ref=f9e160]
+            - cell "2026-10-03 15:02" [ref=f9e161]

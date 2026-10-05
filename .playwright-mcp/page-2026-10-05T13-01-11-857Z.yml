@@ -1,0 +1,134 @@
+- generic [ref=f6e3]:
+  - generic [ref=f6e5]:
+    - generic [ref=f6e6]:
+      - generic [ref=f6e7]: Cash on Delivery Available
+      - generic [ref=f6e10]: Fast & Safe Delivery
+      - generic [ref=f6e13]: 100% Original Product
+      - generic [ref=f6e16]: Customer Support
+    - generic [ref=f6e19]:
+      - link "01411612350" [ref=f6e20] [cursor=pointer]:
+        - /url: tel:01411612350
+      - link "Facebook" [ref=f6e141] [cursor=pointer]:
+        - /url: https://www.facebook.com/profile.php?id=61554352545779
+      - link "WhatsApp" [ref=f6e23] [cursor=pointer]:
+        - /url: https://web.whatsapp.com/send?phone=8801411612350
+      - link "Admin" [ref=f6e27] [cursor=pointer]:
+        - /url: /admin
+  - banner [ref=f6e31]:
+    - generic [ref=f6e32]:
+      - button "Menu" [ref=f6e33] [cursor=pointer]
+      - link "Gadget Accessories Home" [ref=f6e35] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f6e43]:
+        - link "Home" [ref=f6e44] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f6e45] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f6e46] [cursor=pointer]:
+          - /url: /offers
+        - link "About" [ref=f6e47] [cursor=pointer]:
+          - /url: /about
+        - link "Contact" [ref=f6e48] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f6e49]:
+        - button "Search" [ref=f6e50] [cursor=pointer]
+        - link "Wishlist" [ref=f6e54] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f6e57]: "0"
+        - button "Cart" [ref=f6e58] [cursor=pointer]:
+          - generic [ref=f6e63]: "3"
+  - main [ref=f6e64]:
+    - generic [ref=f6e65]:
+      - heading "Hello, Admin" [level=1] [ref=f6e66]
+      - generic [ref=f6e67]:
+        - complementary [ref=f6e68]:
+          - button "My Orders" [ref=f6e69] [cursor=pointer]
+          - button "Profile" [ref=f6e74] [cursor=pointer]
+          - button "Password & Security" [active] [ref=f6e78] [cursor=pointer]
+          - link "Admin Panel" [ref=f6e82] [cursor=pointer]:
+            - /url: /admin
+          - 'button "Notifications: On" [ref=f6e144] [cursor=pointer]'
+          - button "Logout" [ref=f6e87] [cursor=pointer]
+        - generic [ref=f6e91]:
+          - generic [ref=f6e145]:
+            - heading "Change Password" [level=3] [ref=f6e146]
+            - paragraph [ref=f6e147]: Last changed 2026-10-05
+            - generic [ref=f6e148]:
+              - generic [ref=f6e149]:
+                - text: Current Password
+                - generic [ref=f6e150]:
+                  - textbox "Current Password Show password" [ref=f6e151]
+                  - button "Show password" [ref=f6e152] [cursor=pointer]
+              - generic [ref=f6e156]:
+                - text: New Password
+                - generic [ref=f6e157]:
+                  - textbox "New Password Show password" [ref=f6e158]
+                  - button "Show password" [ref=f6e159] [cursor=pointer]
+              - generic [ref=f6e163]:
+                - text: Confirm New Password
+                - generic [ref=f6e164]:
+                  - textbox "Confirm New Password Show password" [ref=f6e165]
+                  - button "Show password" [ref=f6e166] [cursor=pointer]
+            - button "Update Password" [ref=f6e170] [cursor=pointer]
+          - generic [ref=f6e171]:
+            - heading "Sessions" [level=3] [ref=f6e172]
+            - paragraph [ref=f6e173]: Logged in on a shared or lost device? Sign out everywhere.
+            - button "Sign out of all devices" [ref=f6e174] [cursor=pointer]
+  - contentinfo [ref=f6e95]:
+    - generic [ref=f6e96]:
+      - generic [ref=f6e97]:
+        - link "Gadget Accessories Home" [ref=f6e98] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=f6e106]: Your trusted shop for 100% original gadgets & accessories in Bangladesh. Cash on delivery, fast & safe delivery all over the country.
+        - generic [ref=f6e107]:
+          - link "Facebook" [ref=f6e178] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=61554352545779
+          - link "WhatsApp" [ref=f6e108] [cursor=pointer]:
+            - /url: https://web.whatsapp.com/send?phone=8801411612350
+      - generic [ref=f6e111]:
+        - heading "Categories" [level=4] [ref=f6e112]
+        - link "Power Bank" [ref=f6e181] [cursor=pointer]:
+          - /url: /category/power-bank
+        - link "Earbuds" [ref=f6e182] [cursor=pointer]:
+          - /url: /category/earbuds
+        - link "Smartwatch" [ref=f6e183] [cursor=pointer]:
+          - /url: /category/smartwatch
+        - link "Headset" [ref=f6e184] [cursor=pointer]:
+          - /url: /category/headset
+        - link "Adapter & Charger" [ref=f6e185] [cursor=pointer]:
+          - /url: /category/adapter-charger
+        - link "Charging Cable" [ref=f6e186] [cursor=pointer]:
+          - /url: /category/charging-cable
+        - link "Speaker" [ref=f6e187] [cursor=pointer]:
+          - /url: /category/speaker
+      - generic [ref=f6e113]:
+        - heading "Quick Links" [level=4] [ref=f6e114]
+        - link "Shop" [ref=f6e115] [cursor=pointer]:
+          - /url: /shop
+        - link "Offers" [ref=f6e116] [cursor=pointer]:
+          - /url: /offers
+        - link "Track Order" [ref=f6e117] [cursor=pointer]:
+          - /url: /track-order
+        - link "My Account" [ref=f6e118] [cursor=pointer]:
+          - /url: /account
+        - link "About Us" [ref=f6e119] [cursor=pointer]:
+          - /url: /about
+        - link "Contact Us" [ref=f6e120] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f6e121]:
+        - heading "Policies" [level=4] [ref=f6e122]
+        - link "Privacy Policy" [ref=f6e123] [cursor=pointer]:
+          - /url: /page/privacy-policy
+        - link "Terms & Conditions" [ref=f6e124] [cursor=pointer]:
+          - /url: /page/terms-conditions
+        - link "Return & Refund" [ref=f6e125] [cursor=pointer]:
+          - /url: /page/return-policy
+        - link "Shipping Policy" [ref=f6e126] [cursor=pointer]:
+          - /url: /page/shipping-policy
+      - generic [ref=f6e127]:
+        - heading "Contact" [level=4] [ref=f6e128]
+        - paragraph [ref=f6e129]: "01411612350"
+        - paragraph [ref=f6e132]: info@gadgetaccessorieshome.com
+        - paragraph [ref=f6e136]: Dhaka, Bangladesh
+    - generic [ref=f6e140]: © 2026 Gadget Accessories Home. All rights reserved.
+  - button "Back to top"

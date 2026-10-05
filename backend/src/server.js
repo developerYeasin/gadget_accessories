@@ -12,6 +12,7 @@ import adminRoutes from './routes/admin.js';
 import adminExtraRoutes from './routes/adminExtra.js';
 import feedRoutes from './routes/feed.js';
 import pushRoutes from './routes/push.js';
+import integrationRoutes from './routes/integrations.js';
 
 dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -19,12 +20,18 @@ const app = express();
 app.set('trust proxy', true);
 
 app.use(cors({ origin: process.env.CLIENT_URL?.split(',') || true }));
-app.use(express.json({ limit: '2mb' }));
+// Keep the raw body so payment webhooks can verify their signature
+app.use(express.json({ limit: '2mb', verify: (req, _res, buf) => { req.rawBody = buf; } }));
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
+// Reports the database error code (never credentials) so a broken deploy can be diagnosed from the browser
 app.get('/api/health', async (_req, res) => {
-  await pool.query('SELECT 1');
-  res.json({ ok: true });
+  try {
+    await pool.query('SELECT 1');
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ ok: false, db_error: err.code || err.message });
+  }
 });
 
 app.use('/api/auth', authRoutes);
@@ -34,6 +41,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/admin', adminExtraRoutes);
 app.use('/api/feed', feedRoutes);
 app.use('/api/push', pushRoutes);
+app.use('/api', integrationRoutes);
 app.use('/api', catalogRoutes);
 
 app.use('/api', (_req, res) => res.status(404).json({ message: 'Not found' }));

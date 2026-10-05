@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FiEdit2, FiPlus, FiTrash2, FiUpload, FiX } from 'react-icons/fi';
+import { FiCopy, FiEdit2, FiPlus, FiTrash2, FiUpload, FiX } from 'react-icons/fi';
 import api, { imageUrl, money } from '../../api/client';
 import { useStore } from '../../context/StoreContext';
 import { Modal } from './AdminPages';
@@ -172,7 +172,7 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
 
 const emptyProduct = {
   name: '', slug: '', brand: '', category_id: '', price: '', old_price: '', stock: 10, image: '', images: [],
-  features: [], short_description: '', description: '', rating: 5, review_count: 0, is_featured: false, is_flash_sale: false, is_active: true,
+  features: [], short_description: '', description: '', rating: 5, review_count: 0, is_featured: false, is_flash_sale: false, is_active: true, free_delivery: false,
 };
 
 function ProductForm({ initial, onClose, onSaved }) {
@@ -263,6 +263,7 @@ function ProductForm({ initial, onClose, onSaved }) {
           <label className="check"><input type="checkbox" checked={!!f.is_featured} onChange={set('is_featured')} /> Featured</label>
           <label className="check"><input type="checkbox" checked={!!f.is_flash_sale} onChange={set('is_flash_sale')} /> Flash Sale</label>
           <label className="check"><input type="checkbox" checked={!!f.is_active} onChange={set('is_active')} /> Active (visible)</label>
+          <label className="check"><input type="checkbox" checked={!!f.free_delivery} onChange={set('free_delivery')} /> Free Delivery (orders with this product ship free)</label>
         </div>
         <button className="btn btn--gold" disabled={!loaded}>{loaded ? 'Save Product' : 'Loading…'}</button>
       </form>
@@ -285,6 +286,17 @@ export function Products() {
     load();
   };
 
+  const duplicate = async (p) => {
+    try {
+      const { id } = await api.post(`/admin/products/${p.id}/duplicate`);
+      toast.success('Copy created (hidden) — edit and turn on Active when ready');
+      await load();
+      setEdit({ id });
+    } catch (e) {
+      toast.error(e.message);
+    }
+  };
+
   return (
     <>
       <div className="admin__bar">
@@ -303,9 +315,10 @@ export function Products() {
                 <td>{p.category_name}</td>
                 <td>{money(p.price)} {p.old_price > p.price && <del className="muted small">{money(p.old_price)}</del>}</td>
                 <td className={p.stock <= 5 ? 'danger' : ''}>{p.stock}</td>
-                <td className="small">{p.is_featured && 'Featured '}{p.is_flash_sale && 'Flash '}{!p.is_active && 'Hidden'}</td>
+                <td className="small">{p.is_featured && 'Featured '}{p.is_flash_sale && 'Flash '}{!!p.free_delivery && 'Free delivery '}{!p.is_active && 'Hidden'}</td>
                 <td className="nowrap">
-                  <button className="icon-btn" onClick={() => setEdit(p)} aria-label="Edit"><FiEdit2 /></button>
+                  <button className="icon-btn" onClick={() => setEdit(p)} aria-label="Edit" title="Edit"><FiEdit2 /></button>
+                  <button className="icon-btn" onClick={() => duplicate(p)} aria-label="Copy" title="Copy product"><FiCopy /></button>
                   <button className="icon-btn danger" onClick={() => remove(p)} aria-label="Delete"><FiTrash2 /></button>
                 </td>
               </tr>

@@ -27,6 +27,10 @@ async function migrate() {
     if (!rows.length) await conn.query(`ALTER TABLE \`${table}\` ADD COLUMN \`${column}\` ${definition}`);
   };
   await ensureColumn('users', 'is_blocked', 'TINYINT(1) NOT NULL DEFAULT 0');
+  await ensureColumn('users', 'token_version', 'INT NOT NULL DEFAULT 0');
+  await ensureColumn('users', 'password_changed_at', 'DATETIME NULL');
+  await ensureColumn('users', 'last_login_at', 'DATETIME NULL');
+  await ensureColumn('users', 'avatar', 'VARCHAR(500) NULL');
   await ensureColumn('orders', 'discount', 'DECIMAL(10,2) NOT NULL DEFAULT 0 AFTER delivery_charge');
   await ensureColumn('orders', 'coupon_code', 'VARCHAR(40) NULL AFTER discount');
   await ensureColumn('orders', 'payment_status', "ENUM('unpaid','paid','refunded') NOT NULL DEFAULT 'unpaid' AFTER payment_method");
@@ -37,6 +41,13 @@ async function migrate() {
   await ensureColumn('products', 'weight', 'INT NOT NULL DEFAULT 0');
   await ensureColumn('order_items', 'variant_id', 'INT NULL AFTER product_id');
   await ensureColumn('order_items', 'variant_name', 'VARCHAR(200) NULL AFTER product_name');
+  await ensureColumn('orders', 'payment_ref', 'VARCHAR(100) NULL AFTER payment_status');
+  await ensureColumn('orders', 'courier', 'VARCHAR(30) NULL');
+  await ensureColumn('orders', 'courier_tracking_code', 'VARCHAR(80) NULL');
+  await ensureColumn('orders', 'courier_consignment_id', 'VARCHAR(80) NULL');
+  await ensureColumn('orders', 'courier_status', 'VARCHAR(60) NULL');
+  await ensureColumn('orders', 'courier_booked_at', 'DATETIME NULL');
+  await ensureColumn('products', 'free_delivery', 'TINYINT(1) NOT NULL DEFAULT 0');
   console.log('✔ Tables created / verified in', database);
   await conn.end();
 }

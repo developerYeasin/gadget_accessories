@@ -7,6 +7,11 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('customer','admin') NOT NULL DEFAULT 'customer',
   address VARCHAR(255),
   city VARCHAR(80),
+  is_blocked TINYINT(1) NOT NULL DEFAULT 0,
+  token_version INT NOT NULL DEFAULT 0,
+  password_changed_at DATETIME NULL,
+  last_login_at DATETIME NULL,
+  avatar VARCHAR(500) NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -196,4 +201,11 @@ CREATE TABLE IF NOT EXISTS push_campaigns (
   failed INT NOT NULL DEFAULT 0,
   created_by INT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Cached delivery history per customer phone (from bdcourier.com)
+CREATE TABLE IF NOT EXISTS courier_checks (
+  phone VARCHAR(20) PRIMARY KEY,
+  data JSON NOT NULL,
+  checked_at DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

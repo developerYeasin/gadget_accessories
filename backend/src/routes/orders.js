@@ -3,6 +3,8 @@ import pool from '../config/db.js';
 import { optionalAuth, protect } from '../middleware/auth.js';
 import { applyCoupon, asyncHandler, deliveryCharge, itemWeight } from '../utils.js';
 import { background, notifyAdmins } from '../services/push.js';
+import { payConfig } from '../services/bizscalpay.js';
+import { trackServer } from '../services/serverTracking.js';
 
 const router = Router();
 
@@ -10,9 +12,11 @@ const makeOrderNumber = () =>
   'GAH' + Date.now().toString().slice(-8) + Math.floor(Math.random() * 90 + 10);
 
 router.post('/', optionalAuth, asyncHandler(async (req, res) => {
-  const { customer_name, phone, email, address, city, area = 'inside_dhaka', note, payment_method = 'cod', items, coupon_code } = req.body;
+  const { customer_name, phone, email, address, city, area = 'inside_dhaka', note, payment_method = 'cod', items, coupon_code, tracking = {} } = req.body;
   if (!customer_name || !phone || !address) return res.status(400).json({ message: 'Name, phone and address are required' });
   if (!Array.isArray(items) || !items.length) return res.status(400).json({ message: 'Cart is empty' });
+  if (!['cod', 'online'].includes(payment_method)) return res.status(400).json({ message: 'Invalid payment method' });
+  if (payment_method === 'online' && !(await payConfig()).enabled) return res.status(400).json({ message: 'Online payment is not available right now' });
 
   const conn = await pool.getConnection();
   try {
@@ -20,7 +24,7 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
     const lines = [];
     for (const it of items) {
       const qty = Math.max(1, Math.floor(Number(it.quantity) || 1));
-      const [[p]] = await conn.query('SELECT id, name, image, price, stock, weight FROM products WHERE id = ? AND is_active = 1 FOR UPDATE', [it.product_id]);
+      const [[p]] = await conn.query('SELECT id, name, image, price, stock, weight, free_delivery FROM products WHERE id = ? AND is_active = 1 FOR UPDATE', [it.product_id]);
       if (!p) throw Object.assign(new Error('A product in your cart is no longer available'), { status: 400 });
       const [variants] = await conn.query('SELECT * FROM product_variants WHERE product_id = ? AND is_active = 1 FOR UPDATE', [p.id]);
       if (variants.length) {
@@ -36,7 +40,7 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
     }
     const [settingRows] = await conn.query("SELECT `key`, `value` FROM settings WHERE `key` LIKE 'delivery%'");
     const s = Object.fromEntries(settingRows.map((r) => [r.key, r.value]));
-    const delivery = deliveryCharge(s, area, lines.reduce((g, l) => g + itemWeight(s, l.weight) * l.qty, 0));
+    const delivery = lines.some((l) => l.free_delivery) ? 0 : deliveryCharge(s, area, lines.reduce((g, l) => g + itemWeight(s, l.weight) * l.qty, 0));
     const subtotal = lines.reduce((sum, l) => sum + l.price * l.qty, 0);
     let discount = 0;
     let couponCode = null;
@@ -69,6 +73,20 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
       url: '/admin/orders',
       tag: `order-${orderNumber}`,
     }));
+    // Server copy of the browser's Purchase pixel (same event id = order number, so it is counted once)
+    const t = typeof tracking === 'object' && tracking ? tracking : {};
+    trackServer({
+      event: 'Purchase',
+      eventId: orderNumber,
+      req,
+      url: typeof t.url === 'string' ? t.url.slice(0, 1000) : undefined,
+      user: { email, phone, name: customer_name, city, external_id: req.user?.id, fbp: t.fbp, fbc: t.fbc, ttp: t.ttp, ttclid: t.ttclid },
+      data: {
+        value: total,
+        order_id: orderNumber,
+        items: lines.map((l) => ({ id: `GAH-${l.id}`, name: l.name, price: Number(l.price), quantity: l.qty })),
+      },
+    });
   } catch (err) {
     await conn.rollback();
     throw err;
@@ -81,13 +99,14 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
 router.post('/quote', asyncHandler(async (req, res) => {
   const items = Array.isArray(req.body.items) ? req.body.items.slice(0, 100) : [];
   const ids = [...new Set(items.map((i) => Number(i.product_id)).filter(Boolean))];
-  const [rows] = ids.length ? await pool.query('SELECT id, weight FROM products WHERE id IN (?)', [ids]) : [[]];
+  const [rows] = ids.length ? await pool.query('SELECT id, weight, free_delivery FROM products WHERE id IN (?)', [ids]) : [[]];
   const [settingRows] = await pool.query("SELECT `key`, `value` FROM settings WHERE `key` LIKE 'delivery%'");
   const s = Object.fromEntries(settingRows.map((r) => [r.key, r.value]));
   const w = Object.fromEntries(rows.map((r) => [r.id, r.weight]));
   const grams = items.reduce((g, i) => (w[Number(i.product_id)] === undefined ? g
     : g + itemWeight(s, w[Number(i.product_id)]) * Math.max(1, Math.floor(Number(i.quantity) || 1))), 0);
-  res.json({ weight: grams, inside_dhaka: deliveryCharge(s, 'inside_dhaka', grams), outside_dhaka: deliveryCharge(s, 'outside_dhaka', grams) });
+  const free = rows.some((r) => r.free_delivery);
+  res.json({ weight: grams, free_delivery: free, inside_dhaka: free ? 0 : deliveryCharge(s, 'inside_dhaka', grams), outside_dhaka: free ? 0 : deliveryCharge(s, 'outside_dhaka', grams) });
 }));
 
 router.get('/my', protect, asyncHandler(async (req, res) => {
