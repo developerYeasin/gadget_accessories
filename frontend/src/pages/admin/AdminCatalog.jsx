@@ -5,6 +5,7 @@ import api, { imageUrl, money } from '../../api/client';
 import { useStore } from '../../context/StoreContext';
 import { Modal } from './AdminPages';
 import { isColorGroup, swatchColor } from '../../utils/colors';
+import { RichTextEditor } from '../../components/RichText';
 
 function ImageInput({ label, value, onChange }) {
   const [busy, setBusy] = useState(false);
@@ -90,6 +91,9 @@ function VariantImage({ value, onChange }) {
 function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base }) {
   const setRow = (i, patch) => setOptionRows(optionRows.map((r, k) => (k === i ? { ...r, ...patch } : r)));
   const setVariant = (i, patch) => setVariants(variants.map((v, k) => (k === i ? { ...v, ...patch } : v)));
+  // Color group of the generated variants: one photo per color fills every variant of that color
+  const colorKey = variants.length ? Object.keys(variants[0].options || {}).find(isColorGroup) : null;
+  const colorValues = colorKey ? [...new Set(variants.map((v) => v.options?.[colorKey]).filter(Boolean))] : [];
 
   const generate = () => {
     const groups = fromRows(optionRows);
@@ -164,6 +168,20 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
           </table>
         </div>
       )}
+      {colorKey && (
+        <div className="vedit__colors">
+          <b className="small">Color photos — shown when the customer picks that color</b>
+          <div className="row">
+            {colorValues.map((val) => (
+              <span key={val} className="vedit__colorimg">
+                <span className="vedit__name">{swatchColor(val) && <i className="vedit__dot" style={{ background: swatchColor(val) }} />}{val}</span>
+                <VariantImage value={variants.find((v) => v.options?.[colorKey] === val && v.image)?.image || ''}
+                  onChange={(url) => setVariants(variants.map((v) => (v.options?.[colorKey] === val ? { ...v, image: url } : v)))} />
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
       {optionRows.length > 0 && !variants.length && <p className="muted small">Edit the values, then click Generate variants to set price &amp; stock per option (or just save — they'll use the product's price and stock).</p>}
       {variants.length > 0 && <p className="muted small">Product price shows the lowest variant price; total stock is the sum of all variants.</p>}
     </div>
@@ -178,7 +196,7 @@ const emptyProduct = {
 function ProductForm({ initial, onClose, onSaved }) {
   const { categories } = useStore();
   const [f, setF] = useState({ ...emptyProduct, ...initial, category_id: initial?.category_id || '' });
-  const [featureText, setFeatureText] = useState((initial?.features || []).join(', '));
+  const [featureText, setFeatureText] = useState((initial?.features || []).join('\n'));
   const [optionRows, setOptionRows] = useState(toRows(initial?.options));
   const [variants, setVariants] = useState([]);
   const [loaded, setLoaded] = useState(!initial?.id);
@@ -210,7 +228,8 @@ function ProductForm({ initial, onClose, onSaved }) {
     const body = {
       ...f,
       images: [f.image, ...extra].filter(Boolean),
-      features: featureText.split(',').map((s) => s.trim()).filter(Boolean),
+      // One feature per line; a single line without breaks is still split on commas (older products)
+      features: (featureText.includes('\n') ? featureText.split('\n') : featureText.split(',')).map((s) => s.trim()).filter(Boolean),
       options: finalVariants.length ? groups : [],
       variants: finalVariants,
     };
@@ -257,9 +276,9 @@ function ProductForm({ initial, onClose, onSaved }) {
           <div className="span-2">
             <VariantEditor optionRows={optionRows} setOptionRows={setOptionRows} variants={variants} setVariants={setVariants} base={f} />
           </div>
-          <label className="span-2">Features (comma separated)<input className="input" value={featureText} onChange={(e) => setFeatureText(e.target.value)} placeholder="Fast Charging, High Capacity" /></label>
+          <label className="span-2">Key Features — one per line<textarea className="input" rows={5} value={featureText} onChange={(e) => setFeatureText(e.target.value)} placeholder={'Capacity: 10000mAh\nInput: USB-C 18W\nOutput: USB-C 20W (PD/QC)'} /></label>
           <label className="span-2">Short Description<input className="input" value={f.short_description || ''} onChange={set('short_description')} /></label>
-          <label className="span-2">Description<textarea className="input" rows={4} value={f.description || ''} onChange={set('description')} /></label>
+          <div className="span-2"><span className="small">Description</span><RichTextEditor value={f.description || ''} onChange={(html) => setF((cur) => ({ ...cur, description: html }))} /></div>
           <label className="check"><input type="checkbox" checked={!!f.is_featured} onChange={set('is_featured')} /> Featured</label>
           <label className="check"><input type="checkbox" checked={!!f.is_flash_sale} onChange={set('is_flash_sale')} /> Flash Sale</label>
           <label className="check"><input type="checkbox" checked={!!f.is_active} onChange={set('is_active')} /> Active (visible)</label>

@@ -37,8 +37,9 @@ export default function OrderView({ order }) {
       <div className="summary__row summary__total"><span>Total</span><span className="gold">{money(order.total)}</span></div>
       {order.courier_tracking_code && (
         <p className="small">
-          Courier: <b>{order.courier === 'steadfast' ? 'Steadfast' : order.courier}</b> · Tracking <b className="gold">{order.courier_tracking_code}</b>
+          Courier: <b>{{ steadfast: 'Steadfast', pathao: 'Pathao' }[order.courier] || order.courier}</b> · Tracking <b className="gold">{order.courier_tracking_code}</b>
           {order.courier === 'steadfast' && <> · <a className="gold" href={`https://steadfast.com.bd/t/${encodeURIComponent(order.courier_tracking_code)}`} target="_blank" rel="noreferrer">Track parcel →</a></>}
+          {order.courier === 'pathao' && <> · <a className="gold" href={`https://merchant.pathao.com/tracking?consignment_id=${encodeURIComponent(order.courier_tracking_code)}&phone=${encodeURIComponent(order.phone || '')}`} target="_blank" rel="noreferrer">Track parcel →</a></>}
         </p>
       )}
       <p className="small muted">Deliver to: {order.customer_name}, {order.phone} — {order.address}{order.city ? `, ${order.city}` : ''}</p>

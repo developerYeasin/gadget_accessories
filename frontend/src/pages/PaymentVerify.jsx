@@ -10,22 +10,26 @@ export default function PaymentVerify() {
   const order = params.get('order') || '';
   const phone = params.get('phone') || '';
   const invoiceId = params.get('invoiceId') || '';
+  // bizscalpay (default), bkash (adds paymentID & status) or sslcommerz
+  const gateway = ['bkash', 'sslcommerz'].includes(params.get('gateway')) ? params.get('gateway') : 'bizscalpay';
+  const paymentID = params.get('paymentID') || '';
+  const gatewayStatus = params.get('status') || '';
   const [state, setState] = useState('checking');
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     let alive = true;
-    api.post('/payment/bizscalpay/verify', { order_number: order, phone, invoiceId })
+    api.post(`/payment/${gateway}/verify`, { order_number: order, phone, invoiceId, paymentID, status: gatewayStatus })
       .then((r) => alive && setState(r.status))
       .catch((err) => { if (alive) { setState('error'); setMessage(err.message); } });
     return () => { alive = false; };
-  }, [order, phone, invoiceId]);
+  }, [order, phone, invoiceId, gateway, paymentID, gatewayStatus]);
 
   const retry = async () => {
     setBusy(true);
     try {
-      const pay = await api.post('/payment/bizscalpay/create', { order_number: order, phone });
+      const pay = await api.post(`/payment/${gateway}/create`, { order_number: order, phone });
       window.location.assign(pay.paymentUrl);
     } catch (err) {
       toast.error(err.message);

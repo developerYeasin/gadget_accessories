@@ -426,7 +426,7 @@ export function Invoice() {
           <div><span>Delivery</span><span>{money(o.delivery_charge)}</span></div>
           {o.discount > 0 && <div><span>Discount {o.coupon_code ? `(${o.coupon_code})` : ''}</span><span>−{money(o.discount)}</span></div>}
           <div className="invoice__grand"><span>Total</span><span>{money(o.total)}</span></div>
-          <div><span>Payment</span><span>{o.payment_method === 'cod' ? 'Cash on Delivery' : o.payment_method}</span></div>
+          <div><span>Payment</span><span>{({ cod: 'Cash on Delivery', online: 'Online', bkash: 'bKash', sslcommerz: 'SSLCommerz' })[o.payment_method] || o.payment_method}</span></div>
         </div>
         <p className="invoice__thanks">Thank you for shopping with Gadget Accessories Home!</p>
       </div>

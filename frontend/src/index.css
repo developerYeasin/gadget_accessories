@@ -951,3 +951,22 @@ input, select, textarea { font: inherit; color: inherit; }
 .avatar-upload__cam { position: absolute; right: -2px; bottom: -2px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-grad); color: #111; border: 3px solid var(--card); }
 .user-cell { display: inline-flex; align-items: center; gap: 10px; }
 .admin__me { display: inline-flex; align-items: center; gap: 10px; }
+
+/* ---------- Rich text (product description) ---------- */
+.rte { border: 1px solid var(--border, #333); border-radius: 10px; overflow: hidden; margin-top: 6px; }
+.rte__bar { display: flex; flex-wrap: wrap; gap: 2px; padding: 6px; border-bottom: 1px solid var(--border, #333); background: rgba(255,255,255,.03); }
+.rte__bar button { min-width: 32px; height: 32px; border: 0; border-radius: 6px; background: transparent; color: inherit; cursor: pointer; display: grid; place-items: center; font-size: 15px; }
+.rte__bar button:hover { background: rgba(255,255,255,.08); color: var(--gold, #e6b325); }
+.rte__area { min-height: 180px; max-height: 420px; overflow-y: auto; padding: 12px 14px; outline: none; }
+.rte__area:empty::before { content: attr(data-placeholder); opacity: .45; }
+.rte-view { line-height: 1.7; overflow-wrap: anywhere; }
+.rte-view p { margin: 0 0 .5em; }
+.rte-view h2, .rte-view h3, .rte-view h4 { margin: .8em 0 .4em; }
+.rte-view ul, .rte-view ol { padding-left: 1.4em; margin: 0 0 .7em; }
+.rte-view li { margin: .2em 0; }
+.rte-view a { color: var(--gold, #e6b325); text-decoration: underline; }
+.rte-view blockquote { border-left: 3px solid var(--gold, #e6b325); margin: .6em 0; padding-left: 12px; opacity: .85; }
+
+/* ---------- Variant editor: one photo per color ---------- */
+.vedit__colors { margin-top: 12px; display: grid; gap: 8px; }
+.vedit__colorimg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--border, #333); border-radius: 10px; }

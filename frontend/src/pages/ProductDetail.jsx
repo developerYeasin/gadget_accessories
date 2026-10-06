@@ -13,6 +13,7 @@ import { useStore } from '../context/StoreContext';
 import { track } from '../api/tracking';
 import { isColorGroup, swatchColor } from '../utils/colors';
 import { Breadcrumb, ProductGrid, Spinner, Stars } from '../components/Shared';
+import { RichText } from '../components/RichText';
 
 /* ---------- Gallery with hover zoom, arrows, swipe and fullscreen lightbox ---------- */
 function Gallery({ images, name, discount }) {
@@ -23,7 +24,8 @@ function Gallery({ images, name, discount }) {
   const n = images.length;
   const go = useCallback((d) => setActive((i) => (i + d + n) % n), [n]);
 
-  useEffect(() => setActive(0), [images]);
+  const imagesKey = images.join('|');
+  useEffect(() => setActive(0), [imagesKey]);
   useEffect(() => {
     if (!lightbox) return;
     const onKey = (e) => {
@@ -216,7 +218,10 @@ export default function ProductDetail() {
     ? { price: variant.price, old_price: variant.old_price, stock: variant.stock, discount: variant.discount }
     : { price: p.price, old_price: p.old_price, stock: hasVariants ? 0 : p.stock, discount: p.discount };
   const baseImages = p.images?.length ? p.images : [p.image];
-  const images = variant?.image ? [variant.image, ...baseImages.filter((i) => i !== variant.image)] : baseImages;
+  // Picked color shows its photo: the variant's own image, else any variant of the same color that has one
+  const colorKey = Object.keys(selected).find(isColorGroup);
+  const pickedImage = variant?.image || (colorKey && p.variants?.find((v) => variantOptions(p, v)[colorKey] === selected[colorKey] && v.image)?.image);
+  const images = pickedImage ? [pickedImage, ...baseImages.filter((i) => i !== pickedImage)] : baseImages;
   const liked = inWishlist(p.id);
   const pageUrl = window.location.href;
   const lowStock = cur.stock > 0 && cur.stock <= 10;
@@ -335,7 +340,7 @@ export default function ProductDetail() {
       <div className="card tab-body">
         {tab === 'description' && (
           <>
-            <p className="pre">{p.description}</p>
+            <RichText html={p.description} />
             {p.features?.length > 0 && (
               <>
                 <h4 className="tab-h">Key Features</h4>

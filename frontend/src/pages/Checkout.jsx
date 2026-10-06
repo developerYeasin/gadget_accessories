@@ -7,6 +7,13 @@ import { cartKey, useStore } from '../context/StoreContext';
 import { track, trackingContext } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 
+// Payment method → [label, hint, create endpoint]. 'online' is BizscalPay.
+const GATEWAYS = {
+  bkash: ['bKash', 'Pay with your bKash account on the next page.', '/payment/bkash/create'],
+  sslcommerz: ['Card / Mobile Banking', 'Pay by card, bKash, Nagad, Rocket or internet banking on the next page (SSLCommerz).', '/payment/sslcommerz/create'],
+  online: ['Pay Online', 'Pay with bKash, Nagad, Rocket or card on the next page.', '/payment/bizscalpay/create'],
+};
+
 export default function Checkout() {
   const { selectedItems, removeKeys, user, settings } = useStore();
   const navigate = useNavigate();
@@ -25,7 +32,7 @@ export default function Checkout() {
     note: '',
   });
   const [busy, setBusy] = useState(false);
-  const onlinePay = settings.bizscalpay_enabled === '1';
+  const gateways = Object.keys(GATEWAYS).filter((k) => settings[k === 'online' ? 'bizscalpay_enabled' : `${k}_enabled`] === '1');
   const [payment, setPayment] = useState('cod');
   const [couponInput, setCouponInput] = useState('');
   const [coupon, setCoupon] = useState(null);
@@ -74,7 +81,7 @@ export default function Checkout() {
     try {
       const res = await api.post('/orders', {
         ...form,
-        payment_method: onlinePay && payment === 'online' ? 'online' : 'cod',
+        payment_method: gateways.includes(payment) ? payment : 'cod',
         coupon_code: coupon?.code,
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
         tracking: trackingContext(),
@@ -82,9 +89,9 @@ export default function Checkout() {
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
       // Ordered lines leave the cart; anything not ticked stays for later
       if (!buyNow) removeKeys(cart.map(cartKey));
-      if (onlinePay && payment === 'online') {
+      if (gateways.includes(payment)) {
         try {
-          const pay = await api.post('/payment/bizscalpay/create', { order_number: res.order_number, phone: form.phone });
+          const pay = await api.post(GATEWAYS[payment][2], { order_number: res.order_number, phone: form.phone });
           window.location.assign(pay.paymentUrl);
           return;
         } catch (err) {
@@ -129,16 +136,16 @@ export default function Checkout() {
           </div>
           <h3>Payment Method</h3>
           <div className="radio-cards">
-            <label className={payment === 'cod' || !onlinePay ? 'is-active' : ''}>
-              <input type="radio" name="payment" checked={payment === 'cod' || !onlinePay} onChange={() => setPayment('cod')} /> <FaTruck className="gold" /> Cash on Delivery
+            <label className={!gateways.includes(payment) ? 'is-active' : ''}>
+              <input type="radio" name="payment" checked={!gateways.includes(payment)} onChange={() => setPayment('cod')} /> <FaTruck className="gold" /> Cash on Delivery
             </label>
-            {onlinePay && (
-              <label className={payment === 'online' ? 'is-active' : ''}>
-                <input type="radio" name="payment" checked={payment === 'online'} onChange={() => setPayment('online')} /> <FaCreditCard className="gold" /> Pay Online
+            {gateways.map((k) => (
+              <label key={k} className={payment === k ? 'is-active' : ''}>
+                <input type="radio" name="payment" checked={payment === k} onChange={() => setPayment(k)} /> <FaCreditCard className="gold" /> {GATEWAYS[k][0]}
               </label>
-            )}
+            ))}
           </div>
-          {onlinePay && payment === 'online' && <p className="muted small">Pay with bKash, Nagad, Rocket or card on the next page.</p>}
+          {gateways.includes(payment) && <p className="muted small">{GATEWAYS[payment][1]}</p>}
         </div>
         <aside className="card summary">
           <h3>Your Order</h3>
@@ -165,7 +172,7 @@ export default function Checkout() {
           </div>
           {discount > 0 && <div className="summary__row discount-row"><span>Discount ({coupon.code})</span><span>−{money(discount)}</span></div>}
           <div className="summary__row summary__total"><span>Total</span><span className="gold">{money(cartTotal + delivery - discount)}</span></div>
-          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : onlinePay && payment === 'online' ? 'Place Order & Pay' : 'Confirm Order'}</button>
+          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : gateways.includes(payment) ? 'Place Order & Pay' : 'Confirm Order'}</button>
         </aside>
       </form>
     </div>

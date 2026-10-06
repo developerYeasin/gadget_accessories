@@ -30,6 +30,10 @@ const PayBadge = ({ status }) => (
 );
 
 // Orders that can still be handed to the courier
+const COURIER_NAMES = { steadfast: 'Steadfast', pathao: 'Pathao' };
+const trackUrl = (o) => (o.courier === 'pathao'
+  ? `https://merchant.pathao.com/tracking?consignment_id=${encodeURIComponent(o.courier_tracking_code)}&phone=${encodeURIComponent(o.phone || '')}`
+  : `https://steadfast.com.bd/t/${encodeURIComponent(o.courier_tracking_code)}`);
 const canShip = (o) => !o.courier_tracking_code && o.status !== 'cancelled' && o.status !== 'delivered';
 
 // Delivery success rate for one order's phone: cached result shows at once, otherwise a Check button
@@ -212,9 +216,9 @@ function CourierPanel({ o, onChanged }) {
   if (o.courier_tracking_code) {
     return (
       <div className="row">
-        <span>Steadfast · <b className="gold">{o.courier_tracking_code}</b></span>
+        <span>{COURIER_NAMES[o.courier] || o.courier} · <b className="gold">{o.courier_tracking_code}</b></span>
         <span className="status status--shipped">{(o.courier_status || 'booked').replace(/_/g, ' ')}</span>
-        <a className="btn btn--ghost btn--sm" href={`https://steadfast.com.bd/t/${encodeURIComponent(o.courier_tracking_code)}`} target="_blank" rel="noreferrer"><FiExternalLink /> Track</a>
+        <a className="btn btn--ghost btn--sm" href={trackUrl(o)} target="_blank" rel="noreferrer"><FiExternalLink /> Track</a>
         <button className="btn btn--ghost btn--sm" disabled={busy} onClick={() => run(() => api.post(`/admin/orders/${o.id}/courier/refresh`), 'Courier status updated')}><FiRefreshCw /> Refresh status</button>
       </div>
     );
@@ -223,10 +227,12 @@ function CourierPanel({ o, onChanged }) {
   const cod = o.payment_status === 'paid' ? 0 : o.total;
   return (
     <div className="row">
-      <button className="btn btn--gold btn--sm" disabled={busy}
-        onClick={() => window.confirm(`Send to Steadfast with ${money(cod)} cash to collect?`) && run(() => api.post(`/admin/orders/${o.id}/courier`), 'Parcel booked with Steadfast')}>
-        <FiTruck /> {busy ? 'Sending…' : 'Send to Steadfast'}
-      </button>
+      {Object.entries(COURIER_NAMES).map(([key, name], i) => (
+        <button key={key} className={`btn btn--sm ${i ? 'btn--outline' : 'btn--gold'}`} disabled={busy}
+          onClick={() => window.confirm(`Send to ${name} with ${money(cod)} cash to collect?`) && run(() => api.post(`/admin/orders/${o.id}/courier`, { courier: key }), `Parcel booked with ${name}`)}>
+          <FiTruck /> {busy ? 'Sending…' : `Send to ${name}`}
+        </button>
+      ))}
       <span className="muted small">Cash to collect: {money(cod)}{o.payment_status === 'paid' ? ' (paid online)' : ''}</span>
     </div>
   );
@@ -279,7 +285,7 @@ function OrderModal({ id, onClose, onChanged }) {
       <OrderView order={o} />
       {o.note && <p className="small"><b>Customer note:</b> {o.note}</p>}
       <p className="small muted">
-        Area: {o.area === 'outside_dhaka' ? 'Outside Dhaka' : 'Inside Dhaka'} · Payment: {o.payment_method === 'online' ? 'Online' : o.payment_method.toUpperCase()} <PayBadge status={o.payment_status} />
+        Area: {o.area === 'outside_dhaka' ? 'Outside Dhaka' : 'Inside Dhaka'} · Payment: {({ online: 'Online', bkash: 'bKash', sslcommerz: 'SSLCommerz' })[o.payment_method] || o.payment_method.toUpperCase()} <PayBadge status={o.payment_status} />
         {o.payment_ref && <> · Ref: {o.payment_ref}</>}
       </p>
 
@@ -343,11 +349,12 @@ export function Orders() {
   const counts = ALL_STATUSES.map((s) => [s, orders.filter((o) => o.status === s).length]);
   const visibleSelected = orders.filter((o) => selected.has(o.id) && canShip(o)).map((o) => o.id);
 
+  const [bulkCourier, setBulkCourier] = useState('steadfast');
   const sendBulk = async () => {
-    if (!window.confirm(`Send ${visibleSelected.length} order(s) to Steadfast?`)) return;
+    if (!window.confirm(`Send ${visibleSelected.length} order(s) to ${COURIER_NAMES[bulkCourier]}?`)) return;
     setSending(true);
     try {
-      const { results } = await api.post('/admin/courier/bulk', { ids: visibleSelected });
+      const { results } = await api.post('/admin/courier/bulk', { ids: visibleSelected, courier: bulkCourier });
       const failed = results.filter((r) => !r.ok);
       if (results.length > failed.length) toast.success(`${results.length - failed.length} parcel(s) booked`);
       failed.forEach((r) => toast.error(`#${orders.find((o) => o.id === r.id)?.order_number}: ${r.message}`, { duration: 6000 }));
@@ -380,7 +387,10 @@ export function Orders() {
       {visibleSelected.length > 0 && (
         <div className="alert row">
           <span>{visibleSelected.length} order(s) selected</span>
-          <button className="btn btn--gold btn--sm" onClick={sendBulk} disabled={sending}><FiTruck /> {sending ? 'Sending…' : 'Send to Steadfast'}</button>
+          <select className="input input--auto" value={bulkCourier} onChange={(e) => setBulkCourier(e.target.value)}>
+            {Object.entries(COURIER_NAMES).map(([k, n]) => <option key={k} value={k}>{n}</option>)}
+          </select>
+          <button className="btn btn--gold btn--sm" onClick={sendBulk} disabled={sending}><FiTruck /> {sending ? 'Sending…' : `Send to ${COURIER_NAMES[bulkCourier]}`}</button>
           <button className="btn btn--ghost btn--sm" onClick={() => setSelected(new Set())}>Clear</button>
         </div>
       )}
@@ -662,12 +672,36 @@ const SETTING_GROUPS = [
     ['steadfast_webhook_token', 'Webhook Auth Token — any long random text, same as in the Steadfast portal', 'secret'],
     ['bdcourier_api_key', 'BD Courier API Key — customer delivery history (bdcourier.com)', 'secret'],
   ], [['Steadfast webhook URL (Steadfast portal → API → Webhook)', 'courier/steadfast/webhook']]],
+  ['courier', 'Courier — Pathao', [
+    ['pathao_client_id', 'Pathao Client ID (merchant.pathao.com → Developers API)', 'secret'],
+    ['pathao_client_secret', 'Pathao Client Secret', 'secret'],
+    ['pathao_username', 'Pathao merchant login email', 'secret'],
+    ['pathao_password', 'Pathao merchant login password', 'secret'],
+    ['pathao_webhook_secret', 'Webhook Secret — any long random text, same as in the Pathao panel', 'secret'],
+    ['pathao_store_id', 'Store ID — leave empty to use your first Pathao store'],
+    ['pathao_default_weight', 'Parcel weight sent to Pathao (kg), default 0.5'],
+    ['pathao_sandbox', 'Sandbox (test) mode', 'toggle'],
+  ], [['Pathao webhook URL (Pathao panel → Developers API → Webhook)', 'courier/pathao/webhook']]],
   ['payment', 'Online Payment — BizscalPay', [
     ['bizscalpay_enabled', 'Show "Pay Online" at checkout', 'toggle'],
     ['bizscalpay_api_key', 'BizscalPay API Key', 'secret'],
     ['bizscalpay_webhook_secret', 'BizscalPay Webhook Secret', 'secret'],
     ['bizscalpay_api_base', 'API Base URL — leave empty for https://bizscalpaybackend.bizscal.com'],
   ], [['BizscalPay webhook URL (BizscalPay dashboard → Webhooks)', 'payment/bizscalpay/webhook']]],
+  ['payment', 'Online Payment — bKash (merchant tokenized checkout)', [
+    ['bkash_enabled', 'Show "bKash" at checkout', 'toggle'],
+    ['bkash_sandbox', 'Sandbox (test) mode', 'toggle'],
+    ['bkash_app_key', 'bKash App Key', 'secret'],
+    ['bkash_app_secret', 'bKash App Secret', 'secret'],
+    ['bkash_username', 'bKash API Username', 'secret'],
+    ['bkash_password', 'bKash API Password', 'secret'],
+  ]],
+  ['payment', 'Online Payment — SSLCommerz (card, bKash, Nagad, Rocket, bank)', [
+    ['sslcommerz_enabled', 'Show "Card / Mobile Banking" at checkout', 'toggle'],
+    ['sslcommerz_sandbox', 'Sandbox (test) mode', 'toggle'],
+    ['sslcommerz_store_id', 'SSLCommerz Store ID', 'secret'],
+    ['sslcommerz_store_password', 'SSLCommerz Store Password', 'secret'],
+  ], [['SSLCommerz IPN URL (SSLCommerz merchant panel → IPN settings)', 'payment/sslcommerz/ipn']]],
   ['general', 'Social & WhatsApp', [['whatsapp', 'WhatsApp Number — e.g. 01411612350'], ['facebook', 'Facebook URL'], ['messenger', 'Messenger URL']]],
   ['delivery', 'Delivery Charges (by weight)', [
     ['delivery_inside_dhaka', 'Inside Dhaka — base charge (৳), default 70'],
@@ -746,6 +780,10 @@ export function Settings() {
   const checkBalance = () => api.get('/admin/courier/balance')
     .then((r) => setBalance(r.balance))
     .catch((e) => toast.error(e.message));
+  const [pathaoStores, setPathaoStores] = useState(null);
+  const checkPathao = () => api.get('/admin/courier/pathao/stores')
+    .then(setPathaoStores)
+    .catch((e) => toast.error(e.message));
   const pick = (t) => { setTab(t); window.history.replaceState(null, '', `?tab=${t}`); };
   if (!form) return <div className="spinner" />;
   const dirty = JSON.stringify(form) !== JSON.stringify(saved);
@@ -789,10 +827,17 @@ export function Settings() {
                 ))}
               </div>
               {linkRows(links)}
-              {title.startsWith('Courier') && (
+              {title === 'Courier — Steadfast' && (
                 <div className="row">
                   <button type="button" className="btn btn--ghost btn--sm" onClick={checkBalance}>Check Steadfast balance</button>
                   {balance !== null && <span>Balance: <b className="gold">{money(balance)}</b></span>}
+                  <span className="muted small">Save first if you just changed the keys.</span>
+                </div>
+              )}
+              {title === 'Courier — Pathao' && (
+                <div className="row">
+                  <button type="button" className="btn btn--ghost btn--sm" onClick={checkPathao}>Test Pathao login &amp; list stores</button>
+                  {pathaoStores && <span className="small">{pathaoStores.length ? pathaoStores.map((st) => `${st.name} (ID ${st.id})`).join(' · ') : 'No stores found'}</span>}
                   <span className="muted small">Save first if you just changed the keys.</span>
                 </div>
               )}
