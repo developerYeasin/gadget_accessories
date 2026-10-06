@@ -55,7 +55,12 @@ router.get('/products/:id', asyncHandler(async (req, res) => {
 }));
 
 const cleanOptions = (options) => (Array.isArray(options) ? options : [])
-  .map((o) => ({ name: String(o.name || '').trim(), values: [...new Set((o.values || []).map((v) => String(v).trim()).filter(Boolean))] }))
+  .map((o) => {
+    const values = [...new Set((o.values || []).map((v) => String(v).trim()).filter(Boolean))];
+    // Extra price per value and the value preselected for customers
+    const extras = Object.fromEntries(Object.entries(o.extras || {}).filter(([k, n]) => values.includes(k) && Number(n) > 0).map(([k, n]) => [k, Number(n)]));
+    return { name: String(o.name || '').trim(), type: o.type === 'color' ? 'color' : 'text', values, extras, default: values.includes(o.default) ? o.default : null };
+  })
   .filter((o) => o.name && o.values.length);
 
 const productFields = (b) => {

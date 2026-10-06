@@ -39,10 +39,21 @@ const confirmDelete = (what) => window.confirm(`Delete this ${what}? This cannot
 /* ---------------- Products ---------------- */
 /* ---------------- Variants editor ---------------- */
 const MAX_OPTION_GROUPS = 3;
-const toRows = (options) => (options || []).map((o) => ({ name: o.name, valuesText: (o.values || []).join(', ') }));
-const fromRows = (rows) => rows
-  .map((r) => ({ name: r.name.trim(), values: [...new Set(r.valuesText.split(',').map((v) => v.trim()).filter(Boolean))] }))
-  .filter((o) => o.name && o.values.length);
+// Editor rows: { name, type: 'text' | 'color', items: [{ value, extra, isDefault }] }
+const emptyItem = () => ({ value: '', extra: '', isDefault: false });
+const toRows = (options) => (options || []).map((o) => ({
+  name: o.name,
+  type: o.type || (isColorGroup(o.name) ? 'color' : 'text'),
+  items: (o.values || []).map((v) => ({ value: v, extra: o.extras?.[v] || '', isDefault: o.default === v })),
+}));
+// Saved options: { name, type, values, extras: { value: ৳ }, default }
+const fromRows = (rows) => rows.map((r) => {
+  const items = r.items.map((it) => ({ ...it, value: it.value.trim() })).filter((it) => it.value)
+    .filter((it, i, all) => all.findIndex((x) => x.value === it.value) === i);
+  const extras = Object.fromEntries(items.filter((it) => Number(it.extra) > 0).map((it) => [it.value, Number(it.extra)]));
+  return { name: r.name.trim(), type: r.type, values: items.map((it) => it.value), extras, default: items.find((it) => it.isDefault)?.value || null };
+}).filter((o) => o.name && o.values.length);
+const COLOR_SUGGESTIONS = ['Black', 'White', 'Red', 'Blue', 'Green', 'Pink', 'Gray', 'Silver', 'Gold', 'Purple', 'Yellow', 'Orange'];
 const cartesian = (groups) => groups.reduce(
   (acc, g) => acc.flatMap((combo) => g.values.map((v) => ({ ...combo, [g.name]: v }))),
   [{}],
@@ -51,17 +62,20 @@ const sameOptions = (a, b) => {
   const ka = Object.keys(a || {}); const kb = Object.keys(b || {});
   return ka.length === kb.length && ka.every((k) => a[k] === b[k]);
 };
-// One variant per option combination; rows already in `variants` keep their price/stock/image
-const buildVariants = (groups, variants, base) => cartesian(groups).map((options) => (
-  variants.find((v) => sameOptions(v.options, options)) || {
-    options, name: Object.values(options).join(' / '), price: base.price || '', old_price: base.old_price || '',
-    stock: Number(base.stock) || 0, sku: '', image: '', is_active: true,
-  }
-));
+// One variant per option combination; rows already in `variants` keep their stock/SKU/image.
+// Price = base price + the extra price of each chosen value.
+const buildVariants = (groups, variants, base) => cartesian(groups).map((options) => {
+  const extra = groups.reduce((sum, g) => sum + (g.extras?.[options[g.name]] || 0), 0);
+  const price = Number(base.price) > 0 ? Number(base.price) + extra : '';
+  const old = Number(base.old_price) > 0 ? Number(base.old_price) + extra : '';
+  const existing = variants.find((v) => sameOptions(v.options, options));
+  if (existing) return price ? { ...existing, price, old_price: old } : existing;
+  return { options, name: Object.values(options).join(' / '), price, old_price: old, stock: Number(base.stock) || 0, sku: '', image: '', is_active: true };
+});
 const OPTION_PRESETS = [
-  { name: 'Color', valuesText: 'Black, White, Red, Blue' },
-  { name: 'Size', valuesText: 'S, M, L, XL' },
-  { name: 'Capacity', valuesText: '10000mAh, 20000mAh' },
+  { name: 'Color', type: 'color', items: ['Black', 'White'].map((value) => ({ ...emptyItem(), value })) },
+  { name: 'Size', type: 'text', items: ['S', 'M', 'L', 'XL'].map((value) => ({ ...emptyItem(), value })) },
+  { name: 'Capacity', type: 'text', items: ['10000mAh', '20000mAh'].map((value) => ({ ...emptyItem(), value })) },
 ];
 
 function VariantImage({ value, onChange }) {
@@ -94,7 +108,8 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
   const setRow = (i, patch) => setOptionRows(optionRows.map((r, k) => (k === i ? { ...r, ...patch } : r)));
   const setVariant = (i, patch) => setVariants(variants.map((v, k) => (k === i ? { ...v, ...patch } : v)));
   // Color group of the generated variants: one photo per color fills every variant of that color
-  const colorKey = variants.length ? Object.keys(variants[0].options || {}).find(isColorGroup) : null;
+  const colorNames = optionRows.filter((r) => r.type === 'color' || isColorGroup(r.name)).map((r) => r.name.trim());
+  const colorKey = variants.length ? Object.keys(variants[0].options || {}).find((k) => colorNames.includes(k) || isColorGroup(k)) : null;
   const colorValues = colorKey ? [...new Set(variants.map((v) => v.options?.[colorKey]).filter(Boolean))] : [];
 
   const generate = () => {
@@ -108,37 +123,66 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
 
   return (
     <div className="vedit">
-      <div className="row" style={{ justifyContent: 'space-between' }}>
-        <b>Variants</b>
-        <span className="muted small">e.g. Color: Black, White · Capacity: 10000mAh, 20000mAh</span>
+      <div className="vedit__head">
+        <b>Product Variants</b>
+        <span className="muted small">Add options like Color, Size or Capacity. Tick <b>Default</b> to preselect a value for customers. Extra Price is added to the base price.</span>
       </div>
-      {optionRows.map((r, i) => (
-        <div key={i} className="vedit__opt">
-          <input className="input" placeholder="Option name (Color)" value={r.name} onChange={(e) => setRow(i, { name: e.target.value })} />
-          <input className="input" placeholder="Values, comma separated (Black, White)" value={r.valuesText} onChange={(e) => setRow(i, { valuesText: e.target.value })} />
-          <button type="button" className="icon-btn danger" onClick={() => setOptionRows(optionRows.filter((_, k) => k !== i))} aria-label="Remove option"><FiTrash2 /></button>
-          {isColorGroup(r.name) && (
-            <div className="vedit__chips">
-              {[...new Set(r.valuesText.split(',').map((x) => x.trim()).filter(Boolean))].map((val) => (
-                <span key={val} className={`vedit__chip ${swatchColor(val) ? '' : 'is-unknown'}`}
-                  title={swatchColor(val) ? undefined : 'Unknown color — use a common name or a #hex code'}>
-                  <i style={{ background: swatchColor(val) || 'transparent' }} />{val}
-                </span>
+      {optionRows.map((r, i) => {
+        const setItem = (j, patch) => setRow(i, { items: r.items.map((it, k) => (k === j ? { ...it, ...patch } : patch.isDefault ? { ...it, isDefault: false } : it)) });
+        const has = (v) => r.items.some((it) => it.value.trim().toLowerCase() === v.toLowerCase());
+        return (
+          <div key={i} className="vcard">
+            <div className="vcard__top">
+              <label>Title<input className="input" placeholder="e.g. Color, Size, Material" value={r.name}
+                onChange={(e) => setRow(i, { name: e.target.value, ...(isColorGroup(e.target.value) && !isColorGroup(r.name) ? { type: 'color' } : {}) })} /></label>
+              <label>Variant Type
+                <select className="input" value={r.type} onChange={(e) => setRow(i, { type: e.target.value })}>
+                  <option value="text">Text</option><option value="color">Color</option>
+                </select>
+              </label>
+              <button type="button" className="icon-btn danger" onClick={() => setOptionRows(optionRows.filter((_, k) => k !== i))} aria-label="Remove variant"><FiTrash2 /></button>
+            </div>
+            <div className="vcard__items">
+              <div className="vcard__row vcard__row--head"><span>{r.type === 'color' ? 'Color' : 'Attribute'}</span><span>Extra Price ৳</span><span>Default</span><span /></div>
+              {r.items.map((it, j) => (
+                <div key={j} className="vcard__row">
+                  <span className="vcard__val">
+                    {r.type === 'color' && <i className="vcard__swatch" style={{ background: swatchColor(it.value) || 'transparent' }} title={it.value && !swatchColor(it.value) ? 'Unknown color — use a common name or a #hex code' : undefined} />}
+                    <input className="input" placeholder={r.type === 'color' ? 'e.g. Black or #1a1a1a' : 'e.g. Red, Large'} value={it.value} onChange={(e) => setItem(j, { value: e.target.value })} />
+                  </span>
+                  <input className="input" type="number" min="0" placeholder="0" value={it.extra} onChange={(e) => setItem(j, { extra: e.target.value })} />
+                  <input type="checkbox" className="vcard__default" checked={!!it.isDefault} onChange={(e) => setItem(j, { isDefault: e.target.checked })} aria-label="Default" />
+                  <button type="button" className="icon-btn" onClick={() => setRow(i, { items: r.items.filter((_, k) => k !== j) })} aria-label="Remove option"><FiX /></button>
+                </div>
               ))}
             </div>
-          )}
-        </div>
-      ))}
+            <div className="row">
+              <button type="button" className="btn btn--ghost btn--sm" onClick={() => setRow(i, { items: [...r.items, emptyItem()] })}><FiPlus /> Add More Option</button>
+              {r.type === 'color' && COLOR_SUGGESTIONS.filter((c) => !has(c)).map((c) => (
+                <button key={c} type="button" className="vedit__chip" onClick={() => setRow(i, { items: [...r.items.filter((it) => it.value.trim()), { ...emptyItem(), value: c }] })}>
+                  <i style={{ background: swatchColor(c) }} />+ {c}
+                </button>
+              ))}
+            </div>
+          </div>
+        );
+      })}
       <div className="row">
-        {optionRows.length < MAX_OPTION_GROUPS && (
+        {(optionRows.length < MAX_OPTION_GROUPS || optionRows.some((r) => !r.name.trim())) && (
           <>
-            <button type="button" className="btn btn--ghost btn--sm" onClick={() => setOptionRows([...optionRows, { name: '', valuesText: '' }])}><FiPlus /> Add option</button>
+            {optionRows.length < MAX_OPTION_GROUPS && <button type="button" className="btn btn--outline btn--sm" onClick={() => setOptionRows([...optionRows, { name: '', type: 'text', items: [emptyItem()] }])}><FiPlus /> Add a new variant</button>}
             {OPTION_PRESETS.filter((pr) => !optionRows.some((r) => r.name.trim().toLowerCase() === pr.name.toLowerCase())).map((pr) => (
-              <button key={pr.name} type="button" className="btn btn--ghost btn--sm" onClick={() => setOptionRows([...optionRows, { ...pr }])}><FiPlus /> {pr.name}</button>
+              <button key={pr.name} type="button" className="btn btn--ghost btn--sm"
+                onClick={() => {
+                  // Fill an empty card first instead of adding another
+                  const blank = optionRows.findIndex((r) => !r.name.trim() && !r.items.some((it) => it.value.trim()));
+                  const next = { ...pr, items: pr.items.map((it) => ({ ...it })) };
+                  setOptionRows(blank >= 0 ? optionRows.map((r, k) => (k === blank ? next : r)) : [...optionRows, next]);
+                }}><FiPlus /> {pr.name}</button>
             ))}
           </>
         )}
-        {optionRows.length > 0 && <button type="button" className="btn btn--outline btn--sm" onClick={generate}>Generate variants</button>}
+        {optionRows.length > 0 && <button type="button" className="btn btn--gold btn--sm" onClick={generate}>Generate variants</button>}
         {variants.length > 0 && (
           <button type="button" className="btn btn--ghost btn--sm danger" onClick={() => { setVariants([]); setOptionRows([]); }}>Remove all variants</button>
         )}
@@ -193,7 +237,7 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
           })}
         </div>
       )}
-      {optionRows.length > 0 && !variants.length && <p className="muted small">Edit the values, then click Generate variants to set price &amp; stock per option (or just save — they'll use the product's price and stock).</p>}
+      {optionRows.length > 0 && !variants.length && <p className="muted small">Click Generate variants to set stock, image and price for each combination (or just save — they'll use the base price + extra price and the product's stock).</p>}
       {variants.length > 0 && <p className="muted small">Product price shows the lowest variant price; total stock is the sum of all variants.</p>}
     </div>
   );
@@ -267,8 +311,8 @@ function ProductForm({ initial, onClose, onSaved }) {
             </select>
           </label>
           <label>Stock{hasVariants && ' (from variants)'}<input className="input" type="number" value={f.stock} onChange={set('stock')} disabled={hasVariants} /></label>
-          <label>Price (৳) {hasVariants ? '(from variants)' : '*'}<input className="input" type="number" required={!hasVariants} value={f.price} onChange={set('price')} disabled={hasVariants} /></label>
-          <label>Old Price (৳){hasVariants && ' (from variants)'}<input className="input" type="number" value={f.old_price || ''} onChange={set('old_price')} disabled={hasVariants} /></label>
+          <label>{hasVariants ? 'Base Price (৳) — for Generate variants' : 'Price (৳) *'}<input className="input" type="number" required={!hasVariants} value={f.price} onChange={set('price')} /></label>
+          <label>{hasVariants ? 'Base Old Price (৳)' : 'Old Price (৳)'}<input className="input" type="number" value={f.old_price || ''} onChange={set('old_price')} /></label>
           <label>Weight (grams)<input className="input" type="number" min="0" value={f.weight || ''} onChange={set('weight')} placeholder="e.g. 250" /></label>
           <label>Rating<input className="input" type="number" step="0.1" min="0" max="5" value={f.rating} onChange={set('rating')} /></label>
           <label>Review Count<input className="input" type="number" value={f.review_count} onChange={set('review_count')} /></label>

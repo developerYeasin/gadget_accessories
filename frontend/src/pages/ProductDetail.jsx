@@ -115,7 +115,7 @@ function VariantPicker({ product, selected, onChange }) {
   return (
     <div className="vopts">
       {groups.map((g) => {
-        const isColor = isColorGroup(g.name);
+        const isColor = g.type ? g.type === 'color' : isColorGroup(g.name);
         const { [g.name]: _, ...others } = selected;
         const peers = product.variants.filter((v) => matches(variantOptions(product, v), others));
         const groupMin = peers.length ? Math.min(...peers.map((v) => Number(v.price))) : 0;
@@ -193,11 +193,14 @@ export default function ProductDetail() {
 
   const load = () => api.get(`/products/${slug}`).then(setData).catch((e) => setError(e.message));
   useEffect(() => { if (data?.product) track.viewItem(data.product); }, [data?.product?.id]);
-  // Preselect the first in-stock variant
+  // Preselect the admin's Default values (when that combination is in stock), else the first in-stock variant
   useEffect(() => {
     const prod = data?.product;
     if (!prod?.variants?.length) { setSelected({}); return; }
-    const first = prod.variants.find((v) => v.stock > 0) || prod.variants[0];
+    const defaults = Object.fromEntries((prod.options || []).filter((o) => o.default).map((o) => [o.name, o.default]));
+    const live = prod.variants.filter((v) => v.stock > 0);
+    const first = (Object.keys(defaults).length && (live.find((v) => matches(variantOptions(prod, v), defaults))
+      || prod.variants.find((v) => matches(variantOptions(prod, v), defaults)))) || live[0] || prod.variants[0];
     setSelected(variantOptions(prod, first));
   }, [data?.product?.id]);
   useEffect(() => {
@@ -219,7 +222,7 @@ export default function ProductDetail() {
     : { price: p.price, old_price: p.old_price, stock: hasVariants ? 0 : p.stock, discount: p.discount };
   const baseImages = p.images?.length ? p.images : [p.image];
   // Picked color shows its photo: the variant's own image, else any variant of the same color that has one
-  const colorKey = Object.keys(selected).find(isColorGroup);
+  const colorKey = Object.keys(selected).find((k) => { const g = p.options?.find((o) => o.name === k); return g?.type ? g.type === 'color' : isColorGroup(k); });
   const pickedImage = variant?.image || (colorKey && p.variants?.find((v) => variantOptions(p, v)[colorKey] === selected[colorKey] && v.image)?.image);
   const images = pickedImage ? [pickedImage, ...baseImages.filter((i) => i !== pickedImage)] : baseImages;
   const liked = inWishlist(p.id);
