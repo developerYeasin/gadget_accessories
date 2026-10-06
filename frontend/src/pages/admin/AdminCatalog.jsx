@@ -89,6 +89,8 @@ function VariantImage({ value, onChange }) {
 }
 
 function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base }) {
+  // Main image + gallery, so each color can reuse a photo that's already uploaded
+  const gallery = [...new Set([base.image, ...(base.images || [])].filter(Boolean))];
   const setRow = (i, patch) => setOptionRows(optionRows.map((r, k) => (k === i ? { ...r, ...patch } : r)));
   const setVariant = (i, patch) => setVariants(variants.map((v, k) => (k === i ? { ...v, ...patch } : v)));
   // Color group of the generated variants: one photo per color fills every variant of that color
@@ -171,15 +173,24 @@ function VariantEditor({ optionRows, setOptionRows, variants, setVariants, base 
       {colorKey && (
         <div className="vedit__colors">
           <b className="small">Color photos — shown when the customer picks that color</b>
-          <div className="row">
-            {colorValues.map((val) => (
-              <span key={val} className="vedit__colorimg">
+          <span className="muted small">Click one of the product's photos for each color, or upload a new one.</span>
+          {colorValues.map((val) => {
+            const current = variants.find((v) => v.options?.[colorKey] === val && v.image)?.image || '';
+            const setColorImage = (url) => setVariants(variants.map((v) => (v.options?.[colorKey] === val ? { ...v, image: url } : v)));
+            return (
+              <div key={val} className="vedit__colorimg">
                 <span className="vedit__name">{swatchColor(val) && <i className="vedit__dot" style={{ background: swatchColor(val) }} />}{val}</span>
-                <VariantImage value={variants.find((v) => v.options?.[colorKey] === val && v.image)?.image || ''}
-                  onChange={(url) => setVariants(variants.map((v) => (v.options?.[colorKey] === val ? { ...v, image: url } : v)))} />
-              </span>
-            ))}
-          </div>
+                <span className="vedit__pick">
+                  {gallery.map((img) => (
+                    <button key={img} type="button" className={img === current ? 'is-active' : ''} onClick={() => setColorImage(img === current ? '' : img)} title={img === current ? 'Remove' : `Use for ${val}`}>
+                      <img src={imageUrl(img)} alt="" />
+                    </button>
+                  ))}
+                </span>
+                <VariantImage value={gallery.includes(current) ? '' : current} onChange={setColorImage} />
+              </div>
+            );
+          })}
         </div>
       )}
       {optionRows.length > 0 && !variants.length && <p className="muted small">Edit the values, then click Generate variants to set price &amp; stock per option (or just save — they'll use the product's price and stock).</p>}

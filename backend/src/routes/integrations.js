@@ -6,7 +6,7 @@ import { optionalAuth } from '../middleware/auth.js';
 import { asyncHandler } from '../utils.js';
 import { applyPathaoStatus, applySteadfastStatus } from '../services/courier.js';
 import { createPayment, payConfig, validSignature, verifyPayment } from '../services/bizscalpay.js';
-import { createBkash, createSslcommerz, verifyBkash, verifySslcommerz } from '../services/payments.js';
+import { createBkash, createNagad, createSslcommerz, nagadOrder, verifyBkash, verifyNagad, verifySslcommerz } from '../services/payments.js';
 import { EVENTS, trackServer } from '../services/serverTracking.js';
 import { getSettings } from '../services/settings.js';
 
@@ -83,6 +83,25 @@ router.post('/payment/bkash/create', asyncHandler(async (req, res) => {
 router.post('/payment/bkash/verify', asyncHandler(async (req, res) => {
   const order = await findOrder(req.body.order_number, req.body.phone);
   res.json({ status: await verifyBkash(order, String(req.body.paymentID || ''), String(req.body.status || '')) });
+}));
+
+router.post('/payment/nagad/create', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json(await createNagad(order, apiOrigin(req), req.ip?.replace(/^::ffff:/, '')));
+}));
+
+router.post('/payment/nagad/verify', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json({ status: await verifyNagad(order, String(req.body.paymentID || '')) });
+}));
+
+// Nagad sends the customer here (?order_id=…&payment_ref_id=…&status=…); the verify page confirms with Nagad
+router.get('/payment/nagad/callback', asyncHandler(async (req, res) => {
+  const store = (process.env.CLIENT_URL || '').split(',').map((u) => u.trim().replace(/\/+$/, '')).filter(Boolean)[0] || '';
+  const order = await nagadOrder(req.query.order_id);
+  if (!order) return res.redirect(303, `${store}/`);
+  const ref = String(req.query.payment_ref_id || '').slice(0, 100);
+  res.redirect(303, `${store}/payment/verify?gateway=nagad&order=${encodeURIComponent(order.order_number)}&phone=${encodeURIComponent(order.phone)}&paymentID=${encodeURIComponent(ref)}`);
 }));
 
 router.post('/payment/sslcommerz/create', asyncHandler(async (req, res) => {

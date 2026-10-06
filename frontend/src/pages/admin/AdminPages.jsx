@@ -11,6 +11,7 @@ import { useStore } from '../../context/StoreContext';
 import OrderView, { StatusBadge } from '../../components/OrderView';
 import { BarChart } from './AdminExtra';
 import { Avatar, PasswordForm, PasswordInput, ProfileForm, StrengthMeter } from '../../components/AccountForms';
+import { MFS, MFS_TYPES } from '../../utils/mfs';
 
 const ALL_STATUSES = ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
 
@@ -285,7 +286,7 @@ function OrderModal({ id, onClose, onChanged }) {
       <OrderView order={o} />
       {o.note && <p className="small"><b>Customer note:</b> {o.note}</p>}
       <p className="small muted">
-        Area: {o.area === 'outside_dhaka' ? 'Outside Dhaka' : 'Inside Dhaka'} · Payment: {({ online: 'Online', bkash: 'bKash', sslcommerz: 'SSLCommerz' })[o.payment_method] || o.payment_method.toUpperCase()} <PayBadge status={o.payment_status} />
+        Area: {o.area === 'outside_dhaka' ? 'Outside Dhaka' : 'Inside Dhaka'} · Payment: {({ online: 'Online', bkash: 'bKash', nagad: 'Nagad', sslcommerz: 'SSLCommerz', mfs_bkash: 'bKash (Send Money)', mfs_nagad: 'Nagad (Send Money)', mfs_rocket: 'Rocket (Send Money)' })[o.payment_method] || o.payment_method.toUpperCase()} <PayBadge status={o.payment_status} />
         {o.payment_ref && <> · Ref: {o.payment_ref}</>}
       </p>
 
@@ -696,6 +697,14 @@ const SETTING_GROUPS = [
     ['bkash_username', 'bKash API Username', 'secret'],
     ['bkash_password', 'bKash API Password', 'secret'],
   ]],
+  ['payment', 'Online Payment — Nagad (merchant payment gateway)', [
+    ['nagad_enabled', 'Show "Nagad" at checkout', 'toggle'],
+    ['nagad_sandbox', 'Sandbox (test) mode', 'toggle'],
+    ['nagad_merchant_id', 'Nagad Merchant ID', 'secret'],
+    ['nagad_merchant_number', 'Nagad merchant account number — e.g. 01XXXXXXXXX'],
+    ['nagad_public_key', 'Nagad PG Public Key (from Nagad)', 'secret'],
+    ['nagad_private_key', 'Your Merchant Private Key', 'secret'],
+  ]],
   ['payment', 'Online Payment — SSLCommerz (card, bKash, Nagad, Rocket, bank)', [
     ['sslcommerz_enabled', 'Show "Card / Mobile Banking" at checkout', 'toggle'],
     ['sslcommerz_sandbox', 'Sandbox (test) mode', 'toggle'],
@@ -758,6 +767,38 @@ export function MyAccount() {
         <div className="card form-card"><PasswordForm /></div>
       </div>
     </>
+  );
+}
+
+function MfsSettings({ form, setForm }) {
+  const set = (k, v) => setForm({ ...form, [k]: v });
+  const on = (k) => form[k] === '1';
+  return (
+    <section className="settings-section">
+      <div className="mfs-head">
+        <div>
+          <h3>Self MFS (Send Money)</h3>
+          <p className="muted small">Accept payments directly to your own bKash / Nagad / Rocket number — the customer submits the Transaction ID with the order. Check it in your app, then mark the order Paid.</p>
+        </div>
+        <input type="checkbox" className="switch" checked={on('mfs_enabled')} onChange={(e) => set('mfs_enabled', e.target.checked ? '1' : '0')} aria-label="Self MFS on/off" />
+      </div>
+      {MFS.map((m) => (
+        <div key={m.key} className={`mfs-card ${on('mfs_enabled') && on(`mfs_${m.key}_enabled`) ? '' : 'is-off'}`}>
+          <div className="mfs-card__top">
+            <span className="mfs-logo" style={{ background: m.color }}>{m.name}</span>
+            <input type="checkbox" className="switch" checked={on(`mfs_${m.key}_enabled`)} onChange={(e) => set(`mfs_${m.key}_enabled`, e.target.checked ? '1' : '0')} aria-label={`${m.name} on/off`} />
+          </div>
+          <div className="form-grid">
+            <label>{m.name} number<input className="input" inputMode="numeric" placeholder="01XXXXXXXXX" value={form[`mfs_${m.key}_number`] || ''} onChange={(e) => set(`mfs_${m.key}_number`, e.target.value)} /></label>
+            <label>Account type
+              <select className="input" value={form[`mfs_${m.key}_type`] || 'personal'} onChange={(e) => set(`mfs_${m.key}_type`, e.target.value)}>
+                {MFS_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+              </select>
+            </label>
+          </div>
+        </div>
+      ))}
+    </section>
   );
 }
 
@@ -843,6 +884,7 @@ export function Settings() {
               )}
             </section>
           ))}
+          {tab === 'payment' && <MfsSettings form={form} setForm={setForm} />}
           {tab === 'general' && (
             <section className="settings-section">
               <h3>Flash Sale</h3>

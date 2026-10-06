@@ -6,10 +6,12 @@ import api, { cartWeight, deliveryCharge, deliveryRules, formatWeight, imageUrl,
 import { cartKey, useStore } from '../context/StoreContext';
 import { track, trackingContext } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
+import { MFS_ACTION, activeMfs } from '../utils/mfs';
 
 // Payment method → [label, hint, create endpoint]. 'online' is BizscalPay.
 const GATEWAYS = {
   bkash: ['bKash', 'Pay with your bKash account on the next page.', '/payment/bkash/create'],
+  nagad: ['Nagad', 'Pay with your Nagad account on the next page.', '/payment/nagad/create'],
   sslcommerz: ['Card / Mobile Banking', 'Pay by card, bKash, Nagad, Rocket or internet banking on the next page (SSLCommerz).', '/payment/sslcommerz/create'],
   online: ['Pay Online', 'Pay with bKash, Nagad, Rocket or card on the next page.', '/payment/bizscalpay/create'],
 };
@@ -34,6 +36,10 @@ export default function Checkout() {
   const [busy, setBusy] = useState(false);
   const gateways = Object.keys(GATEWAYS).filter((k) => settings[k === 'online' ? 'bizscalpay_enabled' : `${k}_enabled`] === '1');
   const [payment, setPayment] = useState('cod');
+  const mfsList = activeMfs(settings);
+  const [mfs, setMfs] = useState({ provider: '', sender: '', trx: '' });
+  const mfsPick = mfsList.find((m) => m.key === mfs.provider) || mfsList[0];
+  const method = gateways.includes(payment) || (payment === 'mfs' && mfsPick) ? payment : 'cod';
   const [couponInput, setCouponInput] = useState('');
   const [coupon, setCoupon] = useState(null);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,12 +82,14 @@ export default function Checkout() {
 
   const submit = async (e) => {
     e.preventDefault();
+    if (method === 'mfs' && (!mfs.sender.trim() || !mfs.trx.trim())) return toast.error(`Enter the number you sent from and the ${mfsPick.name} Transaction ID`);
     if (!/^01\d{9}$/.test(form.phone.replace(/\D/g, '').replace(/^88/, ''))) return toast.error('Enter a valid 11 digit phone number');
     setBusy(true);
     try {
       const res = await api.post('/orders', {
         ...form,
-        payment_method: gateways.includes(payment) ? payment : 'cod',
+        payment_method: method,
+        mfs: method === 'mfs' ? { ...mfs, provider: mfsPick.key } : undefined,
         coupon_code: coupon?.code,
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
         tracking: trackingContext(),
@@ -136,16 +144,44 @@ export default function Checkout() {
           </div>
           <h3>Payment Method</h3>
           <div className="radio-cards">
-            <label className={!gateways.includes(payment) ? 'is-active' : ''}>
-              <input type="radio" name="payment" checked={!gateways.includes(payment)} onChange={() => setPayment('cod')} /> <FaTruck className="gold" /> Cash on Delivery
+            <label className={method === 'cod' ? 'is-active' : ''}>
+              <input type="radio" name="payment" checked={method === 'cod'} onChange={() => setPayment('cod')} /> <FaTruck className="gold" /> Cash on Delivery
             </label>
             {gateways.map((k) => (
               <label key={k} className={payment === k ? 'is-active' : ''}>
                 <input type="radio" name="payment" checked={payment === k} onChange={() => setPayment(k)} /> <FaCreditCard className="gold" /> {GATEWAYS[k][0]}
               </label>
             ))}
+            {mfsList.length > 0 && (
+              <label className={method === 'mfs' ? 'is-active' : ''}>
+                <input type="radio" name="payment" checked={method === 'mfs'} onChange={() => setPayment('mfs')} /> <FaCreditCard className="gold" /> {mfsList.map((m) => m.name).join(' / ')} (Send Money)
+              </label>
+            )}
           </div>
           {gateways.includes(payment) && <p className="muted small">{GATEWAYS[payment][1]}</p>}
+          {method === 'mfs' && (
+            <div className="mfs-pay">
+              <div className="mfs-pay__tabs">
+                {mfsList.map((m) => (
+                  <button key={m.key} type="button" className={mfsPick.key === m.key ? 'is-active' : ''} style={{ '--mfs': m.color }} onClick={() => setMfs({ ...mfs, provider: m.key })}>{m.name}</button>
+                ))}
+              </div>
+              <ol className="mfs-pay__steps">
+                <li>Open your <b>{mfsPick.name}</b> app and choose <b>{MFS_ACTION[mfsPick.type]}</b>.</li>
+                <li>
+                  {mfsPick.type === 'merchant' ? 'Merchant' : mfsPick.type === 'agent' ? 'Agent' : 'Number'}: <b className="gold">{mfsPick.number}</b>{' '}
+                  <button type="button" className="btn btn--ghost btn--sm" onClick={() => navigator.clipboard.writeText(mfsPick.number).then(() => toast.success('Number copied'))}>Copy</button>
+                </li>
+                <li>Amount: <b className="gold">{money(cartTotal + delivery - discount)}</b></li>
+                <li>Enter the number you paid from and the Transaction ID (TrxID) below.</li>
+              </ol>
+              <div className="form-grid">
+                <label>Your {mfsPick.name} number *<input className="input" inputMode="numeric" placeholder="01XXXXXXXXX" value={mfs.sender} onChange={(e) => setMfs({ ...mfs, sender: e.target.value })} /></label>
+                <label>Transaction ID *<input className="input" placeholder="e.g. 8N7A6D5EKL" value={mfs.trx} onChange={(e) => setMfs({ ...mfs, trx: e.target.value.toUpperCase() })} /></label>
+              </div>
+              <p className="muted small">Your order is confirmed after we check the payment.</p>
+            </div>
+          )}
         </div>
         <aside className="card summary">
           <h3>Your Order</h3>
@@ -172,7 +208,7 @@ export default function Checkout() {
           </div>
           {discount > 0 && <div className="summary__row discount-row"><span>Discount ({coupon.code})</span><span>−{money(discount)}</span></div>}
           <div className="summary__row summary__total"><span>Total</span><span className="gold">{money(cartTotal + delivery - discount)}</span></div>
-          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : gateways.includes(payment) ? 'Place Order & Pay' : 'Confirm Order'}</button>
+          <button className="btn btn--gold btn--block btn--lg" disabled={busy}>{busy ? 'Placing Order...' : method !== 'cod' ? 'Place Order & Pay' : 'Confirm Order'}</button>
         </aside>
       </form>
     </div>

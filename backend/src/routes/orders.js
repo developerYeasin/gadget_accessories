@@ -4,7 +4,7 @@ import { optionalAuth, protect } from '../middleware/auth.js';
 import { applyCoupon, asyncHandler, deliveryCharge, itemWeight } from '../utils.js';
 import { background, notifyAdmins } from '../services/push.js';
 import { payConfig } from '../services/bizscalpay.js';
-import { gatewayEnabled } from '../services/payments.js';
+import { gatewayEnabled, mfsPayment } from '../services/payments.js';
 import { trackServer } from '../services/serverTracking.js';
 
 const router = Router();
@@ -16,8 +16,8 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
   const { customer_name, phone, email, address, city, area = 'inside_dhaka', note, payment_method = 'cod', items, coupon_code, tracking = {} } = req.body;
   if (!customer_name || !phone || !address) return res.status(400).json({ message: 'Name, phone and address are required' });
   if (!Array.isArray(items) || !items.length) return res.status(400).json({ message: 'Cart is empty' });
-  if (!['cod', 'online', 'bkash', 'sslcommerz'].includes(payment_method)) return res.status(400).json({ message: 'Invalid payment method' });
-  const available = payment_method === 'cod' || (payment_method === 'online' ? (await payConfig()).enabled : await gatewayEnabled(payment_method));
+  if (!['cod', 'online', 'bkash', 'nagad', 'sslcommerz', 'mfs'].includes(payment_method)) return res.status(400).json({ message: 'Invalid payment method' });
+  const available = payment_method === 'cod' || payment_method === 'mfs' || (payment_method === 'online' ? (await payConfig()).enabled : await gatewayEnabled(payment_method));
   if (!available) return res.status(400).json({ message: 'This payment method is not available right now' });
 
   const conn = await pool.getConnection();
@@ -54,12 +54,14 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
     }
     const total = subtotal + delivery - discount;
     const orderNumber = makeOrderNumber();
+    // Send Money: the admin confirms the Transaction ID before marking the order paid
+    const mfs = payment_method === 'mfs' ? await mfsPayment(conn, req.body.mfs || {}) : null;
 
     const [r] = await conn.query(
-      `INSERT INTO orders (order_number, user_id, customer_name, phone, email, address, city, area, note, subtotal, delivery_charge, discount, coupon_code, total, payment_method)
-       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      `INSERT INTO orders (order_number, user_id, customer_name, phone, email, address, city, area, note, subtotal, delivery_charge, discount, coupon_code, total, payment_method, payment_ref)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [orderNumber, req.user?.id || null, customer_name, phone, email || null, address, city || null,
-        area === 'outside_dhaka' ? 'outside_dhaka' : 'inside_dhaka', note || null, subtotal, delivery, discount, couponCode, total, payment_method]
+        area === 'outside_dhaka' ? 'outside_dhaka' : 'inside_dhaka', note || null, subtotal, delivery, discount, couponCode, total, mfs ? mfs.method : payment_method, mfs ? mfs.ref : null]
     );
     for (const l of lines) {
       await conn.query('INSERT INTO order_items (order_id, product_id, variant_id, product_name, variant_name, product_image, price, quantity) VALUES (?,?,?,?,?,?,?,?)',

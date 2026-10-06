@@ -11,7 +11,7 @@ export default function PaymentVerify() {
   const phone = params.get('phone') || '';
   const invoiceId = params.get('invoiceId') || '';
   // bizscalpay (default), bkash (adds paymentID & status) or sslcommerz
-  const gateway = ['bkash', 'sslcommerz'].includes(params.get('gateway')) ? params.get('gateway') : 'bizscalpay';
+  const gateway = ['bkash', 'nagad', 'sslcommerz'].includes(params.get('gateway')) ? params.get('gateway') : 'bizscalpay';
   const paymentID = params.get('paymentID') || '';
   const gatewayStatus = params.get('status') || '';
   const [state, setState] = useState('checking');

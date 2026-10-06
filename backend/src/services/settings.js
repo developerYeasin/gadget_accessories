@@ -8,6 +8,7 @@ export const SECRET_KEYS = new Set([
   'bizscalpay_api_key', 'bizscalpay_webhook_secret',
   'bkash_app_key', 'bkash_app_secret', 'bkash_username', 'bkash_password',
   'sslcommerz_store_id', 'sslcommerz_store_password',
+  'nagad_merchant_id', 'nagad_public_key', 'nagad_private_key',
   'fb_capi_token', 'fb_test_event_code', 'tiktok_access_token',
 ]);
 

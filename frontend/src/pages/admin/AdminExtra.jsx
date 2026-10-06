@@ -426,7 +426,7 @@ export function Invoice() {
           <div><span>Delivery</span><span>{money(o.delivery_charge)}</span></div>
           {o.discount > 0 && <div><span>Discount {o.coupon_code ? `(${o.coupon_code})` : ''}</span><span>−{money(o.discount)}</span></div>}
           <div className="invoice__grand"><span>Total</span><span>{money(o.total)}</span></div>
-          <div><span>Payment</span><span>{({ cod: 'Cash on Delivery', online: 'Online', bkash: 'bKash', sslcommerz: 'SSLCommerz' })[o.payment_method] || o.payment_method}</span></div>
+          <div><span>Payment</span><span>{({ cod: 'Cash on Delivery', online: 'Online', bkash: 'bKash', nagad: 'Nagad', sslcommerz: 'SSLCommerz', mfs_bkash: 'bKash (Send Money)', mfs_nagad: 'Nagad (Send Money)', mfs_rocket: 'Rocket (Send Money)' })[o.payment_method] || o.payment_method}</span></div>
         </div>
         <p className="invoice__thanks">Thank you for shopping with Gadget Accessories Home!</p>
       </div>

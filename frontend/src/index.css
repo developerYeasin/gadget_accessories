@@ -970,3 +970,24 @@ input, select, textarea { font: inherit; color: inherit; }
 /* ---------- Variant editor: one photo per color ---------- */
 .vedit__colors { margin-top: 12px; display: grid; gap: 8px; }
 .vedit__colorimg { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--border, #333); border-radius: 10px; }
+
+/* ---------- Self MFS (Send Money) ---------- */
+.mfs-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border, #2a2d35); margin-bottom: 12px; }
+.mfs-head h3 { margin: 0 0 4px; }
+.mfs-card { border: 1px solid var(--border, #2a2d35); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; transition: opacity .2s; }
+.mfs-card.is-off { opacity: .55; }
+.mfs-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.mfs-logo { color: #fff; font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: 6px; }
+.mfs-pay { margin-top: 12px; padding: 14px; border: 1px solid var(--gold-2); border-radius: 12px; background: rgba(245,197,66,.04); }
+.mfs-pay__tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.mfs-pay__tabs button { border: 1px solid var(--border, #2a2d35); background: transparent; color: inherit; padding: 6px 16px; border-radius: 99px; cursor: pointer; font-weight: 600; }
+.mfs-pay__tabs button.is-active { background: var(--mfs); border-color: var(--mfs); color: #fff; }
+.mfs-pay__steps { margin: 0 0 12px; padding-left: 1.3em; line-height: 1.9; }
+.radio-cards label svg { flex-shrink: 0; }
+.vedit__colorimg { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.vedit__colorimg .vedit__name { min-width: 70px; font-weight: 600; }
+.vedit__pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.vedit__pick button { width: 52px; height: 52px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: #fff; cursor: pointer; opacity: .6; }
+.vedit__pick button:hover { opacity: 1; }
+.vedit__pick button.is-active { border-color: var(--gold); opacity: 1; box-shadow: 0 0 0 2px rgba(245,197,66,.35); }
+.vedit__pick img { width: 100%; height: 100%; object-fit: cover; }
