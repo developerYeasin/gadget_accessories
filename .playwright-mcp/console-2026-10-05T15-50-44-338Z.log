@@ -1,0 +1,21 @@
+[  436480ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://merchant.bizscal.com/login:0
+[ 4328132ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 4328132ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 4328133ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0
+[ 4690213ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 4690215ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 4690216ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0
+[ 5112611ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 5112612ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 5112612ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0
+[ 5414505ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 5414506ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 5414507ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0
+[ 5836750ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 5836751ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0
+[ 5836861ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 7481911ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 7542139ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 8945410ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/subscription/status:0
+[ 8945411ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/orders-status-counts:0
+[ 8945412ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://api.bizscal.com/api/v1/owner/notifications?limit=20:0

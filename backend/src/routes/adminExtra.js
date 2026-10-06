@@ -4,7 +4,7 @@ import pool from '../config/db.js';
 import { emailError, passwordError } from './auth.js';
 import { protect, adminOnly } from '../middleware/auth.js';
 import { asyncHandler, slugify } from '../utils.js';
-import { bookSteadfast, cachedHistories, courierHistory, refreshSteadfast, steadfastBalance } from '../services/courier.js';
+import { bookCourier, cachedHistories, courierHistory, pathaoStores, refreshCourier, steadfastBalance } from '../services/courier.js';
 
 const router = Router();
 router.use(protect, adminOnly);
@@ -91,7 +91,7 @@ router.delete('/orders/:id', asyncHandler(async (req, res) => {
 
 /* ---------- Courier ---------- */
 router.post('/orders/:id/courier', asyncHandler(async (req, res) => {
-  res.json(await bookSteadfast(req.params.id));
+  res.json(await bookCourier(req.params.id, req.body?.courier));
 }));
 
 // Send several orders at once; each one succeeds or fails on its own
@@ -100,7 +100,7 @@ router.post('/courier/bulk', asyncHandler(async (req, res) => {
   const results = [];
   for (const id of ids) {
     try {
-      results.push({ id, ok: true, ...(await bookSteadfast(id)) });
+      results.push({ id, ok: true, ...(await bookCourier(id, req.body.courier)) });
     } catch (err) {
       results.push({ id, ok: false, message: err.message });
     }
@@ -109,7 +109,7 @@ router.post('/courier/bulk', asyncHandler(async (req, res) => {
 }));
 
 router.post('/orders/:id/courier/refresh', asyncHandler(async (req, res) => {
-  const o = await refreshSteadfast(req.params.id);
+  const o = await refreshCourier(req.params.id);
   res.json({ status: o.status, courier_status: o.courier_status });
 }));
 
@@ -123,6 +123,10 @@ router.post('/courier/check-cached', asyncHandler(async (req, res) => {
 
 router.get('/courier/balance', asyncHandler(async (_req, res) => {
   res.json({ balance: await steadfastBalance() });
+}));
+
+router.get('/courier/pathao/stores', asyncHandler(async (_req, res) => {
+  res.json(await pathaoStores());
 }));
 
 /* ---------- Customers / staff ---------- */

@@ -1,0 +1,258 @@
+[    6064ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom-DoAJ_auL.js?v=9e811e12:17236
+[    6172ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[    6176ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[    6178ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[    6178ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[    6212ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:146
+[    6215ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:146
+[    6410ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/login:0
+[   20744ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:126
+[   21069ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[   21069ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[   21069ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[   21069ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[   21498ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:133
+[   21499ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[   21499ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:44
+[   21500ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[   21500ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:44
+[   21622ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   21622ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   21717ms] [WARNING] react-i18next:: useTranslation: You will need to pass in an i18next instance by using initReactI18next {code: NO_I18NEXT_INSTANCE} @ http://localhost:5173/node_modules/.vite/deps/react-i18next.js?v=9e811e12:2081
+[   21925ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   21925ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23171ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23172ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23232ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23233ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23396ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[   23397ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220804ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220804ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220861ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220861ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220926ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  220927ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407157ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407157ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407206ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407206ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407262ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  407264ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467275ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467276ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467327ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467327ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467389ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[  467390ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590804ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590805ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590858ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590859ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590920ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1590921ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1799437ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1799437ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833861ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833861ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833901ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833901ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833956ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833957ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833994ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1833994ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1834029ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1834030ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1836911ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom-DoAJ_auL.js?v=9e811e12:17236
+[ 1836974ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1836975ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[ 1836975ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1836975ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[ 1837092ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:146
+[ 1837095ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:146
+[ 1837146ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:126
+[ 1837500ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1837501ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[ 1837501ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1837501ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:35
+[ 1837911ms] [WARNING] react-i18next:: useTranslation: You will need to pass in an i18next instance by using initReactI18next {code: NO_I18NEXT_INSTANCE} @ http://localhost:5173/node_modules/.vite/deps/react-i18next.js?v=9e811e12:2081
+[ 1838142ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx:133
+[ 1838143ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1838143ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:44
+[ 1838143ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:30
+[ 1838143ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx:44
+[ 1838151ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1838151ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1840602ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1840602ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855284ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855284ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855324ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855325ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855381ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1855382ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856065ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856065ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856233ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856234ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856262ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856262ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856425ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856426ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856469ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856470ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856499ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 1856499ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2175980ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2175980ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176112ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176112ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176446ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176446ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176515ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2176515ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx:264
+[ 2210271ms] [WARNING] quill Overwriting modules/imageResize with function t(e) {
+					var n = this, r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {};
+					o(this, t), this.initializeModules = function() {
+						n.removeModules(), n.modules = n.moduleClasses.map(function(t) {
+							return new (l[t] || t)(n);
+						}), n.modules.forEach(function(t) {
+							t.onCreate(n.parchment);
+						}), n.onUpdate();
+					}, this.onUpdate = function() {
+						n.repositionElements(), n.modules.forEach(function(t) {
+							t.onUpdate();
+						});
+					}, this.removeModules = function() {
+						n.modules.forEach(function(t) {
+							t.onDestroy();
+						}), n.modules = [];
+					}, this.handleClick = function(t) {
+						if (t.target && t.target.tagName && "IMG" === t.target.tagName.toUpperCase()) {
+							if (n.img === t.target) return;
+							n.img && n.hide(), n.show(t.target);
+						} else n.img && n.hide();
+					}, this.show = function(t) {
+						n.img = t, n.showOverlay(), n.initializeModules();
+					}, this.showOverlay = function() {
+						n.overlay && n.hideOverlay(), n.quill.setSelection(null), n.setUserSelect("none"), document.addEventListener("keyup", n.checkImage, !0), n.quill.root.addEventListener("input", n.checkImage, !0), n.overlay = document.createElement("div"), Object.assign(n.overlay.style, n.options.overlayStyles), n.quill.root.parentNode.appendChild(n.overlay), n.repositionElements();
+					}, this.hideOverlay = function() {
+						n.overlay && (n.quill.root.parentNode.removeChild(n.overlay), n.overlay = void 0, document.removeEventListener("keyup", n.checkImage), n.quill.root.removeEventListener("input", n.checkImage), n.setUserSelect(""));
+					}, this.repositionElements = function() {
+						if (n.overlay && n.img) {
+							var t = n.quill.root.parentNode, e = n.img.getBoundingClientRect(), o = t.getBoundingClientRect();
+							Object.assign(n.overlay.style, {
+								left: e.left - o.left - 1 + t.scrollLeft + "px",
+								top: e.top - o.top + t.scrollTop + "px",
+								width: e.width + "px",
+								height: e.height + "px"
+							});
+						}
+					}, this.hide = function() {
+						n.hideOverlay(), n.removeModules(), n.img = void 0;
+					}, this.setUserSelect = function(t) {
+						[
+							"userSelect",
+							"mozUserSelect",
+							"webkitUserSelect",
+							"msUserSelect"
+						].forEach(function(e) {
+							n.quill.root.style[e] = t, document.documentElement.style[e] = t;
+						});
+					}, this.checkImage = function(t) {
+						n.img && (46 != t.keyCode && 8 != t.keyCode || window.Quill.find(n.img).deleteAt(0), n.hide());
+					}, this.quill = e;
+					var s = !1;
+					r.modules && (s = r.modules.slice()), r.parchment && (this.parchment = r.parchment), this.options = i()({}, r, a.a), s !== !1 && (this.options.modules = s), document.execCommand("enableObjectResizing", !1, "false"), this.quill.root.addEventListener("click", this.handleClick, !1), this.quill.root.parentNode.style.position = this.quill.root.parentNode.style.position || "relative", this.moduleClasses = this.options.modules, this.modules = [];
+				} @ http://localhost:5173/node_modules/.vite/deps/react-quill.js?v=9e811e12:3602
+[ 2210464ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2210465ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:35
+[ 2210465ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2210465ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:35
+[ 2210507ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218146702:126
+[ 2210508ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218146702:126
+[ 2210827ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218146702:133
+[ 2210852ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2210852ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:44
+[ 2210853ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2210853ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:44
+[ 2210874ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2210874ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2210992ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2210993ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2210995ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218146702:133
+[ 2211001ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2211001ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:44
+[ 2211001ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:30
+[ 2211001ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218146702:44
+[ 2211022ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2211023ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218146702:264
+[ 2213625ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213626ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:35
+[ 2213626ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213626ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:35
+[ 2213647ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218150062:126
+[ 2213647ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218150062:126
+[ 2213794ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213794ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:35
+[ 2213794ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213794ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:35
+[ 2213852ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218150062:133
+[ 2213854ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213854ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:44
+[ 2213854ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213855ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:44
+[ 2213888ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2213888ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2213934ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218150062:133
+[ 2213962ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213962ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:44
+[ 2213963ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:30
+[ 2213963ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218150062:44
+[ 2213974ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2213975ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2214080ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2214080ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218150062:264
+[ 2221838ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218158229:30
+[ 2221839ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218158229:35
+[ 2221839ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218158229:30
+[ 2221839ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218158229:35
+[ 2221849ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218158229:146
+[ 2221849ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218158229:146
+[ 2225392ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225392ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:35
+[ 2225392ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: undefined} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225393ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:35
+[ 2225394ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218161858:146
+[ 2225394ms] [LOG] [StoreConfigurationProvider] Not authenticated, skipping config fetch @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218161858:146
+[ 2225567ms] [LOG] [StoreConfigurationProvider] Starting config fetch... @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218161858:126
+[ 2225789ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225790ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:35
+[ 2225790ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: null, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225790ms] [LOG] [ThemeSettingsContext] storeConfig or theme_settings is null @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:35
+[ 2225821ms] [LOG] [StoreConfigurationProvider] Config fetched successfully: {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/contexts/StoreConfigurationContext.jsx?t=1791218161858:133
+[ 2225821ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225822ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:44
+[ 2225822ms] [LOG] [ThemeSettingsContext] Computing selectedThemeSettings: {storeConfig: Object, availableThemes: Array(12)} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:30
+[ 2225822ms] [LOG] [ThemeSettingsContext] selectedThemeSettings computed: {id: 48, store_id: 71, theme_id: 17, typography: Object, button_style: Object} @ http://localhost:5173/src/editor/contexts/ThemeSettingsContext.jsx?t=1791218161858:44
+[ 2225957ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 2225958ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 2226169ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 2226169ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 2229499ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:968
+[ 5590045ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590047ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590095ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590095ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590135ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590135ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590187ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590187ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590478ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590478ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590510ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590510ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590543ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590543ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590627ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264
+[ 5590627ms] [LOG] storeConfig?.logo_url >>  {id: 69, store_id: 71, theme_id: 17, hostname: bizscalsstore.bizscal.com, store_name: Bizscal Shop} @ http://localhost:5173/src/editor/blocks/SystemHeader.jsx?t=1791218161858:264

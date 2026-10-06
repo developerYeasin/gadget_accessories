@@ -4,6 +4,7 @@ import { optionalAuth, protect } from '../middleware/auth.js';
 import { applyCoupon, asyncHandler, deliveryCharge, itemWeight } from '../utils.js';
 import { background, notifyAdmins } from '../services/push.js';
 import { payConfig } from '../services/bizscalpay.js';
+import { gatewayEnabled } from '../services/payments.js';
 import { trackServer } from '../services/serverTracking.js';
 
 const router = Router();
@@ -15,8 +16,9 @@ router.post('/', optionalAuth, asyncHandler(async (req, res) => {
   const { customer_name, phone, email, address, city, area = 'inside_dhaka', note, payment_method = 'cod', items, coupon_code, tracking = {} } = req.body;
   if (!customer_name || !phone || !address) return res.status(400).json({ message: 'Name, phone and address are required' });
   if (!Array.isArray(items) || !items.length) return res.status(400).json({ message: 'Cart is empty' });
-  if (!['cod', 'online'].includes(payment_method)) return res.status(400).json({ message: 'Invalid payment method' });
-  if (payment_method === 'online' && !(await payConfig()).enabled) return res.status(400).json({ message: 'Online payment is not available right now' });
+  if (!['cod', 'online', 'bkash', 'sslcommerz'].includes(payment_method)) return res.status(400).json({ message: 'Invalid payment method' });
+  const available = payment_method === 'cod' || (payment_method === 'online' ? (await payConfig()).enabled : await gatewayEnabled(payment_method));
+  if (!available) return res.status(400).json({ message: 'This payment method is not available right now' });
 
   const conn = await pool.getConnection();
   try {

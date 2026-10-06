@@ -1,4 +1,4 @@
-// Courier integration: Steadfast parcel booking + status sync, and a customer's delivery history
+// Courier integration: Steadfast and Pathao parcel booking + status sync, and a customer's delivery history
 // across all Bangladeshi couriers (bdcourier.com aggregator) so risky COD orders can be spotted.
 import pool from '../config/db.js';
 import { changeOrderStatus } from './orders.js';
@@ -168,4 +168,136 @@ export async function courierHistory(rawPhone, { force = false } = {}) {
     [phone, JSON.stringify(result)]
   );
   return { ...result, cached: false };
+}
+
+/* ---------- Pathao ---------- */
+// Merchant API (merchant.pathao.com → Developers API). The access token is cached until shortly before it expires.
+const PATHAO_API = { live: 'https://api-hermes.pathao.com', sandbox: 'https://courier-api-sandbox.pathao.com' };
+export const pathaoTrackingUrl = (code, phone) =>
+  (code ? `https://merchant.pathao.com/tracking?consignment_id=${encodeURIComponent(code)}${phone ? `&phone=${encodeURIComponent(localPhone(phone))}` : ''}` : null);
+
+// Pathao status (webhook "order.delivered" / info API "Delivered") → our order status
+const PATHAO_TO_ORDER = { delivered: 'delivered', partial_delivery: 'delivered', returned: 'cancelled', return: 'cancelled', cancelled: 'cancelled' };
+
+let pathaoToken = null; // { key, token, expires }
+async function pathao(path, { method = 'GET', body } = {}) {
+  const s = await getSettings();
+  if (!s.pathao_client_id || !s.pathao_client_secret || !s.pathao_username || !s.pathao_password) {
+    fail('Pathao client ID, client secret, email and password are not set in Settings');
+  }
+  const base = s.pathao_sandbox === '1' ? PATHAO_API.sandbox : PATHAO_API.live;
+  const call = async (url, opts) => {
+    let res;
+    try {
+      res = await fetch(url, { ...opts, signal: AbortSignal.timeout(20000) });
+    } catch (err) {
+      fail(`Could not reach Pathao (${err.message})`, 502);
+    }
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const detail = data.errors ? Object.values(data.errors).flat().join(', ') : '';
+      fail(`Pathao: ${detail || data.message || `HTTP ${res.status}`}`, res.status === 401 ? 400 : 502);
+    }
+    return data;
+  };
+  const key = [base, s.pathao_client_id, s.pathao_client_secret, s.pathao_username, s.pathao_password].join('|');
+  if (!pathaoToken || pathaoToken.key !== key || Date.now() > pathaoToken.expires) {
+    const t = await call(`${base}/aladdin/api/v1/issue-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        client_id: s.pathao_client_id, client_secret: s.pathao_client_secret,
+        grant_type: 'password', username: s.pathao_username, password: s.pathao_password,
+      }),
+    });
+    if (!t.access_token) fail('Pathao: could not log in — check the credentials');
+    pathaoToken = { key, token: t.access_token, expires: Date.now() + (Number(t.expires_in) || 3600) * 1000 - 60000 };
+  }
+  return call(`${base}/aladdin/api/v1${path}`, {
+    method,
+    headers: { Authorization: `Bearer ${pathaoToken.token}`, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+}
+
+export async function pathaoStores() {
+  const data = await pathao('/stores');
+  return (data.data?.data || []).map((st) => ({ id: st.store_id, name: st.store_name, address: st.store_address }));
+}
+
+export async function bookPathao(orderId) {
+  const [[o]] = await pool.query('SELECT * FROM orders WHERE id = ?', [orderId]);
+  if (!o) fail('Order not found', 404);
+  if (o.courier_tracking_code) fail(`Already sent to ${o.courier} (${o.courier_tracking_code})`);
+  if (o.status === 'cancelled') fail('Cancelled orders cannot be sent to the courier');
+  const phone = localPhone(o.phone);
+  if (!/^01\d{9}$/.test(phone)) fail(`Invalid phone "${o.phone}" — Pathao needs an 11 digit number (01XXXXXXXXX)`);
+  const s = await getSettings();
+  let storeId = Number(s.pathao_store_id);
+  if (!storeId) {
+    const stores = await pathaoStores();
+    if (!stores.length) fail('No store in your Pathao account — create one in the Pathao merchant panel');
+    storeId = stores[0].id;
+  }
+  const [items] = await pool.query('SELECT product_name, quantity FROM order_items WHERE order_id = ?', [o.id]);
+  const address = [o.address, o.city].filter(Boolean).join(', ');
+
+  const data = await pathao('/orders', {
+    method: 'POST',
+    body: {
+      store_id: storeId,
+      merchant_order_id: o.order_number,
+      recipient_name: o.customer_name.slice(0, 100),
+      recipient_phone: phone,
+      // City/zone are optional — Pathao finds them from the address (min 10 characters)
+      recipient_address: (address.length >= 10 ? address : `${address}, Bangladesh`).slice(0, 220),
+      delivery_type: 48, // normal delivery
+      item_type: 2, // parcel
+      item_quantity: Math.max(1, items.reduce((n, i) => n + Number(i.quantity), 0)),
+      item_weight: Math.min(10, Math.max(0.5, Number(s.pathao_default_weight) || 0.5)),
+      amount_to_collect: o.payment_status === 'paid' ? 0 : Math.round(Number(o.total)),
+      item_description: items.map((i) => `${i.product_name} x${i.quantity}`).join(', ').slice(0, 250),
+      special_instruction: o.note ? o.note.slice(0, 250) : undefined,
+    },
+  });
+  const c = data.data || {};
+  if (!c.consignment_id) fail(`Pathao: ${data.message || 'no consignment id returned'}`, 502);
+  await changeOrderStatus(o.id, 'shipped', {
+    courier: 'pathao',
+    courier_tracking_code: String(c.consignment_id),
+    courier_consignment_id: String(c.consignment_id),
+    courier_status: String(c.order_status || 'pending').toLowerCase(),
+    courier_booked_at: new Date(),
+  });
+  return { tracking_code: c.consignment_id, consignment_id: c.consignment_id, tracking_url: pathaoTrackingUrl(c.consignment_id, phone) };
+}
+
+export async function applyPathaoStatus(order, rawStatus) {
+  const courierStatus = String(rawStatus || '').toLowerCase().replace(/^order\./, '').replace(/[\s.-]+/g, '_');
+  if (!courierStatus) return order;
+  const next = PATHAO_TO_ORDER[courierStatus];
+  const extra = { courier_status: courierStatus };
+  if (next === 'delivered' && order.payment_status === 'unpaid') extra.payment_status = 'paid';
+  if (next && next !== order.status) {
+    await changeOrderStatus(order.id, next, extra);
+  } else {
+    await pool.query(`UPDATE orders SET ${Object.keys(extra).map((k) => `${k} = ?`).join(', ')} WHERE id = ?`, [...Object.values(extra), order.id]);
+  }
+  return { ...order, ...extra, status: next || order.status };
+}
+
+/* ---------- Any courier ---------- */
+export function bookCourier(orderId, courier = 'steadfast') {
+  if (courier === 'pathao') return bookPathao(orderId);
+  if (!courier || courier === 'steadfast') return bookSteadfast(orderId);
+  return fail(`Unknown courier "${courier}"`);
+}
+
+export async function refreshCourier(orderId) {
+  const [[o]] = await pool.query('SELECT * FROM orders WHERE id = ?', [orderId]);
+  if (!o) fail('Order not found', 404);
+  if (o.courier !== 'pathao') return refreshSteadfast(orderId);
+  if (!o.courier_consignment_id) fail('This order has not been sent to Pathao');
+  const data = await pathao(`/orders/${encodeURIComponent(o.courier_consignment_id)}/info`);
+  return applyPathaoStatus(o, data.data?.order_status);
 }

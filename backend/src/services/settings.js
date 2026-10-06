@@ -3,8 +3,11 @@ import pool from '../config/db.js';
 // Credentials stored in the settings table. They are never sent by the public /api/settings endpoint.
 export const SECRET_KEYS = new Set([
   'steadfast_api_key', 'steadfast_secret_key', 'steadfast_webhook_token',
+  'pathao_client_id', 'pathao_client_secret', 'pathao_username', 'pathao_password', 'pathao_webhook_secret',
   'bdcourier_api_key',
   'bizscalpay_api_key', 'bizscalpay_webhook_secret',
+  'bkash_app_key', 'bkash_app_secret', 'bkash_username', 'bkash_password',
+  'sslcommerz_store_id', 'sslcommerz_store_password',
   'fb_capi_token', 'fb_test_event_code', 'tiktok_access_token',
 ]);
 

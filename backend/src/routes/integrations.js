@@ -1,11 +1,12 @@
 // Public endpoints for the courier, payment gateway and server-side tracking integrations
-import { Router } from 'express';
+import express, { Router } from 'express';
 import crypto from 'crypto';
 import pool from '../config/db.js';
 import { optionalAuth } from '../middleware/auth.js';
 import { asyncHandler } from '../utils.js';
-import { applySteadfastStatus } from '../services/courier.js';
+import { applyPathaoStatus, applySteadfastStatus } from '../services/courier.js';
 import { createPayment, payConfig, validSignature, verifyPayment } from '../services/bizscalpay.js';
+import { createBkash, createSslcommerz, verifyBkash, verifySslcommerz } from '../services/payments.js';
 import { EVENTS, trackServer } from '../services/serverTracking.js';
 import { getSettings } from '../services/settings.js';
 
@@ -70,6 +71,49 @@ router.post('/payment/bizscalpay/webhook', asyncHandler(async (req, res) => {
   res.sendStatus(200);
 }));
 
+/* ---------- Online payment (bKash, SSLCommerz) ---------- */
+// Public URL of this API — SSLCommerz posts the customer's browser back here ('trust proxy' is on)
+const apiOrigin = (req) => (process.env.API_URL || `${req.protocol}://${req.get('host')}`).replace(/\/+$/, '');
+
+router.post('/payment/bkash/create', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json(await createBkash(order, storefrontOrigin(req)));
+}));
+
+router.post('/payment/bkash/verify', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json({ status: await verifyBkash(order, String(req.body.paymentID || ''), String(req.body.status || '')) });
+}));
+
+router.post('/payment/sslcommerz/create', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json(await createSslcommerz(order, apiOrigin(req)));
+}));
+
+router.post('/payment/sslcommerz/verify', asyncHandler(async (req, res) => {
+  const order = await findOrder(req.body.order_number, req.body.phone);
+  res.json({ status: await verifySslcommerz(order) });
+}));
+
+// SSLCommerz success / fail / cancel all land here (form POST). The status is checked with SSLCommerz
+// on the verify page, so the posted fields are only used to find the way back to the store.
+const sslForm = express.urlencoded({ extended: false, limit: '100kb' });
+router.post('/payment/sslcommerz/return', sslForm, asyncHandler(async (req, res) => {
+  const b = req.body || {};
+  const [[order]] = await pool.query('SELECT order_number, phone FROM orders WHERE order_number = ?', [String(b.value_a || '')]);
+  const allowed = (process.env.CLIENT_URL || '').split(',').map((u) => u.trim().replace(/\/+$/, '')).filter(Boolean);
+  const store = allowed[0] || '';
+  if (!order) return res.redirect(303, `${store}/`);
+  res.redirect(303, `${store}/payment/verify?gateway=sslcommerz&order=${encodeURIComponent(order.order_number)}&phone=${encodeURIComponent(order.phone)}`);
+}));
+
+// Server-to-server notice from SSLCommerz (set as IPN URL in their panel too) — confirmed with SSLCommerz before acting
+router.post('/payment/sslcommerz/ipn', sslForm, asyncHandler(async (req, res) => {
+  const [[order]] = await pool.query('SELECT * FROM orders WHERE order_number = ?', [String(req.body?.value_a || '')]);
+  if (order) await verifySslcommerz(order).catch((err) => console.error('[sslcommerz ipn]', err.message));
+  res.sendStatus(200);
+}));
+
 /* ---------- Courier status webhook (Steadfast) ---------- */
 // In the Steadfast portal set the callback URL to /api/courier/steadfast/webhook and the
 // auth token to the same value as "Steadfast Webhook Token" in Settings.
@@ -88,6 +132,29 @@ router.post('/courier/steadfast/webhook', asyncHandler(async (req, res) => {
   );
   if (order) await applySteadfastStatus(order, b.status);
   res.json({ status: 'success', message: 'Webhook received successfully.' });
+}));
+
+/* ---------- Courier status webhook (Pathao) ---------- */
+// Pathao merchant panel → Developers API → Webhook: URL /api/courier/pathao/webhook and the
+// secret set to "Pathao Webhook Secret" in Settings. Pathao expects this header on every reply.
+const PATHAO_INTEGRATION_SECRET = 'f3992ecc-59da-4cbe-a049-a13da2018d51';
+router.post('/courier/pathao/webhook', asyncHandler(async (req, res) => {
+  res.set('X-Pathao-Merchant-Webhook-Integration-Secret', PATHAO_INTEGRATION_SECRET);
+  const s = await getSettings();
+  const expected = Buffer.from(String(s.pathao_webhook_secret || ''));
+  const got = Buffer.from(String(req.get('x-pathao-signature') || ''));
+  if (!s.pathao_webhook_secret || expected.length !== got.length || !crypto.timingSafeEqual(expected, got)) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  const b = req.body || {};
+  if (b.event && b.event !== 'webhook_integration') {
+    const [[order]] = await pool.query(
+      "SELECT * FROM orders WHERE courier = 'pathao' AND (courier_consignment_id = ? OR order_number = ?) LIMIT 1",
+      [String(b.consignment_id ?? ''), String(b.merchant_order_id ?? '')]
+    );
+    if (order) await applyPathaoStatus(order, b.event);
+  }
+  res.status(202).json({ message: 'OK' });
 }));
 
 export default router;

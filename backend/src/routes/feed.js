@@ -17,12 +17,15 @@ async function loadFeed(req) {
   const [products] = await pool.query(
     `SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON c.id = p.category_id
      WHERE p.is_active = 1 ORDER BY p.id`);
+  const plainText = (html) => String(html || '').replace(/<(br|\/p|\/li|\/h\d|\/div)\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\n{3,}/g, '\n\n').trim();
   const items = products.map((p) => {
     const onSale = p.old_price && p.old_price > p.price;
     return {
       id: `GAH-${p.id}`,
       title: p.name,
-      description: p.description || p.short_description || p.name,
+      // Descriptions are rich text (HTML) — feeds want plain text
+      description: plainText(p.description) || p.short_description || p.name,
       link: `${site}/product/${p.slug}`,
       image: abs(p.image),
       brand: p.brand || s.site_name || 'Gadget Accessories Home',
