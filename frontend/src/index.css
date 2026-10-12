@@ -767,7 +767,11 @@ input, select, textarea { font: inherit; color: inherit; }
   .gal__main { cursor: pointer; }
   .gal__zoom { display: none; }
   .lightbox { padding: 60px 8px; }
-  .pd__actions .pd__cart, .pd__actions .pd__buy { min-width: 0; }
+  .pd__actions { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; }
+  .pd__actions .pd__cart { grid-column: 2 / -1; }
+  .pd__actions .pd__buy { grid-column: 1 / 3; }
+  .pd__actions .pd__cart, .pd__actions .pd__buy { min-width: 0; height: 46px; white-space: nowrap; }
+  .pd__actions .icon-btn--box { height: 46px; width: 46px; }
   .pd__trust { font-size: 12.5px; }
   .tabs { overflow-x: auto; scrollbar-width: none; }
   .tabs button { white-space: nowrap; padding: 10px 14px; }

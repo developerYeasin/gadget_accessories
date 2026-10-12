@@ -242,6 +242,8 @@ export default function ProductDetail() {
       toast.error(err.message);
     }
   };
+  // Admin-typed bullets ("• ", "- ") are stripped; the UI adds its own icons
+  const features = (p.features || []).map((f) => String(f).replace(/^[\s•\-*·]+/, '').trim()).filter(Boolean);
   const add = (silent = false) => addToCart(p, qty, silent, variant);
   // Buy only this product — the cart is left as it is
   const buyNow = () => {
@@ -250,11 +252,18 @@ export default function ProductDetail() {
   };
   const copyLink = () => navigator.clipboard.writeText(pageUrl).then(() => toast.success('Link copied'));
 
+  // "• Battery Capacity: 20,000mAh" → ['Battery Capacity', '20,000mAh']
+  const featureSpecs = features.map((f) => {
+    const m = f.match(/^([^:]{1,40}):\s*(.+)$/);
+    return m ? [m[1].trim(), m[2].trim()] : ['Feature', f];
+  });
+  const hasSpec = (label) => featureSpecs.some(([k]) => k.toLowerCase() === label.toLowerCase());
   const specs = [
     ['Brand', p.brand], ['Category', p.category_name], ['Model', p.name],
-    ...p.features.map((f, i) => [`Feature ${i + 1}`, f]),
+    ...featureSpecs,
     ['Weight', Number(p.weight) > 0 ? formatWeight(Number(p.weight)) : null],
-    ['Warranty', 'Official brand warranty'], ['Condition', 'Brand new, 100% original'],
+    ['Warranty', hasSpec('Warranty') ? null : 'Official brand warranty'],
+    ['Condition', hasSpec('Condition') ? null : 'Brand new, 100% original'],
     ...optionGroups(p).map((g) => [g.name, g.values.join(', ')]),
     ['Availability', p.stock > 0 ? 'In stock' : 'Out of stock'],
   ].filter(([, v]) => v);
@@ -286,11 +295,11 @@ export default function ProductDetail() {
           </div>
 
           <p className="muted">{p.short_description}</p>
-          {p.features?.length > 0 && (
-            <ul className="pd__features">{p.features.map((f) => <li key={f}><FiCheckCircle /> {f}</li>)}</ul>
-          )}
-
           {hasVariants && <VariantPicker product={p} selected={selected} onChange={(sel) => { setSelected(sel); setQty(1); }} />}
+
+          {features.length > 0 && (
+            <ul className="pd__features">{features.map((f) => <li key={f}><FiCheckCircle /> {f}</li>)}</ul>
+          )}
 
           <div className={`pd__stock ${cur.stock > 0 ? 'ok' : 'out'}`}>
             {hasVariants && !variant ? <span className="vopt__hint">Please choose an option</span>
@@ -344,10 +353,10 @@ export default function ProductDetail() {
         {tab === 'description' && (
           <>
             <RichText html={p.description} />
-            {p.features?.length > 0 && (
+            {features.length > 0 && (
               <>
                 <h4 className="tab-h">Key Features</h4>
-                <ul className="pd__features">{p.features.map((f) => <li key={f}><FiCheckCircle /> {f}</li>)}</ul>
+                <ul className="pd__features">{features.map((f) => <li key={f}><FiCheckCircle /> {f}</li>)}</ul>
               </>
             )}
           </>
