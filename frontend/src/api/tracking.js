@@ -41,6 +41,26 @@ export function trackingContext() {
   };
 }
 
+// Contact details from the customer's last order on this device — sent with later events so Meta
+// can match them to a Facebook account (better Event Match Quality). Stays in this browser only.
+const BUYER_KEY = 'gah_buyer';
+const buyer = () => {
+  try { return JSON.parse(localStorage.getItem(BUYER_KEY)) || {}; } catch { return {}; }
+};
+export function rememberBuyer({ name, phone, email, city } = {}) {
+  try { localStorage.setItem(BUYER_KEY, JSON.stringify({ name, phone, email, city })); } catch { /* storage blocked */ }
+}
+// Pixel advanced matching: the pixel hashes these itself before sending
+const matchData = () => {
+  const b = buyer();
+  let ph = String(b.phone || '').replace(/\D/g, '');
+  if (ph.length === 11 && ph.startsWith('01')) ph = `88${ph}`;
+  const [fn, ...ln] = String(b.name || '').trim().toLowerCase().split(/\s+/);
+  const m = { em: b.email ? String(b.email).trim().toLowerCase() : undefined, ph: ph || undefined, fn: fn || undefined, ln: ln.join(' ') || undefined,
+    ct: b.city ? String(b.city).toLowerCase().replace(/\s+/g, '') : undefined, country: 'bd' };
+  return Object.fromEntries(Object.entries(m).filter(([, v]) => v));
+};
+
 function sendServer(event, eventId, { items = [], value = 0, search } = {}) {
   if (!enabled.fb && !enabled.tiktok) return;
   const token = localStorage.getItem('gah_token');
@@ -49,7 +69,7 @@ function sendServer(event, eventId, { items = [], value = 0, search } = {}) {
     keepalive: true,
     headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     body: JSON.stringify({
-      event, event_id: eventId, value, search, ...trackingContext(),
+      event, event_id: eventId, value, search, buyer: buyer(), ...trackingContext(),
       items: items.map((i) => ({ id: i.item_id, name: i.item_name, price: i.price, quantity: i.quantity })),
     }),
   }).catch(() => {});
@@ -95,7 +115,11 @@ export function initTracking(settings) {
       t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
-    window.fbq('init', fb);
+    // We send PageView ourselves on every route change (with an event id the server copy shares).
+    // Meta's own SPA PageView and automatic button-click events would replace it with ids we can't match.
+    window.fbq.disablePushState = true;
+    window.fbq('set', 'autoConfig', false, fb);
+    window.fbq('init', fb, matchData());
     enabled.fb = true;
   }
 

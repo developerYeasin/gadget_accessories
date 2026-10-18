@@ -4,7 +4,7 @@ import { FaCreditCard, FaTruck } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import api, { cartWeight, deliveryCharge, deliveryRules, formatWeight, imageUrl, money } from '../api/client';
 import { cartKey, useStore } from '../context/StoreContext';
-import { track, trackingContext } from '../api/tracking';
+import { rememberBuyer, track, trackingContext } from '../api/tracking';
 import { Breadcrumb } from '../components/Shared';
 import { MFS_ACTION, activeMfs } from '../utils/mfs';
 
@@ -94,6 +94,7 @@ export default function Checkout() {
         items: cart.map((i) => ({ product_id: i.id, variant_id: i.variant_id || undefined, quantity: i.quantity })),
         tracking: trackingContext(),
       });
+      rememberBuyer(form);
       track.purchase(res.order_number, cart, res.total, { shipping: delivery, coupon: coupon?.code });
       // Ordered lines leave the cart; anything not ticked stays for later
       if (!buyNow) removeKeys(cart.map(cartKey));

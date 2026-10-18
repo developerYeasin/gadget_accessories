@@ -776,7 +776,7 @@ function SettingField({ label, kind, value, onChange }) {
   return (
     <label>{label}
       <span className="input-with-btn">
-        <input className="input" type={kind === 'secret' && !show ? 'password' : 'text'} autoComplete="off" value={value || ''} onChange={(e) => onChange(e.target.value)} />
+        <input className="input" type={kind === 'secret' && !show ? 'password' : 'text'} autoComplete={kind === 'secret' ? 'new-password' : 'off'} data-lpignore="true" data-1p-ignore value={value || ''} onChange={(e) => onChange(e.target.value)} />
         {kind === 'secret' && <button type="button" className="btn btn--ghost btn--sm" onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'}</button>}
       </span>
     </label>

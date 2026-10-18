@@ -16,19 +16,28 @@ const router = Router();
 // The browser posts each pixel event here with the same event id; Purchase is sent by the order route itself.
 const str = (v, max = 500) => (typeof v === 'string' && v ? v.slice(0, max) : undefined);
 // "/e" is the main path: ad blockers drop requests to URLs containing "track"
-router.post(['/e', '/track'], optionalAuth, (req, res) => {
+router.post(['/e', '/track'], optionalAuth, async (req, res) => {
   res.status(204).end();
   const b = req.body || {};
   if (!EVENTS.has(b.event) || b.event === 'Purchase' || !str(b.event_id, 100)) return;
   const items = (Array.isArray(b.items) ? b.items.slice(0, 50) : []).map((i) => ({
     id: str(i.id, 60), name: str(i.name, 200), price: Number(i.price) || 0, quantity: Math.max(1, Number(i.quantity) || 1),
   }));
+  // Contact details for matching: the logged-in account, else the buyer details this browser kept from its last order
+  const g = b.buyer && typeof b.buyer === 'object' ? b.buyer : {};
+  let who = { email: str(g.email, 160), phone: str(g.phone, 30), name: str(g.name, 120), city: str(g.city, 80) };
+  if (req.user?.id) {
+    try {
+      const [[u]] = await pool.query('SELECT name, email, phone, city FROM users WHERE id = ?', [req.user.id]);
+      if (u) who = { email: u.email || who.email, phone: u.phone || who.phone, name: u.name || who.name, city: u.city || who.city };
+    } catch { /* tracking only */ }
+  }
   trackServer({
     event: b.event,
     eventId: str(b.event_id, 100),
     req,
     url: str(b.url, 1000),
-    user: { external_id: req.user?.id, fbp: str(b.fbp, 200), fbc: str(b.fbc, 300), ttp: str(b.ttp, 200), ttclid: str(b.ttclid, 300) },
+    user: { ...who, external_id: req.user?.id, fbp: str(b.fbp, 200), fbc: str(b.fbc, 300), ttp: str(b.ttp, 200), ttclid: str(b.ttclid, 300) },
     data: { value: Number(b.value) || 0, items, search: str(b.search, 200) },
   });
 });
