@@ -1,7 +1,7 @@
 // Marketing pixels: Facebook (Meta) Pixel, TikTok Pixel, Google Analytics 4 and Google Tag Manager.
 // IDs come from admin Settings. Every store event is sent to each enabled platform and pushed
 // to the GTM dataLayer in GA4 ecommerce format. Meta/TikTok events are also posted to our server
-// (/api/track), which forwards them through the Conversions API / Events API with the same event id.
+// (/api/e), which forwards them through the Conversions API / Events API with the same event id.
 
 const VALID = {
   fb: /^\d{5,20}$/,
@@ -44,7 +44,7 @@ export function trackingContext() {
 function sendServer(event, eventId, { items = [], value = 0, search } = {}) {
   if (!enabled.fb && !enabled.tiktok) return;
   const token = localStorage.getItem('gah_token');
-  fetch(`${BASE}/api/track`, {
+  fetch(`${BASE}/api/e`, {
     method: 'POST',
     keepalive: true,
     headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },

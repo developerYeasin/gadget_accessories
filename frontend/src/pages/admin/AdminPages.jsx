@@ -13,6 +13,31 @@ import { BarChart } from './AdminExtra';
 import { Avatar, PasswordForm, PasswordInput, ProfileForm, StrengthMeter } from '../../components/AccountForms';
 import { MFS, MFS_TYPES } from '../../utils/mfs';
 
+// Conversions API / Events API health since the server last started
+function TrackingHealth() {
+  const [t, setT] = useState(null);
+  useEffect(() => { api.get('/admin/tracking-status').then(setT).catch(() => {}); }, []);
+  if (!t) return null;
+  const when = (v) => (v ? new Date(v).toLocaleString() : '—');
+  return (
+    <section className="settings-section">
+      <h3>Server-side Tracking Status</h3>
+      {t.test_code && <p className="small" style={{ color: '#c0392b' }}><b>⚠ Facebook Test Event Code is set.</b> Server events only show in Events Manager → Test events and are not counted for ads. Clear it once testing is done.</p>}
+      {!t.meta_ready && <p className="small" style={{ color: '#c0392b' }}>Meta Conversions API is off — set both the Pixel ID and the CAPI access token.</p>}
+      {['Meta CAPI', 'TikTok Events API'].map((k) => {
+        const p = t.platforms[k];
+        if (!p) return <p key={k} className="muted small">{k}: no events sent since the server started.</p>;
+        return (
+          <p key={k} className="small">
+            <b>{k}</b>: {p.sent} sent, {p.failed} failed · last OK {when(p.last_ok_at)} ({p.last_ok_event || '—'})
+            {p.last_error && <><br /><span style={{ color: '#c0392b' }}>Last error {when(p.last_error_at)} ({p.last_error_event}): {p.last_error}</span></>}
+          </p>
+        );
+      })}
+    </section>
+  );
+}
+
 const ALL_STATUSES = ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
 
 export function Modal({ title, onClose, children, wide }) {
@@ -897,6 +922,7 @@ export function Settings() {
               </div>
             </section>
           )}
+          {tab === 'marketing' && <TrackingHealth />}
           {tab === 'marketing' && (
             <section className="settings-section">
               <h3>Product Catalog Feeds</h3>

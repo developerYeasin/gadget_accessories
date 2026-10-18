@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS products (
   name VARCHAR(200) NOT NULL,
   slug VARCHAR(220) NOT NULL UNIQUE,
   brand VARCHAR(80),
-  short_description VARCHAR(300),
+  short_description VARCHAR(1000),
   description TEXT,
   price DECIMAL(10,2) NOT NULL,
   old_price DECIMAL(10,2),

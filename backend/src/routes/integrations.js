@@ -15,7 +15,8 @@ const router = Router();
 /* ---------- Server-side tracking ---------- */
 // The browser posts each pixel event here with the same event id; Purchase is sent by the order route itself.
 const str = (v, max = 500) => (typeof v === 'string' && v ? v.slice(0, max) : undefined);
-router.post('/track', optionalAuth, (req, res) => {
+// "/e" is the main path: ad blockers drop requests to URLs containing "track"
+router.post(['/e', '/track'], optionalAuth, (req, res) => {
   res.status(204).end();
   const b = req.body || {};
   if (!EVENTS.has(b.event) || b.event === 'Purchase' || !str(b.event_id, 100)) return;

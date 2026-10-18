@@ -48,6 +48,10 @@ app.use('/api', (_req, res) => res.status(404).json({ message: 'Not found' }));
 
 app.use((err, _req, res, _next) => {
   if (err.code === 'ER_DUP_ENTRY') return res.status(409).json({ message: 'Duplicate entry (slug or email already exists)' });
+  if (err.code === 'ER_DATA_TOO_LONG') {
+    const col = err.sqlMessage?.match(/column '([^']+)'/)?.[1];
+    return res.status(400).json({ message: `${col ? `"${col}"` : 'A field'} is too long` });
+  }
   const status = err.status || (err.name === 'MulterError' ? 400 : 500);
   if (status === 500) console.error(err);
   res.status(status).json({ message: status === 500 ? 'Server error' : err.message });

@@ -48,6 +48,8 @@ async function migrate() {
   await ensureColumn('orders', 'courier_status', 'VARCHAR(60) NULL');
   await ensureColumn('orders', 'courier_booked_at', 'DATETIME NULL');
   await ensureColumn('products', 'free_delivery', 'TINYINT(1) NOT NULL DEFAULT 0');
+  // Widened: 300 chars was too short for real short descriptions
+  await conn.query('ALTER TABLE products MODIFY short_description VARCHAR(1000) NULL');
   console.log('✔ Tables created / verified in', database);
   await conn.end();
 }

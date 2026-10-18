@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Sitemap: https://gadgetaccessorieshome.com/sitemap.xml

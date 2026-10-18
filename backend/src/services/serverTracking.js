@@ -9,6 +9,16 @@ const FB_API = 'https://graph.facebook.com/v22.0';
 const TIKTOK_API = 'https://business-api.tiktok.com/open_api/v1.3/event/track/';
 const CURRENCY = 'BDT';
 
+// Last result per platform, shown in admin Settings → Marketing
+const status = {};
+export const trackingStatus = () => status;
+const record = (label, event, error) => {
+  const prev = status[label] || { sent: 0, failed: 0 };
+  status[label] = error
+    ? { ...prev, failed: prev.failed + 1, last_error: String(error).slice(0, 300), last_error_at: new Date().toISOString(), last_error_event: event }
+    : { ...prev, sent: prev.sent + 1, last_ok_at: new Date().toISOString(), last_ok_event: event };
+};
+
 // Browser event names (Meta's) → TikTok's
 const TIKTOK_EVENTS = {
   PageView: null, ViewContent: 'ViewContent', AddToCart: 'AddToCart', AddToWishlist: 'AddToWishlist',
@@ -86,7 +96,7 @@ export async function trackServer({ event, eventId, req, url, user = {}, data = 
         data: [{ event_name: event, event_time: time, event_id: eventId, action_source: 'website', event_source_url: url, user_data: userData, custom_data: custom }],
         test_event_code: s.fb_test_event_code || undefined,
       };
-      jobs.push(post(`${FB_API}/${encodeURIComponent(fb.pixel)}/events?access_token=${encodeURIComponent(fb.token)}`, body, {}, 'Meta CAPI'));
+      jobs.push(post(`${FB_API}/${encodeURIComponent(fb.pixel)}/events?access_token=${encodeURIComponent(fb.token)}`, body, {}, 'Meta CAPI', event));
     }
 
     const ttEvent = TIKTOK_EVENTS[event];
@@ -114,7 +124,7 @@ export async function trackServer({ event, eventId, req, url, user = {}, data = 
           },
         }],
       };
-      jobs.push(post(TIKTOK_API, body, { 'Access-Token': tt.token }, 'TikTok Events API'));
+      jobs.push(post(TIKTOK_API, body, { 'Access-Token': tt.token }, 'TikTok Events API', event));
     }
     await Promise.all(jobs);
   } catch (err) {
@@ -122,7 +132,9 @@ export async function trackServer({ event, eventId, req, url, user = {}, data = 
   }
 }
 
-async function post(url, body, headers, label) {
+// One retry on network errors / 5xx / rate limits, so a brief hiccup doesn't lose a conversion
+async function post(url, body, headers, label, event, attempt = 1) {
+  let error;
   try {
     const res = await fetch(url, {
       method: 'POST',
@@ -132,8 +144,15 @@ async function post(url, body, headers, label) {
     });
     const data = await res.json().catch(() => ({}));
     // TikTok answers 200 with a non-zero code on errors
-    if (!res.ok || (data.code !== undefined && data.code !== 0)) console.error(`[tracking] ${label} rejected:`, JSON.stringify(data.error || data.message || data));
+    if (res.ok && (data.code === undefined || data.code === 0)) return record(label, event);
+    error = JSON.stringify(data.error || data.message || data);
+    if (attempt < 2 && (res.status >= 500 || res.status === 429)) return retry(url, body, headers, label, event);
+    console.error(`[tracking] ${label} rejected:`, error);
   } catch (err) {
-    console.error(`[tracking] ${label} failed:`, err.message);
+    error = err.message;
+    if (attempt < 2) return retry(url, body, headers, label, event);
+    console.error(`[tracking] ${label} failed:`, error);
   }
+  record(label, event, error);
 }
+const retry = (...args) => new Promise((r) => setTimeout(r, 1500)).then(() => post(...args, 2));

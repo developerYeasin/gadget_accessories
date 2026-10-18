@@ -4,10 +4,23 @@ import pool from '../config/db.js';
 import { emailError, passwordError } from './auth.js';
 import { protect, adminOnly } from '../middleware/auth.js';
 import { asyncHandler, slugify } from '../utils.js';
+import { trackingStatus } from '../services/serverTracking.js';
+import { getSettings } from '../services/settings.js';
 import { bookCourier, cachedHistories, courierHistory, pathaoStores, refreshCourier, steadfastBalance } from '../services/courier.js';
 
 const router = Router();
 router.use(protect, adminOnly);
+
+/* ---------- Server-side tracking health ---------- */
+router.get('/tracking-status', asyncHandler(async (_req, res) => {
+  const s = await getSettings();
+  res.json({
+    meta_ready: Boolean(String(s.fb_pixel_id || '').trim() && String(s.fb_capi_token || '').trim()),
+    tiktok_ready: Boolean(String(s.tiktok_pixel_id || '').trim() && String(s.tiktok_access_token || '').trim()),
+    test_code: Boolean(String(s.fb_test_event_code || '').trim()),
+    platforms: trackingStatus(),
+  });
+}));
 
 /* ---------- Reports ---------- */
 router.get('/reports', asyncHandler(async (req, res) => {

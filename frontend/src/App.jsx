@@ -25,10 +25,36 @@ function ScrollToTop() {
   return null;
 }
 
+const SITE = 'https://gadgetaccessorieshome.com';
+const BRAND = 'Gadget Accessories Home';
+const TITLES = {
+  '/': `${BRAND} — Latest Gadgets at Best Prices`,
+  '/shop': `Shop — ${BRAND}`,
+  '/offers': `Offers — ${BRAND}`,
+  '/categories': `Categories — ${BRAND}`,
+  '/about': `About Us — ${BRAND}`,
+  '/contact': `Contact — ${BRAND}`,
+};
+
+// Per-route canonical + default title so search engines don't treat every SPA route as the same page
+function SeoTags() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname.startsWith('/admin')) return;
+    const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : '/';
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+    link.href = SITE + path;
+    document.title = TITLES[path] || BRAND;
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
+      <SeoTags />
       <Routes>
         <Route path="/admin/*" element={<AdminApp />} />
         <Route element={<Layout />}>
