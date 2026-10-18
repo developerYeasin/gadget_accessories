@@ -12,6 +12,7 @@ const VALID = {
 
 const enabled = { fb: false, tiktok: false, ga4: false, gtm: false };
 let initialized = false;
+let firstPageView = true;
 
 const BASE = import.meta.env.VITE_API_URL || '';
 const newEventId = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
@@ -115,9 +116,8 @@ export function initTracking(settings) {
       t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
-    // We send PageView ourselves on every route change (with an event id the server copy shares).
-    // Meta's own SPA PageView and automatic button-click events would replace it with ids we can't match.
-    window.fbq.disablePushState = true;
+    // No automatic button-click events. Meta's pixel tracks route changes itself (PageView on each
+    // pushState) and drops any extra PageView we send after the first one on a page load.
     window.fbq('set', 'autoConfig', false, fb);
     window.fbq('init', fb, matchData());
     enabled.fb = true;
@@ -181,10 +181,16 @@ export const track = {
   pageView(path) {
     if (enabled.gtm) window.dataLayer.push({ event: 'page_view', page_path: path });
     if (enabled.ga4 && window.gtag) window.gtag('event', 'page_view', { page_path: path, page_location: window.location.href, page_title: document.title });
-    const eventId = newEventId();
-    if (enabled.fb && window.fbq) window.fbq('track', 'PageView', {}, { eventID: eventId });
     if (enabled.tiktok && window.ttq) window.ttq.page();
-    sendServer('PageView', eventId);
+    // Meta: only the first PageView of a page load is ours (shared event id with the server copy).
+    // Later route changes are reported by the pixel itself with its own id, so a server copy
+    // could never be matched and would count twice.
+    if (firstPageView) {
+      firstPageView = false;
+      const eventId = newEventId();
+      if (enabled.fb && window.fbq) window.fbq('track', 'PageView', {}, { eventID: eventId });
+      sendServer('PageView', eventId);
+    }
   },
   viewItem(p) {
     const item = toItem(p);
